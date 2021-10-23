@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ASProject/Angle/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3472222222222222" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/activity_main.xml" value="0.4909722222222222" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/activity_splash_screen.xml" value="0.36256410256410254" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/postnews_content.xml" value="0.36822916666666666" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22291666666666668" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/activity_main.xml" value="0.2947916666666667" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/activity_splash_screen.xml" value="0.39305555555555555" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/fragment_news.xml" value="0.2947916666666667" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/postnews_content.xml" value="0.6545454318464303" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
