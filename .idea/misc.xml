@@ -4,14 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3472222222222222" />
-        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/activity_main.xml" value="0.4909722222222222" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/activity_main.xml" value="0.4849056603773585" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/activity_splash_screen.xml" value="0.36256410256410254" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_news.xml" value="0.1" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/postnews_content.xml" value="0.36822916666666666" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22291666666666668" />
-        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/activity_main.xml" value="0.2947916666666667" />
-        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/activity_splash_screen.xml" value="0.39305555555555555" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/drawable/ic_outline_settings_24.xml" value="0.27685185185185185" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/drawable/ic_settings.xml" value="0.27685185185185185" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/drawable/tab_indicator.xml" value="0.2935185185185185" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/activity_main.xml" value="0.37916666666666665" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/activity_splash_screen.xml" value="0.37916666666666665" />
         <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/fragment_news.xml" value="0.2947916666666667" />
-        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/postnews_content.xml" value="0.6545454318464303" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/fragment_news_detal.xml" value="0.28072916666666664" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/fragment_pilots_list.xml" value="0.2947916666666667" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/fragment_setting.xml" value="0.28072916666666664" />
+        <entry key="..\:/ASProjects/Angle/app/src/main/res/layout/postnews_content.xml" value="0.41935483870967744" />
       </map>
     </option>
   </component>
