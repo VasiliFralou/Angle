@@ -1,30 +1,26 @@
-package by.vfdev.angle
+package by.vfdev.angle.UI.News
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import by.vfdev.angle.R
+import by.vfdev.angle.UI.MainActivity
+import by.vfdev.angle.ViewModel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : Fragment() {
 
-    lateinit var viewModel: NewsViewModel
+    lateinit var viewModel: MainViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        viewModel = ViewModelProvider(requireActivity()).get(NewsViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         return inflater.inflate(R.layout.fragment_news, container, false)
     }
@@ -45,6 +41,7 @@ class NewsFragment : Fragment() {
 
     fun showNewsDetails(position: Int) {
         viewModel.news = viewModel.newsList.value?.get(position)?.urlPost
-        NewsDetailFragment()
+        val fragment = NewsDetailFragment()
+        fragment.show(requireActivity().supportFragmentManager, "customDialog")
     }
 }

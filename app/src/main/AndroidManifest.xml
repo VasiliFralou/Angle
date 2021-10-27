@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Angle" >
         <activity
-            android:name=".SplashScreen"
+            android:name=".UI.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.Angle.NoActionBar">
             <intent-filter>
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Angle.NoActionBar">
         </activity>

@@ -6,17 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainColor"
-    tools:context=".SplashScreen">
+    tools:context="by.vfdev.angle.UI.SplashScreen">
 
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="250sp"
+        android:layout_height="250sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_transparent" />
+        app:srcCompat="@drawable/angle_transparent" />
 
     <TextView
         android:id="@+id/tvVersionApp"

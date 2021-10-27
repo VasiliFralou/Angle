@@ -1,4 +1,4 @@
-package by.vfdev.angle
+package by.vfdev.angle.RemoteModel
 
 import com.google.firebase.database.Exclude
 

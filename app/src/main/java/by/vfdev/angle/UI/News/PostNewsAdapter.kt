@@ -1,4 +1,4 @@
-package by.vfdev.angle
+package by.vfdev.angle.UI.News
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import by.vfdev.angle.R
+import by.vfdev.angle.RemoteModel.News
 import com.bumptech.glide.Glide
 
 class PostNewsAdapter(val values: MutableList<News>, val fragment: NewsFragment) :

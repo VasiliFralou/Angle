@@ -1,19 +1,12 @@
-package by.vfdev.angle
+package by.vfdev.angle.UI
 
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import by.vfdev.angle.R
 import kotlinx.android.synthetic.main.activity_splash_screen.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SplashScreen : AppCompatActivity() {
 

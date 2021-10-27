@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="mainColor">#FF770303</color>
-    <color name="secondColor">#5C0404</color>
+    <color name="mainColor">#FF1d1b1b</color>
+    <color name="secondColor">#2C2A2A</color>
+    <color name="bgPilotsListColor">#252323</color>
     <color name="firstColor">#F44336</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>

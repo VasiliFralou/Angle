@@ -1,40 +1,35 @@
-package by.vfdev.angle
+package by.vfdev.angle.UI
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.viewpager2.widget.ViewPager2
+import by.vfdev.angle.ViewModel.MainViewModel
+import by.vfdev.angle.R
+import by.vfdev.angle.UI.Pilots.PilotsViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : FragmentActivity() {
 
-    lateinit var viewModel: NewsViewModel
+    lateinit var newsViewModel: MainViewModel
+    lateinit var pilotsViewModel: PilotsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
+        newsViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        pilotsViewModel = ViewModelProvider(this).get(PilotsViewModel::class.java)
 
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         val viewPager = findViewById<ViewPager2>(R.id.pager)
-        val adapter = VPAdapter(supportFragmentManager, lifecycle)
+        val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
 
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.setIcon(viewModel.tabNumbers[position])
+            tab.setIcon(newsViewModel.tabNumbers[position])
 
             if (position == 3) {
                 val badge = tab.getOrCreateBadge()

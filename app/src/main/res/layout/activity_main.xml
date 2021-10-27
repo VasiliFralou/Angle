@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/mainColor"
-    tools:context=".MainActivity">
+    android:id="@+id/mainLayout"
+    tools:context="by.vfdev.angle.UI.MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
         android:background="@color/mainColor"
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/tab_layout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,4 +39,4 @@
         app:tabIndicator="@drawable/tab_indicator"
         app:tabTextAppearance="@style/MyCustomTextAppearance"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

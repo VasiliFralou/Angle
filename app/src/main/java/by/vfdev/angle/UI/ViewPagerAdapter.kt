@@ -1,12 +1,14 @@
-package by.vfdev.angle
+package by.vfdev.angle.UI
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import by.vfdev.angle.UI.News.NewsFragment
+import by.vfdev.angle.UI.Pilots.PilotsListFragment
+import by.vfdev.angle.UI.Setting.SettingFragment
 
-class VPAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle)
+class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle)
     : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {

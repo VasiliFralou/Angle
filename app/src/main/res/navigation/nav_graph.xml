@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="by.vfdev.angle.NewsFragment"
+        android:name="by.vfdev.angle.UI.News.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" >
         <action
@@ -16,27 +16,27 @@
     </fragment>
     <fragment
         android:id="@+id/newsDetailFragment"
-        android:name="by.vfdev.angle.NewsDetailFragment"
+        android:name="by.vfdev.angle.UI.News.NewsDetailFragment"
         android:label="fragment_news_detal"
         tools:layout="@layout/fragment_news_detal" />
     <fragment
         android:id="@+id/pilotsListFragment"
-        android:name="by.vfdev.angle.PilotsListFragment"
+        android:name="by.vfdev.angle.UI.Pilots.PilotsListFragment"
         android:label="fragment_pilots_list"
         tools:layout="@layout/fragment_pilots_list" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="by.vfdev.angle.SettingFragment"
+        android:name="by.vfdev.angle.UI.Setting.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
     <activity
         android:id="@+id/mainActivity"
-        android:name="by.vfdev.angle.MainActivity"
+        android:name="by.vfdev.angle.UI.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <activity
         android:id="@+id/splashScreen"
-        android:name="by.vfdev.angle.SplashScreen"
+        android:name="by.vfdev.angle.UI.SplashScreen"
         android:label="activity_splash_screen"
         tools:layout="@layout/activity_splash_screen" />
 </navigation>
