@@ -14,12 +14,14 @@ import by.vfdev.angle.LocalModel.PilotsDatabase
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Pilots
 import by.vfdev.angle.UI.MainActivity
+import by.vfdev.angle.UI.News.NewsDetailFragment
 import kotlinx.android.synthetic.main.fragment_pilots_list.*
 import kotlinx.android.synthetic.main.item_pilots_layout.*
 
 class PilotsListFragment : Fragment() {
 
     private lateinit var pilotsViewModel: PilotsViewModel
+    val fragment = PilotsDetailFragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -41,5 +43,10 @@ class PilotsListFragment : Fragment() {
 
         pilotsListRV.layoutManager = GridLayoutManager(activity as MainActivity, 2)
         pilotsListRV.adapter = PilotsListAdapter(pilotsViewModel.pilotsList as MutableList<Pilots>, this)
+    }
+
+    fun showPilotsDetails(position: Int) {
+        pilotsViewModel.idPilots = pilotsViewModel.pilotsList[position].id
+        fragment.show(requireActivity().supportFragmentManager, "customDialog")
     }
 }

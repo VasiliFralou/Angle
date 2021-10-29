@@ -6,4 +6,5 @@ import by.vfdev.angle.RemoteModel.Pilots
 class PilotsViewModel : ViewModel() {
 
     lateinit var pilotsList: List<Pilots>
+    var idPilots: Int? = null
 }

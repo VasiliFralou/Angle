@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="contentDescription">TODO</string>
+    <string name="btnReadNews">Читать</string>
+    <string name="textCloseBtn">x</string>
 </resources>

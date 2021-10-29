@@ -7,11 +7,11 @@
     android:background="@color/mainColor">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClose"
+        android:id="@+id/btnCloseNewsDetail"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@color/mainColor"
-        android:text="x"
+        android:text="@string/textCloseBtn"
         app:layout_constraintCircleRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

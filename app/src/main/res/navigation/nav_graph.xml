@@ -23,7 +23,11 @@
         android:id="@+id/pilotsListFragment"
         android:name="by.vfdev.angle.UI.Pilots.PilotsListFragment"
         android:label="fragment_pilots_list"
-        tools:layout="@layout/fragment_pilots_list" />
+        tools:layout="@layout/fragment_pilots_list" >
+        <action
+            android:id="@+id/action_pilotsListFragment_to_pilotsDetailFragment"
+            app:destination="@id/pilotsDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="by.vfdev.angle.UI.Setting.SettingFragment"
@@ -39,4 +43,9 @@
         android:name="by.vfdev.angle.UI.SplashScreen"
         android:label="activity_splash_screen"
         tools:layout="@layout/activity_splash_screen" />
+    <fragment
+        android:id="@+id/pilotsDetailFragment"
+        android:name="by.vfdev.angle.UI.Pilots.PilotsDetailFragment"
+        android:label="fragment_pilots_detail"
+        tools:layout="@layout/fragment_pilots_detail" />
 </navigation>

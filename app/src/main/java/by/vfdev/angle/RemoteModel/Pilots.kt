@@ -7,10 +7,11 @@ import androidx.room.PrimaryKey
 open class Pilots (
     @PrimaryKey var id: Int,
     var name: String,
-    var birthday: String? = null,
     var city: String,
-    var auto: String,
-    var team: String? = null,
+    var photo: ByteArray? = null,
+    var birthday: String? = "-",
+    var team: String? = "-",
     var instagram: String,
-    var description: String? = null,
-    var photo: ByteArray? = null)
+    var description: String? = "-",
+    var auto: String,
+    var photoAuto: ByteArray? = null)

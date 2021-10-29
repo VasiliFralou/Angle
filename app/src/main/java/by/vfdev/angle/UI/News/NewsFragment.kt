@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_news.*
 class NewsFragment : Fragment() {
 
     lateinit var viewModel: MainViewModel
+    val fragment = NewsDetailFragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -34,14 +35,13 @@ class NewsFragment : Fragment() {
         PostNewsRV.layoutManager = GridLayoutManager(activity as MainActivity, 1)
         PostNewsRV.adapter = PostNewsAdapter(viewModel.newsList.value!!, this)
 
-        viewModel.newsList.observe(viewLifecycleOwner, Observer {
+        viewModel.newsList.observe(viewLifecycleOwner, {
             PostNewsRV.adapter?.notifyDataSetChanged()
         })
     }
 
     fun showNewsDetails(position: Int) {
         viewModel.news = viewModel.newsList.value?.get(position)?.urlPost
-        val fragment = NewsDetailFragment()
         fragment.show(requireActivity().supportFragmentManager, "customDialog")
     }
 }

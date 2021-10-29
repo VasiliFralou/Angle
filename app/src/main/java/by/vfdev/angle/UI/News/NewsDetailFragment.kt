@@ -31,7 +31,7 @@ class NewsDetailFragment : DialogFragment() {
 
         NewsDetailsWV.loadUrl("${viewModel.news}")
 
-        btnClose.setOnClickListener {
+        btnCloseNewsDetail.setOnClickListener {
             dismiss()
         }
     }

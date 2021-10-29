@@ -28,9 +28,8 @@ class PilotsListAdapter (val pilotsList: MutableList<Pilots>, val fragment: Pilo
         val holder = ViewHolder(itemView)
 
         holder.itemView.setOnClickListener {
-            Log.e("!!!", "Клик-клик")
+            fragment.showPilotsDetails(holder.adapterPosition)
         }
-
         return holder
     }
 
