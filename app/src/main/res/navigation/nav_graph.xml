@@ -48,4 +48,28 @@
         android:name="by.vfdev.angle.UI.Pilots.PilotsDetailFragment"
         android:label="fragment_pilots_detail"
         tools:layout="@layout/fragment_pilots_detail" />
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="by.vfdev.angle.UI.Gallery.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="by.vfdev.angle.UI.Calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_eventsMapFragment"
+            app:destination="@id/eventsMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="by.vfdev.angle.UI.Video.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/eventsMapFragment"
+        android:name="by.vfdev.angle.UI.Calendar.EventsMapFragment"
+        android:label="fragment_events_map"
+        tools:layout="@layout/fragment_events_map" />
 </navigation>

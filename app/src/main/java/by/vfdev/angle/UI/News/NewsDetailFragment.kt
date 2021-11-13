@@ -26,10 +26,10 @@ class NewsDetailFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        NewsDetailsWV.loadUrl("${viewModel.news}")
+
         NewsDetailsWV.webChromeClient = WebChromeClient()
         NewsDetailsWV.webViewClient = WebViewClient()
-
-        NewsDetailsWV.loadUrl("${viewModel.news}")
 
         btnCloseNewsDetail.setOnClickListener {
             dismiss()

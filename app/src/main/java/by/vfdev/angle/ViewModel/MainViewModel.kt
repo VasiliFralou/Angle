@@ -24,9 +24,10 @@ class MainViewModel: ViewModel() {
     val ref = "https://angle-571b8-default-rtdb.europe-west1.firebasedatabase.app/"
     val tabNumbers: Array<Int> = arrayOf(
         R.drawable.ic_news,
+        R.drawable.ic_calendar,
+        R.drawable.ic_gallery,
         R.drawable.ic_pilots,
-        R.drawable.ic_settings
-    )
+        R.drawable.ic_settings)
     val database = Firebase.database(ref)
     var dbref = database.getReference("News")
 

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import by.vfdev.angle.ViewModel.MainViewModel
 import by.vfdev.angle.R
+import by.vfdev.angle.UI.Calendar.CalendarFragment
 import by.vfdev.angle.UI.Pilots.PilotsViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -31,11 +32,17 @@ class MainActivity : FragmentActivity() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.setIcon(newsViewModel.tabNumbers[position])
 
-            if (position == 3) {
+            if (position == 5) {
                 val badge = tab.getOrCreateBadge()
                 badge.number = 1
             }
 
         }.attach()
+    }
+
+    internal fun onOpenMap() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, CalendarFragment())
+            .commitNow()
     }
 }

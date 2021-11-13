@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="340dp"
+    android:background="@color/mainColor"
+    tools:context=".UI.Calendar.EventsMapFragment">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCloseEventsMap"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:background="@color/mainColor"
+        android:text="@string/textCloseBtn"
+        app:layout_constraintCircleRadius="25dp" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+</LinearLayout>
