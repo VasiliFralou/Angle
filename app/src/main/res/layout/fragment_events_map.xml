@@ -17,9 +17,9 @@
         android:background="@color/mainColor"
         android:text="@string/textCloseBtn"
         app:layout_constraintCircleRadius="25dp" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="300dp"
         android:layout_height="300dp" />
 </LinearLayout>

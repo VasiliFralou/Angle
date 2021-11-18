@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.News
 import by.vfdev.angle.R
+import by.vfdev.angle.RemoteModel.EventsLocation
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -19,6 +20,7 @@ class MainViewModel: ViewModel() {
 
     var data: Boolean = false
     var newsList = MutableLiveData<MutableList<News>>(mutableListOf())
+    var eventsLocationList = MutableLiveData<MutableList<EventsLocation>>(mutableListOf())
     var news: String? = null
 
     val ref = "https://angle-571b8-default-rtdb.europe-west1.firebasedatabase.app/"
@@ -29,16 +31,20 @@ class MainViewModel: ViewModel() {
         R.drawable.ic_pilots,
         R.drawable.ic_settings)
     val database = Firebase.database(ref)
-    var dbref = database.getReference("News")
+    var dbrefNews = database.getReference("News")
+    var dbrefEvents = database.getReference("Events")
 
     fun initialize() {
         viewModelScope.launch {
             GetNewsList()
         }
+        viewModelScope.launch {
+            GetEventsLocationList()
+        }
     }
 
     suspend fun GetNewsList() = withContext(Dispatchers.IO) {
-        dbref.addValueEventListener(object : ValueEventListener {
+        dbrefNews.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 data = true
                 if (snapshot.exists()) {
@@ -48,6 +54,26 @@ class MainViewModel: ViewModel() {
                     }
                     newsList.value?.reverse()
                     newsList.value = newsList.value
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("!!!Error", "messages:onCancelled: ${error.message}")
+            }
+        })
+    }
+
+    suspend fun GetEventsLocationList() = withContext(Dispatchers.IO) {
+        dbrefEvents.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                data = true
+                if (snapshot.exists()) {
+                    for (scoresSnapshot in snapshot.children) {
+                        val eventsLocation = scoresSnapshot.getValue(EventsLocation::class.java)
+                        eventsLocationList.value?.add(eventsLocation!!)
+                    }
+//                    newsList.value?.reverse()
+//                    newsList.value = newsList.value
                 }
             }
 
