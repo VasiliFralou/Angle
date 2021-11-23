@@ -21,7 +21,11 @@ class MainViewModel: ViewModel() {
     var data: Boolean = false
     var newsList = MutableLiveData<MutableList<News>>(mutableListOf())
     var eventsLocationList = MutableLiveData<MutableList<EventsLocation>>(mutableListOf())
+
     var news: String? = null
+    var latitudeEL: Double? = null
+    var longitudeEL: Double? = null
+    var titleEL: String? = null
 
     val ref = "https://angle-571b8-default-rtdb.europe-west1.firebasedatabase.app/"
     val tabNumbers: Array<Int> = arrayOf(
@@ -72,8 +76,6 @@ class MainViewModel: ViewModel() {
                         val eventsLocation = scoresSnapshot.getValue(EventsLocation::class.java)
                         eventsLocationList.value?.add(eventsLocation!!)
                     }
-//                    newsList.value?.reverse()
-//                    newsList.value = newsList.value
                 }
             }
 

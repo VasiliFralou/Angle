@@ -1,7 +1,6 @@
 package by.vfdev.angle.UI.Pilots
 
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Pilots
-import com.bumptech.glide.Glide
 
 class PilotsListAdapter (val pilotsList: MutableList<Pilots>, val fragment: PilotsListFragment) :
     RecyclerView.Adapter<PilotsListAdapter.ViewHolder>() {

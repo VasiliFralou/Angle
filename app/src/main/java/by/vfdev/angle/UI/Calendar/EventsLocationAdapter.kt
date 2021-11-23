@@ -23,6 +23,10 @@ class EventsLocationAdapter (val list: MutableList<EventsLocation>, val fragment
         val itemView = inflater.inflate(R.layout.events_content, parent, false)
         val holder = ViewHolder(itemView)
 
+        holder.itemView.setOnClickListener {
+            fragment.showEventDetails(holder.adapterPosition)
+        }
+
         return holder
     }
 

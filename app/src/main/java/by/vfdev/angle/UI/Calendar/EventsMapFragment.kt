@@ -1,7 +1,6 @@
 package by.vfdev.angle.UI.Calendar
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,19 +10,15 @@ import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.MainViewModel
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_events_map.*
-import java.lang.Exception
 
 class EventsMapFragment : DialogFragment(), OnMapReadyCallback {
 
-    var mView: MapView? = null
-    private lateinit var mMap: GoogleMap
-
     lateinit var viewModel: MainViewModel
 
-    val minsk = LatLng(53.9042819,27.5439984)
+    var mView: MapView? = null
+    private lateinit var mMap: GoogleMap
 
     companion object {
         var mapFragment : SupportMapFragment?=null
@@ -32,7 +27,7 @@ class EventsMapFragment : DialogFragment(), OnMapReadyCallback {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
         val view = inflater.inflate(R.layout.fragment_events_map, container, false)
 
@@ -51,16 +46,13 @@ class EventsMapFragment : DialogFragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        val size = viewModel.eventsLocationList.value?.size!! - 1
-        for(i in 0..size){
-            mMap.addMarker(MarkerOptions()
-                .position(LatLng(viewModel.eventsLocationList.value?.get(i)?.latitude!!,
-                    viewModel.eventsLocationList.value!![i].longitude!!))
-                .title(viewModel.eventsLocationList.value!![i].title))
-        }
+        val location = LatLng(viewModel.latitudeEL!!,viewModel.longitudeEL!!)
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(minsk, 5.5f))
+        mMap = googleMap
+        mMap.addMarker(MarkerOptions()
+                .position(LatLng(viewModel.latitudeEL!!, viewModel.longitudeEL!!))
+                .title(viewModel.titleEL))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }
 
     override fun onResume() {

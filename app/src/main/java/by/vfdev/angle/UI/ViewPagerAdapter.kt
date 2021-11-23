@@ -15,7 +15,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle)
     : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {
-        return 5
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -26,7 +26,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle)
             2 -> GalleryFragment()
             // 3 -> VideoFragment()
             3 -> PilotsListFragment()
-            4 -> SettingFragment()
+            // 4 -> SettingFragment()
             else -> Fragment()
         }
     }
