@@ -16,37 +16,5 @@ import kotlinx.coroutines.withContext
 
 class GalleryViewModel : ViewModel() {
 
-    var galleryList = MutableLiveData<MutableList<Gallery>>(mutableListOf())
-    var data: Boolean = false
 
-    val ref = "https://angle-571b8-default-rtdb.europe-west1.firebasedatabase.app/"
-    val database = Firebase.database(ref)
-    var dbrefGallery = database.getReference("Images")
-
-    fun initialize() {
-        viewModelScope.launch {
-            GetGalleryPhotoList()
-        }
-    }
-
-    suspend fun GetGalleryPhotoList() = withContext(Dispatchers.IO) {
-        dbrefGallery.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                data = true
-                if (snapshot.exists()) {
-                    for (scoresSnapshot in snapshot.children) {
-                        val gallery = scoresSnapshot.getValue(Gallery::class.java)
-                        galleryList.value?.add(gallery!!)
-                        galleryList.value = galleryList.value
-
-                        Log.e("!!!FB", galleryList.value!!.size.toString())
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("!!!Error", "messages:onCancelled: ${error.message}")
-            }
-        })
-    }
 }

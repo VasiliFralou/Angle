@@ -10,7 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.MainViewModel
-import kotlinx.android.synthetic.main.fragment_news_detal.*
+import kotlinx.android.synthetic.main.fragment_news_detail.*
 
 class NewsDetailFragment : DialogFragment() {
 
@@ -18,9 +18,9 @@ class NewsDetailFragment : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
-        return inflater.inflate(R.layout.fragment_news_detal, container, false)
+        return inflater.inflate(R.layout.fragment_news_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -18,7 +18,7 @@
         android:id="@+id/newsDetailFragment"
         android:name="by.vfdev.angle.UI.News.NewsDetailFragment"
         android:label="fragment_news_detal"
-        tools:layout="@layout/fragment_news_detal" />
+        tools:layout="@layout/fragment_news_detail" />
     <fragment
         android:id="@+id/pilotsListFragment"
         android:name="by.vfdev.angle.UI.Pilots.PilotsListFragment"
@@ -52,7 +52,11 @@
         android:id="@+id/galleryFragment"
         android:name="by.vfdev.angle.UI.Gallery.GalleryFragment"
         android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_galleryFragment_to_galleryDetailFragment"
+            app:destination="@id/galleryDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/calendarFragment"
         android:name="by.vfdev.angle.UI.Calendar.CalendarFragment"
@@ -72,4 +76,9 @@
         android:name="by.vfdev.angle.UI.Calendar.EventsMapFragment"
         android:label="fragment_events_map"
         tools:layout="@layout/fragment_events_map" />
+    <fragment
+        android:id="@+id/galleryDetailFragment"
+        android:name="by.vfdev.angle.UI.Gallery.GalleryDetailFragment"
+        android:label="fragment_gallery_detail"
+        tools:layout="@layout/fragment_gallery_detail" />
 </navigation>

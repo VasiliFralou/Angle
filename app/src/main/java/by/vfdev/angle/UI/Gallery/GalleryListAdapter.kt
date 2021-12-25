@@ -26,6 +26,10 @@ class GalleryListAdapter(val galleryList: MutableList<Gallery>, val fragment: Ga
         val itemView = inflater.inflate(R.layout.item_gallery_layout, parent, false)
         val holder = ViewHolder(itemView)
 
+        holder.itemView.setOnClickListener {
+            fragment.showImagesDetails(holder.adapterPosition)
+        }
+
         return holder
     }
 
