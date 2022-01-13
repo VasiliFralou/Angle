@@ -2,6 +2,7 @@ package by.vfdev.angle.UI.Calendar
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
@@ -38,10 +39,14 @@ class CalendarFragment : Fragment() {
     }
 
     fun showEventDetails(position: Int) {
-        viewModel.latitudeEL = viewModel.eventsLocationList.value?.get(position)?.latitude
-        viewModel.longitudeEL = viewModel.eventsLocationList.value?.get(position)?.longitude
-        viewModel.titleEL = viewModel.eventsLocationList.value?.get(position)?.title
+        if (fragment.dialog != null && fragment.dialog!!.isShowing&& !fragment.isRemoving) {
+        } else {
+            //dialog is not showing
+            viewModel.latitudeEL = viewModel.eventsLocationList.value?.get(position)?.latitude
+            viewModel.longitudeEL = viewModel.eventsLocationList.value?.get(position)?.longitude
+            viewModel.titleEL = viewModel.eventsLocationList.value?.get(position)?.title
 
-        fragment.show(requireActivity().supportFragmentManager, "customDialog")
+            fragment.show(requireActivity().supportFragmentManager, "customDialog")
+        }
     }
 }

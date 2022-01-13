@@ -39,7 +39,11 @@ class GalleryFragment : Fragment() {
     }
 
     fun showImagesDetails(position: Int) {
-        mainViewModel.linkImages = mainViewModel.galleryList.value?.get(position)?.img
-        fragment.show(requireActivity().supportFragmentManager, "customDialog")
+        if (fragment.dialog != null && fragment.dialog!!.isShowing&& !fragment.isRemoving) {
+        } else {
+            //dialog is not showing
+            mainViewModel.linkImages = mainViewModel.galleryList.value?.get(position)?.img
+            fragment.show(requireActivity().supportFragmentManager, "customDialog")
+        }
     }
 }

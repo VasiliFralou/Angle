@@ -42,7 +42,11 @@ class PilotsListFragment : Fragment() {
     }
 
     fun showPilotsDetails(position: Int) {
-        pilotsViewModel.idPilots = pilotsViewModel.pilotsList[position].id
-        fragment.show(requireActivity().supportFragmentManager, "customDialog")
+        if (fragment.dialog != null && fragment.dialog!!.isShowing&& !fragment.isRemoving) {
+        } else {
+            //dialog is not showing
+            pilotsViewModel.idPilots = pilotsViewModel.pilotsList[position].id
+            fragment.show(requireActivity().supportFragmentManager, "customDialog")
+        }
     }
 }

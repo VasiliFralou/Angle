@@ -44,7 +44,11 @@ class NewsFragment : Fragment() {
     }
 
     fun showNewsDetails(position: Int) {
-        viewModel.news = viewModel.newsList.value?.get(position)?.urlPost
-        fragment.show(requireActivity().supportFragmentManager, "customDialog")
+        if (fragment.dialog != null && fragment.dialog!!.isShowing&& !fragment.isRemoving) {
+        } else {
+            //dialog is not showing
+            viewModel.news = viewModel.newsList.value?.get(position)?.urlPost
+            fragment.show(requireActivity().supportFragmentManager, "customDialog")
+        }
     }
 }
