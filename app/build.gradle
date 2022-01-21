@@ -11,10 +11,10 @@ android {
 
     defaultConfig {
         applicationId "by.vfdev.angle"
-        minSdk 26
+        minSdk 21
         targetSdk 31
-        versionCode 3
-        versionName "0.0.9"
+        versionCode 5
+        versionName "0.0.11"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -60,6 +60,9 @@ dependencies {
 
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //TouchImageView
+    implementation 'com.github.MikeOrtiz:TouchImageView:3.1.1'
 
     // Room
     annotationProcessor "androidx.room:room-compiler:2.4.1"

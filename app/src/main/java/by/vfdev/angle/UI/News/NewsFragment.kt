@@ -39,7 +39,6 @@ class NewsFragment : Fragment() {
 
         viewModel.newsList.observe(viewLifecycleOwner, {
             PostNewsRV.adapter?.notifyDataSetChanged()
-            Log.e("!!!News", viewModel.newsList.value!!.size.toString())
         })
     }
 

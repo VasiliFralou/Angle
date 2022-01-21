@@ -22,21 +22,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_gravity="center"
-        android:background="@color/mainColor"
         android:id="@+id/tab_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@color/mainColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:tabGravity="center"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:tabIndicatorAnimationMode="elastic"
         app:tabIndicatorColor="@color/secondColor"
         app:tabIndicatorHeight="48dp"
         app:tabMode="fixed"
-        android:layout_margin="8dp"
-        app:tabGravity="center"
-        app:tabIndicatorAnimationMode="elastic"
-        app:tabIndicator="@drawable/tab_indicator"
-        app:tabTextAppearance="@style/MyCustomTextAppearance"/>
+        app:tabTextAppearance="@style/MyCustomTextAppearance" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

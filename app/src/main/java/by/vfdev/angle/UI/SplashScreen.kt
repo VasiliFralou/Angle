@@ -1,5 +1,6 @@
 package by.vfdev.angle.UI
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.os.Handler
 import by.vfdev.angle.R
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

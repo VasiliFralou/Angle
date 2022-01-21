@@ -99,8 +99,6 @@ class MainViewModel: ViewModel() {
                         val gallery = scoresSnapshot.getValue(Gallery::class.java)
                         galleryList.value?.add(gallery!!)
                         galleryList.value = galleryList.value
-
-                        Log.e("!!!FB", galleryList.value!!.size.toString())
                     }
                 }
             }
