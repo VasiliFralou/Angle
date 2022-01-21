@@ -20,6 +20,8 @@ class SplashScreen : AppCompatActivity() {
         val info = manager.getPackageInfo(this.packageName, PackageManager.GET_ACTIVITIES)
         tvVersionApp.text = info.versionName
 
+        application.deleteDatabase("Angle.db")
+
         Handler().postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
