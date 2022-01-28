@@ -8,6 +8,7 @@
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/ic_news.xml" value="0.28828125" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/ic_pilots.xml" value="0.28828125" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/ic_settings.xml" value="0.28828125" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/searchview_backgound.xml" value="0.111" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/tab_indicator.xml" value="0.28828125" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/activity_main.xml" value="0.4909722222222222" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/activity_splash_screen.xml" value="0.4909722222222222" />
@@ -20,7 +21,7 @@
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_news_detail.xml" value="0.30277777777777776" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_news_detal.xml" value="0.46419098143236076" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_pilots_detail.xml" value="0.36822916666666666" />
-        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_pilots_list.xml" value="0.4909722222222222" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_pilots_list.xml" value="0.30185185185185187" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_setting.xml" value="0.36822916666666666" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_video.xml" value="0.36822916666666666" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_gallery_layout.xml" value="0.2861111111111111" />

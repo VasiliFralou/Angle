@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import by.vfdev.angle.R
+import by.vfdev.angle.RemoteModel.Pilots
 import by.vfdev.angle.UI.MainActivity
 import kotlinx.android.synthetic.main.fragment_pilots_detail.*
 
@@ -27,36 +28,48 @@ class PilotsDetailFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val id = pilotsViewModel.idPilots!!
-        val brd = pilotsViewModel.pilotsList[id].birthday
-        val team = pilotsViewModel.pilotsList[id].team
-        val desc = pilotsViewModel.pilotsList[id].description
-
-        pilotsNameTV.text = pilotsViewModel.pilotsList[id].name
-        pilotsCityTV.text = pilotsViewModel.pilotsList[id].city
-        pilotsBirthdayTV.text = "Дата рождения: ${ brd ?: ("-").toString()}"
-        pilotsTeamTV.text = "Команда: ${team ?: ("-").toString()}"
-        pilotsInstTV.text = "Instagram: ${pilotsViewModel.pilotsList[id].instagram}"
-        pilotsDescriptionTV.text = "О пилоте: ${ desc ?: ("-").toString()}"
-        pilotsAutoTV.text = "Авто: ${pilotsViewModel.pilotsList[id].auto}"
-
-        showProfileImage(id)
-        if (pilotsViewModel.pilotsList[id].photoAuto != null) showPilotsAuto(id)
-
+        if (pilotsViewModel.tempArrayList.value?.size!! > 0) {
+            viewPilotInfo(pilotsViewModel.tempArrayList.value!!)
+        } else {
+            viewPilotInfo(pilotsViewModel.pilotsList)
+        }
         btnClosePilotsDetails.setOnClickListener {
             dismiss()
         }
     }
 
-    private fun showProfileImage(id: Int) {
-        val imgProfileArray = pilotsViewModel.pilotsList[id].photo
+    private fun showProfileImage(id: Int, list: List<Pilots>) {
+        val imgProfileArray = list[id].photo
         val bmp = BitmapFactory.decodeByteArray(imgProfileArray, 0, imgProfileArray!!.size)
         pilotsProfileIMG.setImageBitmap(bmp)
     }
 
-    private fun showPilotsAuto(id: Int) {
-        val imgAutoArray = pilotsViewModel.pilotsList[id].photoAuto
+    private fun showPilotsAuto(id: Int, list: List<Pilots>) {
+        val imgAutoArray = list[id].photoAuto
         val bmp = BitmapFactory.decodeByteArray(imgAutoArray, 0, imgAutoArray!!.size)
         pilotsAutoImg.setImageBitmap(bmp)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun viewPilotInfo(list: List<Pilots>) {
+        val id = pilotsViewModel.idPilots!!
+        val brd = list[id].birthday
+        val team = list[id].team
+        val desc = list[id].description
+
+        pilotsNameTV.text = list[id].name
+        pilotsCityTV.text = list[id].city
+        pilotsBirthdayTV.text = "Дата рождения: ${ brd ?: ("-").toString()}"
+        pilotsTeamTV.text = "Команда: ${team ?: ("-").toString()}"
+        pilotsInstTV.text = "Instagram: ${list[id].instagram}"
+        pilotsDescriptionTV.text = "О пилоте: ${ desc ?: ("-").toString()}"
+        pilotsAutoTV.text = "Авто: ${list[id].auto}"
+
+        showProfileImage(id, list)
+        if (list[id].photoAuto != null) showPilotsAuto(id, list)
+
+        btnClosePilotsDetails.setOnClickListener {
+            dismiss()
+        }
     }
 }

@@ -8,14 +8,27 @@
     android:background="@color/mainColor"
     tools:context=".UI.Pilots.PilotsListFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pilotsListRV"
+    <SearchView
+        android:id="@+id/searchPilot"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/mainColor"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/searchview_backgound"
+        android:iconifiedByDefault="false"
+        android:queryBackground="@android:color/transparent"
+        android:queryHint="Введите имя или фамилию пилота"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pilotsListRV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/mainColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchPilot" />
 </androidx.constraintlayout.widget.ConstraintLayout>
