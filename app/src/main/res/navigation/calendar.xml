@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendar"
+    app:startDestination="@id/calendarFragment">
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="by.vfdev.angle.UI.Calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_eventsMapFragment"
+            app:destination="@id/eventsMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventsMapFragment"
+        android:name="by.vfdev.angle.UI.Calendar.EventsMapFragment"
+        android:label="fragment_events_map"
+        tools:layout="@layout/fragment_events_map" />
+</navigation>

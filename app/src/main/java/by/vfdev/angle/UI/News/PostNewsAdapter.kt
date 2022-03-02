@@ -20,7 +20,8 @@ class PostNewsAdapter(val values: MutableList<News>, val fragment: NewsFragment)
         var postIV: ImageView = itemView.findViewById(R.id.postIV)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup,
+                                    viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.postnews_content, parent, false)
         val holder = ViewHolder(itemView)
@@ -44,7 +45,5 @@ class PostNewsAdapter(val values: MutableList<News>, val fragment: NewsFragment)
         }
     }
 
-    override fun getItemCount(): Int {
-        return values.size
-    }
+    override fun getItemCount() = values.size
 }

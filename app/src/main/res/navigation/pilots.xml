@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pilots"
+    app:startDestination="@id/pilotsListFragment">
+
+    <fragment
+        android:id="@+id/pilotsListFragment"
+        android:name="by.vfdev.angle.UI.Pilots.PilotsListFragment"
+        android:label="fragment_pilots_list"
+        tools:layout="@layout/fragment_pilots_list" >
+        <action
+            android:id="@+id/action_pilotsListFragment_to_pilotsDetailFragment"
+            app:destination="@id/pilotsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pilotsDetailFragment"
+        android:name="by.vfdev.angle.UI.Pilots.PilotsDetailFragment"
+        android:label="fragment_pilots_detail"
+        tools:layout="@layout/fragment_pilots_detail" />
+</navigation>

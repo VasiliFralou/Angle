@@ -6,16 +6,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Pilots
 import by.vfdev.angle.UI.MainActivity
 import kotlinx.android.synthetic.main.fragment_pilots_detail.*
 
-class PilotsDetailFragment : DialogFragment() {
+class PilotsDetailFragment : Fragment() {
 
     private lateinit var pilotsViewModel: PilotsViewModel
+    lateinit var navController: NavController
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -28,13 +31,15 @@ class PilotsDetailFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        navController = view.findNavController()
+
         if (pilotsViewModel.tempArrayList.value?.size!! > 0) {
             viewPilotInfo(pilotsViewModel.tempArrayList.value!!)
         } else {
             viewPilotInfo(pilotsViewModel.pilotsList)
         }
         btnClosePilotsDetails.setOnClickListener {
-            dismiss()
+            navController.popBackStack()
         }
     }
 
@@ -58,18 +63,14 @@ class PilotsDetailFragment : DialogFragment() {
         val desc = list[id].description
 
         pilotsNameTV.text = list[id].name
-        pilotsCityTV.text = list[id].city
-        pilotsBirthdayTV.text = "Дата рождения: ${ brd ?: ("-").toString()}"
+        pilotsCityTV.text = "Город: ${list[id].city}"
+        pilotsBirthdayTV.text = brd ?: ("-").toString()
         pilotsTeamTV.text = "Команда: ${team ?: ("-").toString()}"
         pilotsInstTV.text = "Instagram: ${list[id].instagram}"
-        pilotsDescriptionTV.text = "О пилоте: ${ desc ?: ("-").toString()}"
+        pilotsDescriptionTV.text = desc ?: ("-").toString()
         pilotsAutoTV.text = "Авто: ${list[id].auto}"
 
         showProfileImage(id, list)
         if (list[id].photoAuto != null) showPilotsAuto(id, list)
-
-        btnClosePilotsDetails.setOnClickListener {
-            dismiss()
-        }
     }
 }

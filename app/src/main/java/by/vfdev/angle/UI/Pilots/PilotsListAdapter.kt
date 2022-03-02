@@ -40,7 +40,5 @@ class PilotsListAdapter (val pilotsList: MutableList<Pilots>, val fragment: Pilo
         holder.pilotsIMG.setImageBitmap(bmp)
     }
 
-    override fun getItemCount(): Int {
-        return pilotsList.size
-    }
+    override fun getItemCount() = pilotsList.size
 }

@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
 import by.vfdev.angle.LocalModel.PilotsDatabase
@@ -20,13 +22,10 @@ import java.util.*
 class PilotsListFragment : Fragment() {
 
     private lateinit var pilotsViewModel: PilotsViewModel
-    val fragment = PilotsDetailFragment()
+    lateinit var navController: NavController
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
         pilotsViewModel = ViewModelProvider(activity as MainActivity)[PilotsViewModel::class.java]
 
@@ -36,8 +35,7 @@ class PilotsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val db = Room.databaseBuilder(
-            requireActivity(),
+        val db = Room.databaseBuilder(requireActivity(),
             PilotsDatabase::class.java, "Angle.db"
         )
             .createFromAsset("Angle.db")
@@ -45,6 +43,8 @@ class PilotsListFragment : Fragment() {
             .build()
 
         pilotsViewModel.pilotsList = db.pilotsDao().getAll().toMutableList()
+
+        navController = view.findNavController()
 
         pilotsListRV.layoutManager = GridLayoutManager(activity as MainActivity, 2)
         pilotsListRV.adapter =
@@ -67,14 +67,7 @@ class PilotsListFragment : Fragment() {
 
     fun showPilotsDetails(position: Int) {
         pilotsViewModel.idPilots = position
-        if (fragment.dialog != null && fragment.dialog!!.isShowing && !fragment.isRemoving) {
-        } else {
-            if (pilotsViewModel.searchText == null) {
-                fragment.show(requireActivity().supportFragmentManager, "customDialog")
-            } else {
-                fragment.show(requireActivity().supportFragmentManager, "customDialog")
-            }
-        }
+        navController.navigate(R.id.pilotsDetailFragment)
     }
 
     fun searchText(text: String?) {
@@ -91,7 +84,8 @@ class PilotsListFragment : Fragment() {
         } else {
             pilotsViewModel.searchText = null
             pilotsListRV.layoutManager = GridLayoutManager(activity as MainActivity, 2)
-            pilotsListRV.adapter = PilotsListAdapter(pilotsViewModel.pilotsList as MutableList<Pilots>, this@PilotsListFragment)
+            pilotsListRV.adapter = PilotsListAdapter(
+                pilotsViewModel.pilotsList as MutableList<Pilots>, this@PilotsListFragment)
         }
     }
 
@@ -99,6 +93,7 @@ class PilotsListFragment : Fragment() {
     fun updateSearchListPilots() {
         pilotsListRV.adapter?.notifyDataSetChanged()
         pilotsListRV.layoutManager = GridLayoutManager(activity as MainActivity, 2)
-        pilotsListRV.adapter = PilotsListAdapter(pilotsViewModel.tempArrayList.value!!, this@PilotsListFragment)
+        pilotsListRV.adapter = PilotsListAdapter(
+            pilotsViewModel.tempArrayList.value!!, this@PilotsListFragment)
     }
 }

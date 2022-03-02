@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/news"
+        android:icon="@drawable/ic_news"
+        android:orderInCategory="1"
+        android:title="Новости" />
+    <item
+        android:id="@+id/calendar"
+        android:icon="@drawable/ic_calendar"
+        android:orderInCategory="2"
+        android:title="Календарь" />
+    <item
+        android:id="@+id/gallery"
+        android:icon="@drawable/ic_gallery"
+        android:orderInCategory="3"
+        android:title="Галерея" />
+    <item
+        android:id="@+id/pilots"
+        android:icon="@drawable/ic_pilots"
+        android:orderInCategory="4"
+        android:title="Пилоты" />
+</menu>

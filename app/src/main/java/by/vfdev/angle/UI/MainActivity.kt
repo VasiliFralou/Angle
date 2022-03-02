@@ -1,48 +1,48 @@
 package by.vfdev.angle.UI
 
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
-import by.vfdev.angle.ViewModel.MainViewModel
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupWithNavController
 import by.vfdev.angle.R
-import by.vfdev.angle.UI.Calendar.CalendarFragment
 import by.vfdev.angle.UI.Pilots.PilotsViewModel
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import by.vfdev.angle.ViewModel.MainViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : FragmentActivity() {
 
-    lateinit var newsViewModel: MainViewModel
-    lateinit var pilotsViewModel: PilotsViewModel
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var newsViewModel: MainViewModel
+    private lateinit var pilotsViewModel: PilotsViewModel
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        newsViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        pilotsViewModel = ViewModelProvider(this).get(PilotsViewModel::class.java)
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.nav_host_container
+        ) as NavHostFragment
+        navController = navHostFragment.navController
 
-        val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
-        val viewPager = findViewById<ViewPager2>(R.id.pager)
-        val adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
+        newsViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        pilotsViewModel = ViewModelProvider(this)[PilotsViewModel::class.java]
 
-        viewPager.adapter = adapter
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        bottomNavigationView.setupWithNavController(navController)
 
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.setIcon(newsViewModel.tabNumbers[position])
-
-            if (position == 5) {
-                val badge = tab.getOrCreateBadge()
-                badge.number = 1
-            }
-
-        }.attach()
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.newsFragment, R.id.calendarFragment, R.id.galleryFragment, R.id.pilotsListFragment)
+        )
     }
 
-    internal fun onOpenMap() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, CalendarFragment())
-            .commitNow()
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration)
     }
 }

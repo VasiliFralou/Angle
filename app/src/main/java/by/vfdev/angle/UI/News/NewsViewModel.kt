@@ -1,10 +1,10 @@
-package by.vfdev.angle.UI.Gallery
+package by.vfdev.angle.UI.News
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.vfdev.angle.RemoteModel.Gallery
+import by.vfdev.angle.RemoteModel.News
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -14,32 +14,36 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class GalleryViewModel : ViewModel() {
 
+class NewsViewModel : ViewModel() {
+
+    var titleNews: String? = null
     var data: Boolean = false
-    var galleryList = MutableLiveData<MutableList<Gallery>>(mutableListOf())
-    var linkImages: String? = null
+    var news: String? = null
+
+    var newsList = MutableLiveData<MutableList<News>>(mutableListOf())
 
     val ref = "https://angle-571b8-default-rtdb.europe-west1.firebasedatabase.app/"
     val database = Firebase.database(ref)
-    var dbrefGallery = database.getReference("Images")
+    var dbrefNews = database.getReference("News")
 
     fun initialize() {
         viewModelScope.launch {
-            GetGalleryPhotoList()
+            GetNewsList()
         }
     }
 
-    suspend fun GetGalleryPhotoList() = withContext(Dispatchers.IO) {
-        dbrefGallery.addValueEventListener(object : ValueEventListener {
+    suspend fun GetNewsList() = withContext(Dispatchers.IO) {
+        dbrefNews.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 data = true
                 if (snapshot.exists()) {
                     for (scoresSnapshot in snapshot.children) {
-                        val gallery = scoresSnapshot.getValue(Gallery::class.java)
-                        galleryList.value?.add(gallery!!)
-                        galleryList.value = galleryList.value
+                        val news = scoresSnapshot.getValue(News::class.java)
+                        newsList.value?.add(news!!)
                     }
+                    newsList.value?.reverse()
+                    newsList.value = newsList.value
                 }
             }
 

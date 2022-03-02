@@ -1,6 +1,5 @@
 package by.vfdev.angle.UI.Calendar
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,8 +38,6 @@ class EventsLocationAdapter (val list: MutableList<EventsLocation>, val fragment
         holder.cityTV.text = list[position].city
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    override fun getItemCount() = list.size
 
 }

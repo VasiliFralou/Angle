@@ -1,7 +1,5 @@
 package by.vfdev.angle.UI.Gallery
 
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +8,24 @@ import androidx.recyclerview.widget.RecyclerView
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Gallery
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
-class GalleryListAdapter(val galleryList: MutableList<Gallery>, val fragment: GalleryFragment) :
+class GalleryListAdapter(private val galleryList: MutableList<Gallery>, val fragment: GalleryFragment) :
     RecyclerView.Adapter<GalleryListAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var galleryIMG: ImageView = itemView.findViewById(R.id.galleryIMG)
+
+        fun image(gallery: Gallery) {
+            with(itemView) {
+                Glide.with(this)
+                    .load(gallery.img)
+                    .skipMemoryCache(false)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(galleryIMG)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,14 +42,9 @@ class GalleryListAdapter(val galleryList: MutableList<Gallery>, val fragment: Ga
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.galleryIMG.let {
-            Glide.with(holder.itemView.context)
-                .load(galleryList[position].img)
-                .into(it)
-        }
+        val galleryList = galleryList[position]
+        holder.image(galleryList)
     }
 
-    override fun getItemCount(): Int {
-        return galleryList.size
-    }
+    override fun getItemCount() = galleryList.size
 }

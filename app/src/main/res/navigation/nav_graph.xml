@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/newsFragment">
+    app:startDestination="@id/news">
 
-    <fragment
-        android:id="@+id/newsFragment"
-        android:name="by.vfdev.angle.UI.News.NewsFragment"
-        android:label="fragment_news"
-        tools:layout="@layout/fragment_news" >
-        <action
-            android:id="@+id/action_newsFragment_to_newsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsDetailFragment"
-        android:name="by.vfdev.angle.UI.News.NewsDetailFragment"
-        android:label="fragment_news_detal"
-        tools:layout="@layout/fragment_news_detail" />
-    <fragment
-        android:id="@+id/pilotsListFragment"
-        android:name="by.vfdev.angle.UI.Pilots.PilotsListFragment"
-        android:label="fragment_pilots_list"
-        tools:layout="@layout/fragment_pilots_list" >
-        <action
-            android:id="@+id/action_pilotsListFragment_to_pilotsDetailFragment"
-            app:destination="@id/pilotsDetailFragment" />
-    </fragment>
+    <include app:graph="@navigation/news"/>
+    <include app:graph="@navigation/calendar"/>
+    <include app:graph="@navigation/gallery"/>
+    <include app:graph="@navigation/pilots"/>
+
     <fragment
         android:id="@+id/settingFragment"
         android:name="by.vfdev.angle.UI.Setting.SettingFragment"
@@ -44,41 +27,8 @@
         android:label="activity_splash_screen"
         tools:layout="@layout/activity_splash_screen" />
     <fragment
-        android:id="@+id/pilotsDetailFragment"
-        android:name="by.vfdev.angle.UI.Pilots.PilotsDetailFragment"
-        android:label="fragment_pilots_detail"
-        tools:layout="@layout/fragment_pilots_detail" />
-    <fragment
-        android:id="@+id/galleryFragment"
-        android:name="by.vfdev.angle.UI.Gallery.GalleryFragment"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" >
-        <action
-            android:id="@+id/action_galleryFragment_to_galleryDetailFragment"
-            app:destination="@id/galleryDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/calendarFragment"
-        android:name="by.vfdev.angle.UI.Calendar.CalendarFragment"
-        android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" >
-        <action
-            android:id="@+id/action_calendarFragment_to_eventsMapFragment"
-            app:destination="@id/eventsMapFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/videoFragment"
         android:name="by.vfdev.angle.UI.Video.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
-    <fragment
-        android:id="@+id/eventsMapFragment"
-        android:name="by.vfdev.angle.UI.Calendar.EventsMapFragment"
-        android:label="fragment_events_map"
-        tools:layout="@layout/fragment_events_map" />
-    <fragment
-        android:id="@+id/galleryDetailFragment"
-        android:name="by.vfdev.angle.UI.Gallery.GalleryDetailFragment"
-        android:label="fragment_gallery_detail"
-        tools:layout="@layout/fragment_gallery_detail" />
 </navigation>

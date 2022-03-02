@@ -4,20 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import by.vfdev.angle.R
-import by.vfdev.angle.ViewModel.MainViewModel
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_events_map.*
 
-class EventsMapFragment : DialogFragment(), OnMapReadyCallback {
+class EventsMapFragment : Fragment(), OnMapReadyCallback {
 
-    lateinit var viewModel: MainViewModel
+    lateinit var calendarVM: CalendarViewModel
+    lateinit var navController: NavController
 
-    var mView: MapView? = null
     private lateinit var mMap: GoogleMap
 
     companion object {
@@ -27,7 +28,7 @@ class EventsMapFragment : DialogFragment(), OnMapReadyCallback {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        calendarVM = ViewModelProvider(requireActivity())[CalendarViewModel::class.java]
 
         val view = inflater.inflate(R.layout.fragment_events_map, container, false)
 
@@ -40,48 +41,22 @@ class EventsMapFragment : DialogFragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        navController = view.findNavController()
+
+        titleEventMap.text = calendarVM.nameEL
+
         btnCloseEventsMap.setOnClickListener {
-            dismiss()
+            navController.popBackStack()
         }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val location = LatLng(viewModel.latitudeEL!!,viewModel.longitudeEL!!)
+        val location = LatLng(calendarVM.latitudeEL!!,calendarVM.longitudeEL!!)
 
         mMap = googleMap
         mMap.addMarker(MarkerOptions()
-                .position(LatLng(viewModel.latitudeEL!!, viewModel.longitudeEL!!))
-                .title(viewModel.titleEL))
+                .position(LatLng(calendarVM.latitudeEL!!, calendarVM.longitudeEL!!))
+                .title(calendarVM.titleEL))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mView?.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mView?.onPause()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        mView?.onStart()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mView?.onStop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mView?.onDestroy()
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-        mView?.onLowMemory()
     }
 }

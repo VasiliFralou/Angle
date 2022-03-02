@@ -7,21 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.vfdev.angle.R
 import by.vfdev.angle.UI.MainActivity
-import by.vfdev.angle.ViewModel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
 
 class GalleryFragment : Fragment() {
 
-    lateinit var mainViewModel: MainViewModel
-    val fragment = GalleryDetailFragment()
+    lateinit var galleryVM: GalleryViewModel
+    lateinit var navController: NavController
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
-        mainViewModel = ViewModelProvider(activity as MainActivity)[MainViewModel::class.java]
+        galleryVM = ViewModelProvider(activity as MainActivity)[GalleryViewModel::class.java]
 
         return inflater.inflate(R.layout.fragment_gallery, container, false)
     }
@@ -30,20 +32,18 @@ class GalleryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        GalleryListRV.layoutManager = GridLayoutManager(activity as MainActivity, 2)
-        GalleryListRV.adapter = GalleryListAdapter(mainViewModel.galleryList.value!!, this)
+        navController = view.findNavController()
 
-        mainViewModel.galleryList.observe(viewLifecycleOwner, {
+        GalleryListRV.layoutManager = GridLayoutManager(requireActivity(),3)
+        GalleryListRV.adapter = GalleryListAdapter(galleryVM.galleryList.value!!, this)
+
+        galleryVM.galleryList.observe(viewLifecycleOwner) {
             GalleryListRV.adapter?.notifyDataSetChanged()
-        })
+        }
     }
 
     fun showImagesDetails(position: Int) {
-        if (fragment.dialog != null && fragment.dialog!!.isShowing&& !fragment.isRemoving) {
-        } else {
-            //dialog is not showing
-            mainViewModel.linkImages = mainViewModel.galleryList.value?.get(position)?.img
-            fragment.show(requireActivity().supportFragmentManager, "customDialog")
-        }
+        galleryVM.linkImages = galleryVM.galleryList.value?.get(position)?.img
+        navController.navigate(R.id.galleryDetailFragment)
     }
 }
