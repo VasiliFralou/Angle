@@ -6,6 +6,7 @@ import by.vfdev.angle.RemoteModel.Pilots
 
 @Dao
 interface iPilotsDao {
+
     @Query("SELECT * FROM Pilots")
     fun getAll(): List<Pilots>
 }

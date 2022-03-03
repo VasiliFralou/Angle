@@ -23,7 +23,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
     lateinit var mainVM: MainViewModel
     lateinit var newsVM: NewsViewModel
-    lateinit var calendarVM: CalendarViewModel
+//    lateinit var calendarVM: CalendarViewModel
     lateinit var galleryVM: GalleryViewModel
     lateinit var pilotsVM: PilotsViewModel
 
@@ -41,7 +41,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         mainVM = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         newsVM = ViewModelProvider(requireActivity())[NewsViewModel::class.java]
-        calendarVM = ViewModelProvider(requireActivity())[CalendarViewModel::class.java]
+//        calendarVM = ViewModelProvider(requireActivity())[CalendarViewModel::class.java]
         galleryVM = ViewModelProvider(requireActivity())[GalleryViewModel::class.java]
         pilotsVM = ViewModelProvider(requireActivity())[PilotsViewModel::class.java]
 
@@ -54,7 +54,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         if (newsVM.newsList.value?.isEmpty() == true) {
             newsVM.initialize()
-            calendarVM.initialize()
+//            calendarVM.initialize()
             galleryVM.initialize()
         }
 

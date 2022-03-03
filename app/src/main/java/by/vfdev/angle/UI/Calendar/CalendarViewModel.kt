@@ -5,17 +5,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.EventsLocation
+import by.vfdev.angle.Repository.Repository
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CalendarViewModel : ViewModel() {
+class CalendarViewModel (val repository: Repository) : ViewModel() {
 
     var data: Boolean = false
     var latitudeEL: Double? = null
@@ -23,8 +25,13 @@ class CalendarViewModel : ViewModel() {
     var titleEL: String? = null
     var nameEL: String? = null
 
-    var eventsLocationList = MutableLiveData<MutableList<EventsLocation>>(mutableListOf())
+    val scope = CoroutineScope(Dispatchers.IO)
+    var eventsList: EventsLocation? = null
+    val eventsLive: MutableLiveData<MutableList<EventsLocation>> by lazy {
+        MutableLiveData<MutableList<EventsLocation>>()
+    }
 
+    var eventsLocationList = MutableLiveData<MutableList<EventsLocation>>(mutableListOf())
     val ref = "https://angle-571b8-default-rtdb.europe-west1.firebasedatabase.app/"
     val database = Firebase.database(ref)
     var dbrefEvents = database.getReference("Events")
@@ -32,6 +39,14 @@ class CalendarViewModel : ViewModel() {
     fun initialize() {
         viewModelScope.launch {
             GetEventsLocationList()
+        }
+    }
+
+    fun getListEvent() {
+        scope.launch {
+            val data = repository.getData()
+            Log.d("!!!", eventsList.toString())
+            eventsLive.postValue(data)
         }
     }
 
