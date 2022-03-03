@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import java.util.concurrent.TimeUnit
 
-val BASE_URL = "https://raw.githubusercontent.com/VasiliFralou/AngleJSON/main/"
+val BASE_URL = "https://raw.githubusercontent.com/VasiliFralou/Angle/master/app/src/main/java/by/vfdev/angle/"
 
 interface ApiService {
 
