@@ -2,7 +2,6 @@ package by.vfdev.angle.UI.Calendar
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_calendar.*
 
 class CalendarFragment : Fragment() {
 
-    lateinit var calendarVM: CalendarViewModel
+    private lateinit var calendarVM: CalendarViewModel
     lateinit var navController: NavController
 
     private val event = mutableListOf<EventsLocation>()
@@ -37,31 +36,22 @@ class CalendarFragment : Fragment() {
 
         navController = view.findNavController()
 
-        calendarVM.eventsLive.observe(activity as MainActivity, Observer {
+        calendarVM.eventsLive.observe(activity as MainActivity) {
             event.clear()
             event.addAll(it)
             EventsRV.adapter?.notifyDataSetChanged()
-        })
-
-        Log.d("!!!", event.toString())
+        }
 
         val adapter = EventsLocationAdapter(event, this)
         EventsRV.adapter = adapter
         EventsRV.layoutManager = GridLayoutManager(activity as MainActivity, 1)
-
-//        EventsRV.layoutManager = GridLayoutManager(activity as MainActivity, 1)
-//        EventsRV.adapter = EventsLocationAdapter(calendarVM.eventsLocationList.value!!, this)
-//
-//        calendarVM.eventsLocationList.observe(viewLifecycleOwner) {
-//            EventsRV.adapter?.notifyDataSetChanged()
-//        }
     }
 
     fun showEventDetails(position: Int) {
-        calendarVM.latitudeEL = calendarVM.eventsLocationList.value?.get(position)?.latitude
-        calendarVM.longitudeEL = calendarVM.eventsLocationList.value?.get(position)?.longitude
-        calendarVM.titleEL = calendarVM.eventsLocationList.value?.get(position)?.title
-        calendarVM.nameEL = calendarVM.eventsLocationList.value?.get(position)?.name
+        calendarVM.latitudeEL = event[position].latitude
+        calendarVM.longitudeEL = event[position].longitude
+        calendarVM.titleEL = event[position].title
+        calendarVM.nameEL = event[position].name
         navController.navigate(R.id.eventsMapFragment)
     }
 }
