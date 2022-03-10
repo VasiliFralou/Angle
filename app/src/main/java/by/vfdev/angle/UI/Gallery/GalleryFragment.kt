@@ -6,24 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.vfdev.angle.R
+import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import by.vfdev.angle.UI.MainActivity
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
 
 class GalleryFragment : Fragment() {
 
-    lateinit var galleryVM: GalleryViewModel
     lateinit var navController: NavController
+    private val galleryVM: GalleryViewModel by activityViewModels()
+    private val gallery = mutableListOf<Gallery>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
-        galleryVM = ViewModelProvider(activity as MainActivity)[GalleryViewModel::class.java]
 
         return inflater.inflate(R.layout.fragment_gallery, container, false)
     }
@@ -34,12 +34,17 @@ class GalleryFragment : Fragment() {
 
         navController = view.findNavController()
 
-        GalleryListRV.layoutManager = GridLayoutManager(requireActivity(),3)
-        GalleryListRV.adapter = GalleryListAdapter(galleryVM.galleryList.value!!, this)
+        galleryVM.getListGallery()
 
-        galleryVM.galleryList.observe(viewLifecycleOwner) {
+        galleryVM.galleryLive.observe(activity as MainActivity) {
+            gallery.clear()
+            gallery.addAll(it)
             GalleryListRV.adapter?.notifyDataSetChanged()
         }
+
+        val adapter = GalleryListAdapter(gallery, this)
+        GalleryListRV.adapter = adapter
+        GalleryListRV.layoutManager = GridLayoutManager(activity as MainActivity, 3)
     }
 
     fun showImagesDetails(position: Int) {

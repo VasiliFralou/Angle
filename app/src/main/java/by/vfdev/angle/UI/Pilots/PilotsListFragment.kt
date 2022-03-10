@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
-import by.vfdev.angle.LocalModel.PilotsDatabase
+import by.vfdev.angle.LocalModel.Pilots.PilotsDatabase
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Pilots
 import by.vfdev.angle.UI.MainActivity

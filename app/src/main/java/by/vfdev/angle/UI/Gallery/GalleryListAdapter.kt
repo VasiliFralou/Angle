@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import by.vfdev.angle.R
-import by.vfdev.angle.RemoteModel.Gallery
+import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 

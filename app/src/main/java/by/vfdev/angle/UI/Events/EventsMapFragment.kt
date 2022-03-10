@@ -1,4 +1,4 @@
-package by.vfdev.angle.UI.Calendar
+package by.vfdev.angle.UI.Events
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_events_map.*
 
 class EventsMapFragment : Fragment(), OnMapReadyCallback {
 
-    lateinit var calendarVM: CalendarViewModel
+    lateinit var eventsVM: EventsViewModel
     lateinit var navController: NavController
 
     private lateinit var mMap: GoogleMap
@@ -28,7 +28,7 @@ class EventsMapFragment : Fragment(), OnMapReadyCallback {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        calendarVM = ViewModelProvider(requireActivity())[CalendarViewModel::class.java]
+        eventsVM = ViewModelProvider(requireActivity())[EventsViewModel::class.java]
 
         val view = inflater.inflate(R.layout.fragment_events_map, container, false)
 
@@ -43,7 +43,7 @@ class EventsMapFragment : Fragment(), OnMapReadyCallback {
 
         navController = view.findNavController()
 
-        titleEventMap.text = calendarVM.nameEL
+        titleEventMap.text = eventsVM.nameEL
 
         btnCloseEventsMap.setOnClickListener {
             navController.popBackStack()
@@ -51,12 +51,12 @@ class EventsMapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val location = LatLng(calendarVM.latitudeEL!!,calendarVM.longitudeEL!!)
+        val location = LatLng(eventsVM.latitudeEL!!,eventsVM.longitudeEL!!)
 
         mMap = googleMap
         mMap.addMarker(MarkerOptions()
-                .position(LatLng(calendarVM.latitudeEL!!, calendarVM.longitudeEL!!))
-                .title(calendarVM.titleEL))
+                .position(LatLng(eventsVM.latitudeEL!!, eventsVM.longitudeEL!!))
+                .title(eventsVM.titleEL))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }
 }

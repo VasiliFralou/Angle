@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="by.vfdev.angle.UI.Calendar.CalendarFragment"
+        android:name="by.vfdev.angle.UI.Events.EventsFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventsMapFragment"
-        android:name="by.vfdev.angle.UI.Calendar.EventsMapFragment"
+        android:name="by.vfdev.angle.UI.Events.EventsMapFragment"
         android:label="fragment_events_map"
         tools:layout="@layout/fragment_events_map" />
 </navigation>

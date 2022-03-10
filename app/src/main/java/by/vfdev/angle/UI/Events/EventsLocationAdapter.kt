@@ -1,4 +1,4 @@
-package by.vfdev.angle.UI.Calendar
+package by.vfdev.angle.UI.Events
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import by.vfdev.angle.R
-import by.vfdev.angle.RemoteModel.EventsLocation
+import by.vfdev.angle.RemoteModel.Events.Events
 
-class EventsLocationAdapter (val list: MutableList<EventsLocation>, val fragment: CalendarFragment) :
+class EventsLocationAdapter (val list: MutableList<Events>, val fragment: EventsFragment) :
     RecyclerView.Adapter<EventsLocationAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
