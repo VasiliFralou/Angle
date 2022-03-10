@@ -3,13 +3,11 @@ package by.vfdev.angle.UI.Events
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.Events.Events
 import by.vfdev.angle.Repository.EventsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,6 +15,9 @@ import javax.inject.Inject
 class EventsViewModel @Inject constructor(
     private val eventsRepository: EventsRepository
 ) : ViewModel() {
+
+    private val getEventsUseCase: suspend () -> Result<MutableList<Events>> =
+        { eventsRepository.getDataEvents() }
 
     var latitudeEL: Double? = null
     var longitudeEL: Double? = null
@@ -31,7 +32,7 @@ class EventsViewModel @Inject constructor(
 
     fun getListEvents() {
         scope.launch {
-            val data = eventsRepository.getDataEvents()
+            val data = getEventsUseCase()
             data
                 .onSuccess {
                     eventsLive.postValue(it)

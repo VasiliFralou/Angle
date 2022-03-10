@@ -5,6 +5,7 @@ import by.vfdev.angle.RemoteModel.Events.Events
 import by.vfdev.angle.RemoteModel.Events.EventsCallBack
 import by.vfdev.angle.RemoteModel.Events.IEventsRemoteModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -16,23 +17,18 @@ class EventsRepository @Inject constructor(
     suspend fun getDataEvents(): Result<MutableList<Events>> = withContext(Dispatchers.IO) {
 
         val eventsList = eventsLocalModel.getAllEvents()
-        // val eventsListNet = eventsRemoteModel.getEventsRemoteData()
 
         if (eventsList.isEmpty()) {
             saveDataEventFromNetwork()
+        } else {
+            launch {
+                saveDataEventFromNetwork()
+            }
         }
 
         return@withContext Result.success(eventsList)
 
     }
-
-//        val eventList = eventLocalModel.getAllEvents()
-//
-//        return if (eventList.isEmpty()) {
-//            saveDataEventFromNetwork()
-//        } else {
-//            saveDataEventFromNetwork()
-//        }
 
     private suspend fun saveDataEventFromNetwork(): Result<EventsCallBack> {
         val eventsList = eventsRemoteModel.getEventsRemoteData()
