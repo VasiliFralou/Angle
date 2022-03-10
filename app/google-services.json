@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "895580815272",
+    "project_id": "angle-571b8",
+    "storage_bucket": "angle-571b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895580815272:android:ae4fafc118e1a87780279d",
+        "android_client_info": {
+          "package_name": "by.vfdev.angle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895580815272-qo67ir6j06ggau5hsaqbnar84v85b90i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUWOco8B_z_qVsSga4Dz2zTdB68HcsvwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895580815272-qo67ir6j06ggau5hsaqbnar84v85b90i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
