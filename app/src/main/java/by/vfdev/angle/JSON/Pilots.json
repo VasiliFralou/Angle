@@ -1,0 +1,59 @@
+{
+  "Pilots": [
+    {
+      "name": "Сергей Сак",
+      "city": "Беларусь, Минск",
+      "birthday": "14 января 1981 г.",
+      "team": "G-Drive Drift Team",
+      "instagram": "@sergei_sak",
+      "description": "Белорусский автогонщик, неоднократный призер различных видов соревнований, как в Беларуси, так и за ее пределами.",
+      "auto": "Nissan 350Z, 5.6, 450 л.с.",
+      "photo": "https://i.postimg.cc/zfx5cjrF/Sergei-Sak.png",
+      "photoAuto": "https://i.postimg.cc/mr1JYfwM/Sergei-Sak.jpg"
+    },
+    {
+      "name": "Роман Кондратенко",
+      "city": "Беларусь, Минск",
+      "birthday": "21 мая 1983 г.",
+      "team": "Black Star PENGUIN",
+      "instagram": "@dikijdrifter",
+      "description": "Белорусский автогонщик, действующий чемпион Беларуси по дрифтингу, участник Russian Drift Series GP.",
+      "auto": "Nissan Silvia S13 2JZ, 3.0, 750 л.с.",
+      "photo": "https://i.postimg.cc/fbzDCP6b/Roman-Kondratenko.png",
+      "photoAuto": "https://i.postimg.cc/NBwB6Jwx/Roman-Kondratenko.jpg"
+    },
+    {
+      "name": "Андрей Пискарев",
+      "city": "Беларусь, Минск",
+      "birthday": "10 сентября 1982 г.",
+      "team": "",
+      "instagram": "@andrey_piskarev",
+      "description": "",
+      "auto": "BMW 320 LSX, 7.4, 600 л.с.",
+      "photo": "https://i.postimg.cc/3xMwXn8y/Andrey-Piskarev.png",
+      "photoAuto": "https://i.postimg.cc/fbFZsfH7/Alexey-Piskarev.jpg"
+    },
+    {
+      "name": "Денис Клищевский",
+      "city": "Баларусь, Пинск",
+      "birthday": "30 июня 1980 г.",
+      "team": "G-Drive Drift Team",
+      "instagram": "@denis_klischevskiy",
+      "description": "",
+      "auto": "Nissan 200SX S13 2JZ, 3.0, 650 л.с.",
+      "photo": "https://i.postimg.cc/zf8XMvR8/Denis-Klischevski.png",
+      "photoAuto": "https://i.postimg.cc/X78bqbHY/Denis-Klischevskiy.jpg"
+    },
+    {
+      "name": "Алексей Манчукевич",
+      "city": "Беларусь, Минск",
+      "birthday": "28 марта 1985 г.",
+      "team": "",
+      "instagram": "@kashal0t",
+      "description": "",
+      "auto": "Nissan 200SX S14 SR20VET, 2.0, 560 л.с.",
+      "photo": "https://i.postimg.cc/HnRkPtbh/Alexey-Manchukevich.png",
+      "photoAuto": "https://i.postimg.cc/Jnf1N5Z7/Alexey-Manchukevich.jpg"
+    }
+  ]
+}
