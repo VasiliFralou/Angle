@@ -14,15 +14,14 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_events_map.*
 
-class EventsMapFragment : Fragment(), OnMapReadyCallback {
+class EventsDetailFragment : Fragment(), OnMapReadyCallback {
 
     lateinit var eventsVM: EventsViewModel
     lateinit var navController: NavController
-
     private lateinit var mMap: GoogleMap
 
     companion object {
-        var mapFragment : SupportMapFragment?=null
+        var mapFragment : SupportMapFragment? = null
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

@@ -32,12 +32,10 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
         mainVM = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         newsVM = ViewModelProvider(requireActivity())[NewsViewModel::class.java]
-        galleryVM = ViewModelProvider(requireActivity())[GalleryViewModel::class.java]
         pilotsVM = ViewModelProvider(requireActivity())[PilotsViewModel::class.java]
 
         if (newsVM.newsList.value?.isEmpty() == true) {
             newsVM.initialize()
-            // galleryVM.initialize()
         }
 
         navController = view.findNavController()

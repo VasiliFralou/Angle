@@ -8,7 +8,7 @@ import by.vfdev.angle.RemoteModel.Events.Events
 
 @Database(entities = [Events::class], version = 1)
 abstract class EventsDatabase : RoomDatabase() {
-    abstract fun eventDao(): IEventsDao
+    abstract fun eventsDao(): IEventsDao
 
     companion object {
         private var eventDatabase : EventsDatabase? = null

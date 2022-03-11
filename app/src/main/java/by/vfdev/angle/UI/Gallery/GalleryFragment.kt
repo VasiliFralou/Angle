@@ -34,8 +34,6 @@ class GalleryFragment : Fragment() {
 
         navController = view.findNavController()
 
-        galleryVM.getListGallery()
-
         galleryVM.galleryLive.observe(activity as MainActivity) {
             gallery.clear()
             gallery.addAll(it)
@@ -48,7 +46,7 @@ class GalleryFragment : Fragment() {
     }
 
     fun showImagesDetails(position: Int) {
-        galleryVM.linkImages = galleryVM.galleryList.value?.get(position)?.img
+        galleryVM.linkImages = gallery[position].img
         navController.navigate(R.id.galleryDetailFragment)
     }
 }

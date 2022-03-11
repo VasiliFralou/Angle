@@ -24,7 +24,6 @@ class GalleryViewModel @Inject constructor(
 ) : ViewModel() {
 
     var data: Boolean = false
-    var galleryList = MutableLiveData<MutableList<Gallery>>(mutableListOf())
     var linkImages: String? = null
 
     val scope = CoroutineScope(Dispatchers.IO)
@@ -38,8 +37,7 @@ class GalleryViewModel @Inject constructor(
             val data = galleryRepository.getDataGallery()
             data
                 .onSuccess {
-                    galleryLive.postValue(it.results)
-                    Log.e("!!!GGGGGGGGG", it.toString())
+                    galleryLive.postValue(it)
                 }.onFailure {
                     galleryLive.postValue(mutableListOf())
                     Log.e("!!!ErrorListGallery", it.stackTraceToString())

@@ -16,9 +16,6 @@ class EventsViewModel @Inject constructor(
     private val eventsRepository: EventsRepository
 ) : ViewModel() {
 
-    private val getEventsUseCase: suspend () -> Result<MutableList<Events>> =
-        { eventsRepository.getDataEvents() }
-
     var latitudeEL: Double? = null
     var longitudeEL: Double? = null
     var titleEL: String? = null
@@ -32,7 +29,7 @@ class EventsViewModel @Inject constructor(
 
     fun getListEvents() {
         scope.launch {
-            val data = getEventsUseCase()
+            val data = eventsRepository.getDataEvents()
             data
                 .onSuccess {
                     eventsLive.postValue(it)

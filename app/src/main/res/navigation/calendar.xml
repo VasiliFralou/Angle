@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventsMapFragment"
-        android:name="by.vfdev.angle.UI.Events.EventsMapFragment"
+        android:name="by.vfdev.angle.UI.Events.EventsDetailFragment"
         android:label="fragment_events_map"
         tools:layout="@layout/fragment_events_map" />
 </navigation>
