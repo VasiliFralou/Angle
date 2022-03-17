@@ -11,15 +11,15 @@ abstract class EventsDatabase : RoomDatabase() {
     abstract fun eventsDao(): IEventsDao
 
     companion object {
-        private var eventDatabase : EventsDatabase? = null
+        private var eventsDatabase : EventsDatabase? = null
         fun getDataBase(contextApplication: Context): EventsDatabase {
-            if (eventDatabase == null) {
-                eventDatabase = Room.databaseBuilder(
+            if (eventsDatabase == null) {
+                eventsDatabase = Room.databaseBuilder(
                     contextApplication,
                     EventsDatabase::class.java, "events_db"
                 ).build()
             }
-            return eventDatabase!!
+            return eventsDatabase!!
         }
     }
 }

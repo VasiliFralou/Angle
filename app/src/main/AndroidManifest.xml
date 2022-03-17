@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="by.vfdev.angle" >
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -21,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Angle"
         android:fullBackupContent="true"
-        android:dataExtractionRules="@xml/data_extraction_rules">
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        tools:targetApi="s">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -36,7 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <nav-graph android:value="@navigation/news" />
-            <nav-graph android:value="@navigation/calendar" />
+            <nav-graph android:value="@navigation/events" />
             <nav-graph android:value="@navigation/gallery" />
             <nav-graph android:value="@navigation/pilots" />
         </activity>

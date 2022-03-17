@@ -1,5 +1,6 @@
 package by.vfdev.angle.UI.Gallery
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 
-class GalleryListAdapter(private val galleryList: MutableList<Gallery>, val fragment: GalleryFragment) :
+class GalleryListAdapter(val fragment: GalleryFragment) :
     RecyclerView.Adapter<GalleryListAdapter.ViewHolder>() {
+
+    private val list: MutableList<Gallery> = mutableListOf()
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newList: MutableList<Gallery>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -21,8 +30,6 @@ class GalleryListAdapter(private val galleryList: MutableList<Gallery>, val frag
             with(itemView) {
                 Glide.with(this)
                     .load(gallery.img)
-                    .skipMemoryCache(false)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(galleryIMG)
             }
         }
@@ -35,16 +42,16 @@ class GalleryListAdapter(private val galleryList: MutableList<Gallery>, val frag
         val holder = ViewHolder(itemView)
 
         holder.itemView.setOnClickListener {
-            fragment.showImagesDetails(holder.adapterPosition)
+            fragment.showImagesDetails(holder.bindingAdapterPosition)
         }
 
         return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val galleryList = galleryList[position]
+        val galleryList = list[position]
         holder.image(galleryList)
     }
 
-    override fun getItemCount() = galleryList.size
+    override fun getItemCount() = list.size
 }

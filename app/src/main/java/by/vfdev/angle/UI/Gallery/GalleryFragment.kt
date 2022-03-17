@@ -2,31 +2,21 @@ package by.vfdev.angle.UI.Gallery
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
-import by.vfdev.angle.RemoteModel.Gallery.Gallery
-import by.vfdev.angle.UI.MainActivity
-import kotlinx.android.synthetic.main.fragment_gallery.*
+import by.vfdev.angle.databinding.FragmentGalleryBinding
 
-
-class GalleryFragment : Fragment() {
+class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
     lateinit var navController: NavController
     private val galleryVM: GalleryViewModel by activityViewModels()
-    private val gallery = mutableListOf<Gallery>()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        return inflater.inflate(R.layout.fragment_gallery, container, false)
-    }
+    private val binding by viewBinding(FragmentGalleryBinding::bind)
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,19 +24,18 @@ class GalleryFragment : Fragment() {
 
         navController = view.findNavController()
 
-        galleryVM.galleryLive.observe(activity as MainActivity) {
-            gallery.clear()
-            gallery.addAll(it)
-            GalleryListRV.adapter?.notifyDataSetChanged()
-        }
+        val adapter = GalleryListAdapter( this)
+        binding.GalleryListRV.adapter = adapter
+        binding.GalleryListRV.layoutManager = GridLayoutManager(
+            requireActivity(), 3)
 
-        val adapter = GalleryListAdapter(gallery, this)
-        GalleryListRV.adapter = adapter
-        GalleryListRV.layoutManager = GridLayoutManager(activity as MainActivity, 3)
+        galleryVM.galleryLive.observe(viewLifecycleOwner) { list ->
+            (binding.GalleryListRV.adapter as GalleryListAdapter).updateData(list)
+        }
     }
 
     fun showImagesDetails(position: Int) {
-        galleryVM.linkImages = gallery[position].img
+        galleryVM.linkImages = galleryVM.galleryLive.value?.get(position)?.img
         navController.navigate(R.id.galleryDetailFragment)
     }
 }

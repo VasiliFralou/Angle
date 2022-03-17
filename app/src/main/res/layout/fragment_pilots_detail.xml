@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
@@ -71,9 +72,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/secondColor"
-                        android:contentDescription="@string/contentDescription"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/angle_transparent" />
+                        app:srcCompat="@drawable/angle_transparent"
+                        tools:ignore="ContentDescription" />
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
@@ -98,7 +99,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="#cbcbcb"
-                        android:text="Дата рождения:"
+                        android:text="@string/titleBirthday"
                         android:textSize="14sp" />
 
                     <TextView
@@ -140,7 +141,7 @@
                 android:layout_marginEnd="16dp"
                 android:textColor="#cbcbcb"
                 android:textStyle="bold"
-                android:text="О пилоте:"
+                android:text="@string/titleAboutPilots"
                 android:textSize="14sp" />
 
             <TextView
@@ -171,6 +172,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:contentDescription="@string/contentDescription"
+                android:scaleType="centerCrop"
                 android:src="@drawable/angle_transparent" />
         </LinearLayout>
 

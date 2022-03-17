@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import by.vfdev.angle.RemoteModel.Events.Events
-import by.vfdev.angle.RemoteModel.Events.EventsCallBack
 
 @Dao
 interface IEventsDao {

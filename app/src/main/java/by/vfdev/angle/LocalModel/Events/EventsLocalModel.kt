@@ -14,7 +14,7 @@ class EventsLocalModel @Inject constructor(@ApplicationContext context: Context)
         database.insertEvents(events)
     }
 
-    suspend fun getAllEvents() : MutableList<Events> {
+    suspend fun getAllEvents(): MutableList<Events> {
         return database.getAllEvents()
     }
 }

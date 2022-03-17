@@ -7,41 +7,34 @@ import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.MainViewModel
-import kotlinx.android.synthetic.main.fragment_news_detail.*
+import by.vfdev.angle.databinding.FragmentNewsDetailBinding
 
-class NewsDetailFragment : Fragment() {
+class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
-    lateinit var viewModel: MainViewModel
-    lateinit var newsViewModel: NewsViewModel
+    private val newsViewModel: NewsViewModel by activityViewModels()
     lateinit var navController: NavController
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
-        newsViewModel = ViewModelProvider(requireActivity())[NewsViewModel::class.java]
-
-        return inflater.inflate(R.layout.fragment_news_detail, container, false)
-    }
+    private val binding by viewBinding(FragmentNewsDetailBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         navController = view.findNavController()
 
-        titleDetailNews.text = newsViewModel.titleNews
+        binding.titleDetailNews.text = newsViewModel.titleNews
 
-        NewsDetailsWV.loadUrl("${newsViewModel.news}")
+        binding.NewsDetailsWV.loadUrl("${newsViewModel.news}")
 
-        NewsDetailsWV.webChromeClient = WebChromeClient()
-        NewsDetailsWV.webViewClient = WebViewClient()
+        binding.NewsDetailsWV.webChromeClient = WebChromeClient()
+        binding.NewsDetailsWV.webViewClient = WebViewClient()
 
-        btnCloseNewsDetail.setOnClickListener {
+        binding.btnCloseNewsDetail.setOnClickListener {
             navController.popBackStack()
         }
     }

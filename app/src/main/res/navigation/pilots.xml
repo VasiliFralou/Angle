@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/pilotsListFragment"
-        android:name="by.vfdev.angle.UI.Pilots.PilotsListFragment"
+        android:name="by.vfdev.angle.UI.Pilots.PilotsFragment"
         android:label="fragment_pilots_list"
         tools:layout="@layout/fragment_pilots_list" >
         <action

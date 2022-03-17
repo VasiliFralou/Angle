@@ -1,5 +1,6 @@
 package by.vfdev.angle.UI.Events
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Events.Events
 
-class EventsLocationAdapter (val list: MutableList<Events>, val fragment: EventsFragment) :
-    RecyclerView.Adapter<EventsLocationAdapter.ViewHolder>() {
+class EventsListAdapter (val fragment: EventsFragment) :
+    RecyclerView.Adapter<EventsListAdapter.ViewHolder>() {
+
+    private val list: MutableList<Events> = mutableListOf()
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newList: MutableList<Events>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var nameTV : TextView = itemView.findViewById(R.id.nameEventTV)
@@ -24,14 +34,13 @@ class EventsLocationAdapter (val list: MutableList<Events>, val fragment: Events
         val holder = ViewHolder(itemView)
 
         holder.itemView.setOnClickListener {
-            fragment.showEventDetails(holder.adapterPosition)
+            fragment.showEventDetails(holder.bindingAdapterPosition)
         }
 
         return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         holder.nameTV.text = list[position].name
         holder.titleTV.text = list[position].title
         holder.dateTV.text = list[position].day

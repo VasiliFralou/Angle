@@ -5,4 +5,6 @@
     <string name="btnReadNews">Читать</string>
     <string name="textCloseBtn">x</string>
     <string name="btnShowEventsMap">Показать карту</string>
+    <string name="titleBirthday">Дата рождения:</string>
+    <string name="titleAboutPilots">О пилоте:</string>
 </resources>

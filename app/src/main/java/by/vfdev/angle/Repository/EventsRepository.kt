@@ -1,6 +1,5 @@
 package by.vfdev.angle.Repository
 
-import android.util.Log
 import by.vfdev.angle.LocalModel.Events.EventsLocalModel
 import by.vfdev.angle.RemoteModel.Events.Events
 import by.vfdev.angle.RemoteModel.Events.EventsCallBack
@@ -12,8 +11,7 @@ import javax.inject.Inject
 
 class EventsRepository @Inject constructor(
     private val eventsRemoteModel: IEventsRemoteModel,
-    private val eventsLocalModel: EventsLocalModel
-) {
+    private val eventsLocalModel: EventsLocalModel) {
 
     suspend fun getDataEvents(): Result<MutableList<Events>> = withContext(Dispatchers.IO) {
 
@@ -26,9 +24,7 @@ class EventsRepository @Inject constructor(
                 saveDataEventsFromNetwork()
             }
         }
-
         return@withContext Result.success(eventsList)
-
     }
 
     private suspend fun saveDataEventsFromNetwork(): Result<EventsCallBack> {

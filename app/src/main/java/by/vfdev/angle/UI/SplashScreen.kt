@@ -6,23 +6,24 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
-import kotlinx.android.synthetic.main.activity_splash_screen.*
+import by.vfdev.angle.databinding.ActivitySplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")
-class SplashScreen : AppCompatActivity() {
+class SplashScreen : AppCompatActivity(R.layout.activity_splash_screen) {
+
+    private val binding by viewBinding(ActivitySplashScreenBinding::bind)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
 
         val manager = this.packageManager
         val info = manager.getPackageInfo(this.packageName, PackageManager.GET_ACTIVITIES)
-        tvVersionApp.text = info.versionName
+        binding.tvVersionApp.text = info.versionName
 
-        application.deleteDatabase("Angle.db")
-
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()

@@ -1,6 +1,6 @@
 package by.vfdev.angle.UI.Pilots
 
-import android.graphics.BitmapFactory
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,15 +8,36 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import by.vfdev.angle.R
-import by.vfdev.angle.RemoteModel.Pilots
+import by.vfdev.angle.RemoteModel.Pilots.Pilots
+import com.bumptech.glide.Glide
 
-class PilotsListAdapter (val pilotsList: MutableList<Pilots>, val fragment: PilotsListFragment) :
+class PilotsListAdapter(
+    private val onClick: (pilot: Pilots) -> Unit
+) :
     RecyclerView.Adapter<PilotsListAdapter.ViewHolder>() {
+
+    private val list: MutableList<Pilots> = mutableListOf()
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newList: List<Pilots>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var pilotsIMG : ImageView = itemView.findViewById(R.id.pilotsIMG)
-        var pilotsListTV : TextView = itemView.findViewById(R.id.pilotsListTV)
+        var pilotsIMG: ImageView = itemView.findViewById(R.id.pilotsIMG)
+        var pilotsListTV: TextView = itemView.findViewById(R.id.pilotsListTV)
+
+        fun image(pilots: Pilots) {
+            with(itemView) {
+                Glide.with(this)
+                    .load(pilots.photo)
+                    .into(pilotsIMG)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,19 +47,18 @@ class PilotsListAdapter (val pilotsList: MutableList<Pilots>, val fragment: Pilo
         val holder = ViewHolder(itemView)
 
         holder.itemView.setOnClickListener {
-            fragment.showPilotsDetails(holder.adapterPosition)
+            onClick.invoke(
+                list[holder.bindingAdapterPosition]
+            )
         }
         return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        val imgArray = pilotsList[position].photo
-        val bmp = BitmapFactory.decodeByteArray(imgArray, 0, imgArray!!.size)
-
-        holder.pilotsListTV.text = pilotsList[position].name
-        holder.pilotsIMG.setImageBitmap(bmp)
+        holder.pilotsListTV.text = list[position].name
+        val imageList = list[position]
+        holder.image(imageList)
     }
 
-    override fun getItemCount() = pilotsList.size
+    override fun getItemCount() = list.size
 }

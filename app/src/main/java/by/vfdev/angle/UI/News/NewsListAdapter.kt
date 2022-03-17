@@ -7,11 +7,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import by.vfdev.angle.R
-import by.vfdev.angle.RemoteModel.News
+import by.vfdev.angle.RemoteModel.News.News
 import com.bumptech.glide.Glide
 
-class PostNewsAdapter(val values: MutableList<News>, val fragment: NewsFragment) :
-    RecyclerView.Adapter<PostNewsAdapter.ViewHolder>() {
+class NewsListAdapter(val fragment: NewsFragment) :
+    RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
+
+    private val list: MutableList<News> = mutableListOf()
+
+    fun updateData(newList: MutableList<News>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var titleTV : TextView = itemView.findViewById(R.id.titleTV)
@@ -27,7 +35,7 @@ class PostNewsAdapter(val values: MutableList<News>, val fragment: NewsFragment)
         val holder = ViewHolder(itemView)
 
         holder.itemView.setOnClickListener {
-            fragment.showNewsDetails(holder.adapterPosition)
+            fragment.showNewsDetails(holder.bindingAdapterPosition)
         }
 
         return holder
@@ -35,15 +43,15 @@ class PostNewsAdapter(val values: MutableList<News>, val fragment: NewsFragment)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.titleTV.text = values[position].title
-        holder.dateTV.text = values[position].date
-        holder.descriptionTV.text = values[position].description
+        holder.titleTV.text = list[position].title
+        holder.dateTV.text = list[position].date
+        holder.descriptionTV.text = list[position].description
         holder.postIV.let {
             Glide.with(holder.itemView.context)
-                .load(values[position].urlImg)
+                .load(list[position].urlImg)
                 .into(it)
         }
     }
 
-    override fun getItemCount() = values.size
+    override fun getItemCount() = list.size
 }

@@ -1,8 +1,6 @@
 package by.vfdev.angle.Repository
 
-import android.util.Log
 import by.vfdev.angle.LocalModel.Gallery.GalleryLocalModel
-import by.vfdev.angle.RemoteModel.Events.EventsCallBack
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import by.vfdev.angle.RemoteModel.Gallery.GalleryCallBack
 import by.vfdev.angle.RemoteModel.Gallery.IGalleryRemoteModel

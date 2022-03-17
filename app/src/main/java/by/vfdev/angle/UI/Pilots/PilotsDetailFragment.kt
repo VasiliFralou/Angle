@@ -1,31 +1,28 @@
 package by.vfdev.angle.UI.Pilots
 
 import android.annotation.SuppressLint
-import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
-import by.vfdev.angle.RemoteModel.Pilots
-import by.vfdev.angle.UI.MainActivity
-import kotlinx.android.synthetic.main.fragment_pilots_detail.*
+import by.vfdev.angle.databinding.FragmentPilotsDetailBinding
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 
-class PilotsDetailFragment : Fragment() {
 
-    private lateinit var pilotsViewModel: PilotsViewModel
+class PilotsDetailFragment : Fragment(R.layout.fragment_pilots_detail) {
+
     lateinit var navController: NavController
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        pilotsViewModel = ViewModelProvider(activity as MainActivity).get(PilotsViewModel::class.java)
-
-        return inflater.inflate(R.layout.fragment_pilots_detail, container, false)
-    }
+    private val pilotsVM: PilotsViewModel by activityViewModels()
+    private val binding by viewBinding(FragmentPilotsDetailBinding::bind)
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,44 +30,58 @@ class PilotsDetailFragment : Fragment() {
 
         navController = view.findNavController()
 
-        if (pilotsViewModel.tempArrayList.value?.size!! > 0) {
-            viewPilotInfo(pilotsViewModel.tempArrayList.value!!)
-        } else {
-            viewPilotInfo(pilotsViewModel.pilotsList)
-        }
-        btnClosePilotsDetails.setOnClickListener {
+//
+//        requireActivity().onBackPressedDispatcher.addCallback(
+//            viewLifecycleOwner,
+//            object : OnBackPressedCallback(true /* enabled by default */) {
+//                override fun handleOnBackPressed() {
+//                    navController.popBackStack()
+//                }
+//            })
+
+
+//        viewPilotInfo(pilotsVM.pilotsLive.value!!)
+
+        binding.btnClosePilotsDetails.setOnClickListener {
             navController.popBackStack()
         }
+
+        pilotsVM.selectPilotsLD.observe(viewLifecycleOwner) { pilot ->
+
+            Glide.with(this)
+                .load(pilot.photo)
+                .into(binding.pilotsProfileIMG)
+
+            Glide.with(this)
+                .load(pilot.photoAuto)
+                .into(object : CustomTarget<Drawable?>() {
+                    @SuppressLint("SetTextI18n")
+                    override fun onResourceReady(
+                        resource: Drawable,
+                        transition: Transition<in Drawable?>?
+                    ) {
+                        binding.pilotsAutoImg.setImageDrawable(resource)
+                    }
+
+                    override fun onLoadCleared(@Nullable placeholder: Drawable?) = Unit
+
+                })
+
+            val brd = pilot.birthday
+            val team = pilot.team
+            val desc = pilot.description
+
+            binding.pilotsNameTV.text = pilot.name
+            binding.pilotsCityTV.text = "Город: ${pilot.city}"
+            binding.pilotsBirthdayTV.text = brd ?: ("-").toString()
+            binding.pilotsTeamTV.text = "Команда: ${team ?: ("-").toString()}"
+            binding.pilotsInstTV.text = "Instagram: ${pilot.instagram}"
+            binding.pilotsDescriptionTV.text = desc ?: ("-").toString()
+            binding.pilotsAutoTV.text = "Авто: ${pilot.auto}"
+
+        }
+
     }
 
-    private fun showProfileImage(id: Int, list: List<Pilots>) {
-        val imgProfileArray = list[id].photo
-        val bmp = BitmapFactory.decodeByteArray(imgProfileArray, 0, imgProfileArray!!.size)
-        pilotsProfileIMG.setImageBitmap(bmp)
-    }
 
-    private fun showPilotsAuto(id: Int, list: List<Pilots>) {
-        val imgAutoArray = list[id].photoAuto
-        val bmp = BitmapFactory.decodeByteArray(imgAutoArray, 0, imgAutoArray!!.size)
-        pilotsAutoImg.setImageBitmap(bmp)
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun viewPilotInfo(list: List<Pilots>) {
-        val id = pilotsViewModel.idPilots!!
-        val brd = list[id].birthday
-        val team = list[id].team
-        val desc = list[id].description
-
-        pilotsNameTV.text = list[id].name
-        pilotsCityTV.text = "Город: ${list[id].city}"
-        pilotsBirthdayTV.text = brd ?: ("-").toString()
-        pilotsTeamTV.text = "Команда: ${team ?: ("-").toString()}"
-        pilotsInstTV.text = "Instagram: ${list[id].instagram}"
-        pilotsDescriptionTV.text = desc ?: ("-").toString()
-        pilotsAutoTV.text = "Авто: ${list[id].auto}"
-
-        showProfileImage(id, list)
-        if (list[id].photoAuto != null) showPilotsAuto(id, list)
-    }
 }
