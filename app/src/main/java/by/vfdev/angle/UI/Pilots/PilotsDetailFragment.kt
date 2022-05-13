@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import androidx.activity.OnBackPressedCallback
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -29,18 +28,6 @@ class PilotsDetailFragment : Fragment(R.layout.fragment_pilots_detail) {
         super.onViewCreated(view, savedInstanceState)
 
         navController = view.findNavController()
-
-//
-//        requireActivity().onBackPressedDispatcher.addCallback(
-//            viewLifecycleOwner,
-//            object : OnBackPressedCallback(true /* enabled by default */) {
-//                override fun handleOnBackPressed() {
-//                    navController.popBackStack()
-//                }
-//            })
-
-
-//        viewPilotInfo(pilotsVM.pilotsLive.value!!)
 
         binding.btnClosePilotsDetails.setOnClickListener {
             navController.popBackStack()

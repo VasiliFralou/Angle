@@ -1,8 +1,10 @@
 package by.vfdev.angle.UI.News
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,7 @@ class NewsListAdapter(val fragment: NewsFragment) :
 
     private val list: MutableList<News> = mutableListOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(newList: MutableList<News>) {
         list.clear()
         list.addAll(newList)

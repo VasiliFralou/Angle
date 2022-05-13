@@ -65,6 +65,5 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (navController.currentDestination?.id != R.id.newsFragment) navController.popBackStack()
         else super.onBackPressed()
-
     }
 }

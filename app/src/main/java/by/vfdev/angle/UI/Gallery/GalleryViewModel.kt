@@ -3,6 +3,7 @@ package by.vfdev.angle.UI.Gallery
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import by.vfdev.angle.Repository.GalleryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,14 +18,13 @@ class GalleryViewModel @Inject constructor(
 
     var data: Boolean = false
     var linkImages: String? = null
-    val scope = CoroutineScope(Dispatchers.IO)
 
     val galleryLive: MutableLiveData<MutableList<Gallery>> by lazy {
         MutableLiveData<MutableList<Gallery>>()
     }
 
     fun getListGallery() {
-        scope.launch {
+        viewModelScope.launch {
             val data = galleryRepository.getDataGallery()
             data
                 .onSuccess {

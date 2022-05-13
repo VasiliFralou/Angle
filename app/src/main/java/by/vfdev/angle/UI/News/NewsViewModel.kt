@@ -3,6 +3,7 @@ package by.vfdev.angle.UI.News
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.News.News
 import by.vfdev.angle.Repository.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,14 +21,12 @@ class NewsViewModel @Inject constructor(
     var data: Boolean = false
     var news: String? = null
 
-    val scope = CoroutineScope(Dispatchers.IO)
-
     val newsLive: MutableLiveData<MutableList<News>> by lazy {
         MutableLiveData<MutableList<News>>()
     }
 
     fun getListNews() {
-        scope.launch {
+        viewModelScope.launch {
             val data = newsRepository.getDataNews()
             data
                 .onSuccess {
