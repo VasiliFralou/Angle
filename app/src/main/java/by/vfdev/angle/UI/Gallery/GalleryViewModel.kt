@@ -7,8 +7,6 @@ import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import by.vfdev.angle.Repository.GalleryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

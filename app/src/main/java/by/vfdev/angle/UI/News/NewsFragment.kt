@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
@@ -14,7 +14,8 @@ import by.vfdev.angle.databinding.FragmentNewsBinding
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
 
-    lateinit var navController: NavController
+    private val navController: NavController by lazy { findNavController() }
+
     private val newsVM: NewsViewModel by activityViewModels()
     private val binding by viewBinding(FragmentNewsBinding::bind)
 
@@ -22,7 +23,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        navController = view.findNavController()
 
         val adapter = NewsListAdapter( this)
         binding.PostNewsRV.adapter = adapter

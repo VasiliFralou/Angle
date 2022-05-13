@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
@@ -16,15 +16,14 @@ import by.vfdev.angle.databinding.FragmentPilotsListBinding
 
 class PilotsFragment : Fragment(R.layout.fragment_pilots_list) {
 
-    lateinit var navController: NavController
+    private val navController: NavController by lazy { findNavController() }
+
     private val pilotsVM: PilotsViewModel by activityViewModels()
     private val binding by viewBinding(FragmentPilotsListBinding::bind)
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        navController = view.findNavController()
 
         val adapter = PilotsListAdapter(
             onClick = { pilotsVM.onSelectPilots(it) }
@@ -38,9 +37,9 @@ class PilotsFragment : Fragment(R.layout.fragment_pilots_list) {
             (binding.pilotsListRV.adapter as PilotsListAdapter).updateData(list)
         }
 
-        pilotsVM.onSelectPilotsEvent.observe(viewLifecycleOwner, Observer {
+        pilotsVM.onSelectPilotsEvent.observe(viewLifecycleOwner) {
             navController.navigate(R.id.pilotsDetailFragment)
-        })
+        }
 
 
 

@@ -3,9 +3,9 @@ package by.vfdev.angle.UI.Events
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.databinding.FragmentEventsMapBinding
@@ -15,10 +15,11 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class EventsDetailFragment : Fragment(R.layout.fragment_events_map), OnMapReadyCallback {
 
-    lateinit var navController: NavController
+    private val navController: NavController by lazy { findNavController() }
 
-    lateinit var eventsVM: EventsViewModel
-    private lateinit var mMap: GoogleMap
+    private var mMap: GoogleMap? = null
+
+    private val eventsVM: EventsViewModel by activityViewModels()
     private val binding by viewBinding(FragmentEventsMapBinding::bind)
 
     companion object {
@@ -28,11 +29,8 @@ class EventsDetailFragment : Fragment(R.layout.fragment_events_map), OnMapReadyC
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        eventsVM = ViewModelProvider(requireActivity())[EventsViewModel::class.java]
         mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment?.getMapAsync(this)
-
-        navController = view.findNavController()
 
         binding.titleEventMap.text = eventsVM.nameEL
 
@@ -45,9 +43,10 @@ class EventsDetailFragment : Fragment(R.layout.fragment_events_map), OnMapReadyC
         val location = LatLng(eventsVM.latitudeEL!!,eventsVM.longitudeEL!!)
 
         mMap = googleMap
-        mMap.addMarker(MarkerOptions()
+
+        mMap!!.addMarker(MarkerOptions()
                 .position(LatLng(eventsVM.latitudeEL!!, eventsVM.longitudeEL!!))
                 .title(eventsVM.titleEL))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }
 }

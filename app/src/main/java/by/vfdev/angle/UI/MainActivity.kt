@@ -1,8 +1,8 @@
 package by.vfdev.angle.UI
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -16,29 +16,23 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private lateinit var newsVM: NewsViewModel
-    private lateinit var eventsVM: EventsViewModel
-    private lateinit var galleryVM: GalleryViewModel
-    private lateinit var pilotsVM: PilotsViewModel
+    private val newsVM: NewsViewModel by viewModels()
+    private val eventsVM: EventsViewModel by viewModels()
+    private val galleryVM: GalleryViewModel by viewModels()
+    private val pilotsVM: PilotsViewModel by viewModels()
 
     private val navController by lazy {
         supportFragmentManager.findFragmentById(
             R.id.nav_host_container
         )!!.findNavController()
     }
+
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
-        newsVM = ViewModelProvider(this)[NewsViewModel::class.java]
-        eventsVM = ViewModelProvider(this)[EventsViewModel::class.java]
-        galleryVM = ViewModelProvider(this)[GalleryViewModel::class.java]
-        pilotsVM = ViewModelProvider(this)[PilotsViewModel::class.java]
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavigationView.setupWithNavController(navController)

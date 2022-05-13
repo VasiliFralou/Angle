@@ -8,7 +8,7 @@ import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.databinding.FragmentPilotsDetailBinding
@@ -19,15 +19,14 @@ import com.bumptech.glide.request.transition.Transition
 
 class PilotsDetailFragment : Fragment(R.layout.fragment_pilots_detail) {
 
-    lateinit var navController: NavController
+    private val navController: NavController by lazy { findNavController() }
+
     private val pilotsVM: PilotsViewModel by activityViewModels()
     private val binding by viewBinding(FragmentPilotsDetailBinding::bind)
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        navController = view.findNavController()
 
         binding.btnClosePilotsDetails.setOnClickListener {
             navController.popBackStack()
