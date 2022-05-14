@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainColor"
-    tools:context=".UI.News.NewsFragment">
+    android:orientation="vertical"
+    tools:context=".UI.Events.EventsFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -18,11 +18,11 @@
             android:orientation="vertical" >
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/PostNewsRV"
+                android:id="@+id/EventsRV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                tools:listitem="@layout/item_news_layout" />
+                tools:listitem="@layout/item_events_layout" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

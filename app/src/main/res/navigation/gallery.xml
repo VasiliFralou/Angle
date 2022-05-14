@@ -10,7 +10,7 @@
         android:id="@+id/galleryFragment"
         android:name="by.vfdev.angle.UI.Gallery.GalleryFragment"
         android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" >
+        tools:layout="@layout/gallery_fragment" >
         <action
             android:id="@+id/action_galleryFragment_to_galleryDetailFragment"
             app:destination="@id/galleryDetailFragment" />

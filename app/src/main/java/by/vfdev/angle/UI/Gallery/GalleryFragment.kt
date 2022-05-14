@@ -10,14 +10,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
-import by.vfdev.angle.databinding.FragmentGalleryBinding
+import by.vfdev.angle.databinding.GalleryFragmentBinding
 
-class GalleryFragment : Fragment(R.layout.fragment_gallery) {
+class GalleryFragment : Fragment(R.layout.gallery_fragment) {
 
     private val navController: NavController by lazy { findNavController() }
 
     private val galleryVM: GalleryViewModel by activityViewModels()
-    private val binding by viewBinding(FragmentGalleryBinding::bind)
+    private val binding by viewBinding(GalleryFragmentBinding::bind)
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

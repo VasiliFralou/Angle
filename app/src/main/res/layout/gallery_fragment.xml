@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainColor"
-    tools:context=".UI.News.NewsFragment">
+    tools:context=".UI.Gallery.GalleryFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -15,14 +15,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/PostNewsRV"
+                android:id="@+id/GalleryListRV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                tools:listitem="@layout/item_news_layout" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
+                android:background="@color/mainColor"
+                tools:listitem="@layout/item_gallery_layout" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

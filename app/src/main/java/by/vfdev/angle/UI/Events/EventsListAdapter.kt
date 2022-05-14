@@ -30,7 +30,7 @@ class EventsListAdapter (val fragment: EventsFragment) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.events_content, parent, false)
+        val itemView = inflater.inflate(R.layout.item_events_layout, parent, false)
         val holder = ViewHolder(itemView)
 
         holder.itemView.setOnClickListener {

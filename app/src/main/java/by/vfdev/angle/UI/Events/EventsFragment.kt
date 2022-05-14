@@ -10,14 +10,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
-import by.vfdev.angle.databinding.FragmentCalendarBinding
+import by.vfdev.angle.databinding.CalendarFragmentBinding
 
-class EventsFragment : Fragment(R.layout.fragment_calendar) {
+class EventsFragment : Fragment(R.layout.calendar_fragment) {
 
     private val navController: NavController by lazy { findNavController() }
 
     private val eventsVM : EventsViewModel by activityViewModels()
-    private val binding by viewBinding(FragmentCalendarBinding::bind)
+    private val binding by viewBinding(CalendarFragmentBinding::bind)
 
 
     @SuppressLint("NotifyDataSetChanged")
