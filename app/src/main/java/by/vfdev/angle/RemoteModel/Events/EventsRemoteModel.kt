@@ -3,17 +3,16 @@ package by.vfdev.angle.RemoteModel.Events
 import by.vfdev.angle.Api.ApiEvents
 import javax.inject.Inject
 
-class EventsRemoteModel @Inject constructor() : IEventsRemoteModel {
+class EventsRemoteModel @Inject constructor() {
 
     private val apiEvents = ApiEvents.create()
 
-    override suspend fun getEventsRemoteData(): Result<EventsCallBack> {
+    suspend fun getEventsRemoteData(): MutableList<Events> {
         return try {
-            val events: EventsCallBack = apiEvents.getEvents()
-            Result.success(events)
-
+            val events = apiEvents.getEvents().results
+            events
         } catch (e: Exception) {
-            Result.failure(e)
+            mutableListOf()
         }
     }
 }

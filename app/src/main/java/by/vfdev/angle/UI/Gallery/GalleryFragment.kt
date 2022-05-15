@@ -10,12 +10,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
+import by.vfdev.angle.ViewModel.GalleryViewModel
 import by.vfdev.angle.databinding.GalleryFragmentBinding
 
-class GalleryFragment : Fragment(R.layout.gallery_fragment) {
+class GalleryFragment : Fragment(R.layout.gallery_fragment),
+    GalleryListAdapter.OnItemClickListener {
 
     private val navController: NavController by lazy { findNavController() }
-
     private val galleryVM: GalleryViewModel by activityViewModels()
     private val binding by viewBinding(GalleryFragmentBinding::bind)
 
@@ -24,6 +25,7 @@ class GalleryFragment : Fragment(R.layout.gallery_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = GalleryListAdapter( this)
+
         binding.GalleryListRV.adapter = adapter
         binding.GalleryListRV.layoutManager = GridLayoutManager(
             requireActivity(), 3)
@@ -33,8 +35,10 @@ class GalleryFragment : Fragment(R.layout.gallery_fragment) {
         }
     }
 
-    fun showImagesDetails(position: Int) {
+    override fun onItemClick(position: Int) {
+
         galleryVM.linkImages = galleryVM.galleryLive.value?.get(position)?.img
+
         navController.navigate(R.id.galleryDetailFragment)
     }
 }

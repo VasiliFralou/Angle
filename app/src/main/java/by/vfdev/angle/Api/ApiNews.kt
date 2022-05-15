@@ -1,6 +1,6 @@
 package by.vfdev.angle.Api
 
-import by.vfdev.angle.RemoteModel.News.News
+import by.vfdev.angle.RemoteModel.News.NewsCallBack
 import by.vfdev.angle.Utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 interface ApiNews {
 
     @GET("News.json")
-    suspend fun getNews(): MutableList<News>
+    suspend fun getNews(): NewsCallBack
 
     companion object Factory {
         fun create(): ApiNews {

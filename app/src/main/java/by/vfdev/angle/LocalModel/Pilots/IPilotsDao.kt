@@ -12,7 +12,7 @@ interface IPilotsDao {
     suspend fun insertPilots(pilots: MutableList<Pilots>)
 
     @Query("SELECT * FROM Pilots")
-    fun getAllPilots(): MutableList<Pilots>
+    suspend fun getAllPilots(): MutableList<Pilots>
 
     @Query("DELETE FROM Pilots")
     suspend fun deleteAllPilots()

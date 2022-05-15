@@ -13,7 +13,6 @@ interface ApiGallery {
     @GET("Gallery.json")
     suspend fun getGallery(): GalleryCallBack
 
-    // Возвращаем объект ретрофит
     companion object Factory {
         fun create(): ApiGallery {
             val okHttpClient = OkHttpClient.Builder()

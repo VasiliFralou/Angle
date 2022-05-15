@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
+import by.vfdev.angle.ViewModel.NewsViewModel
 import by.vfdev.angle.databinding.FragmentNewsDetailBinding
 
 class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {

@@ -1,25 +1,25 @@
 package by.vfdev.angle.UI.News
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.News.News
-import com.bumptech.glide.Glide
+import by.vfdev.angle.Utils.loadImage
+import by.vfdev.angle.databinding.ItemNewsLayoutBinding
 
-class NewsListAdapter(
-    private val list: MutableList<News>,
-    private val listener: OnItemClickListener) :
+class NewsListAdapter(private val listener: OnItemClickListener) :
     RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        var titleTV : TextView = itemView.findViewById(R.id.titleTV)
-        var dateTV : TextView =  itemView.findViewById(R.id.dateTV)
-        var descriptionTV : TextView = itemView.findViewById(R.id.descriptionTV)
-        var postIV: ImageView = itemView.findViewById(R.id.postIV)
+    private val list: MutableList<News> = mutableListOf()
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+
+        val binding by viewBinding (ItemNewsLayoutBinding::bind)
 
         init {
             itemView.setOnClickListener(this)
@@ -33,10 +33,8 @@ class NewsListAdapter(
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.item_news_layout, parent, false)
 
@@ -45,19 +43,24 @@ class NewsListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.titleTV.text = list[position].title
-        holder.dateTV.text = list[position].date
-        holder.descriptionTV.text = list[position].description
-        holder.postIV.let {
-            Glide.with(holder.itemView.context)
-                .load(list[position].urlImg)
-                .into(it)
-        }
+        val item = list[position]
+
+        holder.binding.titleTV.text = item.title
+        holder.binding.dateTV.text = item.date
+        holder.binding.descriptionTV.text = item.description
+        holder.binding.postIV.loadImage(item.urlImg)
     }
 
     override fun getItemCount() = list.size
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newList: List<News>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
     }
 }

@@ -4,49 +4,62 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Events.Events
+import by.vfdev.angle.databinding.ItemEventsLayoutBinding
 
-class EventsListAdapter (val fragment: EventsFragment) :
+class EventsListAdapter (private val listener: OnItemClickListener) :
     RecyclerView.Adapter<EventsListAdapter.ViewHolder>() {
 
     private val list: MutableList<Events> = mutableListOf()
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateData(newList: MutableList<Events>) {
-        list.clear()
-        list.addAll(newList)
-        notifyDataSetChanged()
-    }
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var nameTV : TextView = itemView.findViewById(R.id.nameEventTV)
-        var titleTV : TextView = itemView.findViewById(R.id.titleEventTV)
-        var dateTV : TextView = itemView.findViewById(R.id.dataEventTV)
-        var cityTV : TextView = itemView.findViewById(R.id.cityEventTV)
+        val binding by viewBinding (ItemEventsLayoutBinding::bind)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val  position = bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.item_events_layout, parent, false)
-        val holder = ViewHolder(itemView)
 
-        holder.itemView.setOnClickListener {
-            fragment.showEventDetails(holder.bindingAdapterPosition)
-        }
-
-        return holder
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nameTV.text = list[position].name
-        holder.titleTV.text = list[position].title
-        holder.dateTV.text = list[position].day
-        holder.cityTV.text = list[position].city
+
+        val item = list[position]
+
+        holder.binding.nameEventTV.text = item.name
+        holder.binding.titleEventTV.text = item.title
+        holder.binding.dataEventTV.text = item.day
+        holder.binding.cityEventTV.text = item.city
     }
 
     override fun getItemCount() = list.size
 
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newList: List<Events>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
 }

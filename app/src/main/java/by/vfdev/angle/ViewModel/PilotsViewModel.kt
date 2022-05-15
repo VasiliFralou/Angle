@@ -1,10 +1,6 @@
-package by.vfdev.angle.UI.Pilots
+package by.vfdev.angle.ViewModel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import by.vfdev.angle.RemoteModel.Pilots.Pilots
 import by.vfdev.angle.Repository.PilotsRepository
 import by.vfdev.angle.Utils.SingleLiveEvent
@@ -18,6 +14,9 @@ class PilotsViewModel @Inject constructor(
     private val pilotsRepository: PilotsRepository
 ) : ViewModel() {
 
+    init {
+        getListPilots()
+    }
 
     private val _selectPilotsLD = MutableLiveData<Pilots>()
     val selectPilotsLD: LiveData<Pilots> = _selectPilotsLD
@@ -29,35 +28,28 @@ class PilotsViewModel @Inject constructor(
         _onSelectPilotsEvent.call()
     }
 
+    private var pilotsLive: MutableList<Pilots> = mutableListOf()
 
-    private var pilotsList: MutableList<Pilots> = mutableListOf()
-
-
-    private val _pilotsSearchList = MutableLiveData<List<Pilots>>()
-    val pilotsSearchList: LiveData<List<Pilots>> = _pilotsSearchList
+    private var _searchListPilots = MutableLiveData<List<Pilots>>()
+    val searchListPilots: LiveData<List<Pilots>> = _searchListPilots
 
 
-    fun getListPilots() {
+
+    private fun getListPilots() {
         viewModelScope.launch {
-            val data = pilotsRepository.getDataPilots()
-            data
-                .onSuccess {
-                    pilotsList = it
-                    _pilotsSearchList.value = pilotsList
-                }.onFailure {
-                    _pilotsSearchList.postValue(mutableListOf())
-                    Log.e("!!!ErrorListGallery", it.stackTraceToString())
-                }
+            val list = pilotsRepository.getDataPilots()
+            pilotsLive = list
+            _searchListPilots.postValue(pilotsLive)
         }
     }
 
-
     fun filteredPilots(text: String?) {
+
         val searchText = text?.lowercase(Locale.getDefault())
-        val newList: List<Pilots> = pilotsList.filter {
+        val newList: List<Pilots> = pilotsLive.filter {
             val lowName = it.name.lowercase(Locale.getDefault())
             lowName.contains(searchText ?: "")
         }
-        _pilotsSearchList.value = newList
+        _searchListPilots.value = newList
     }
 }

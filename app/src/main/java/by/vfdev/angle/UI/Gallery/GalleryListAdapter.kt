@@ -4,33 +4,31 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
-import com.bumptech.glide.Glide
+import by.vfdev.angle.Utils.loadImage
+import by.vfdev.angle.databinding.ItemGalleryLayoutBinding
 
-class GalleryListAdapter(val fragment: GalleryFragment) :
+class GalleryListAdapter(private val listener: OnItemClickListener) :
     RecyclerView.Adapter<GalleryListAdapter.ViewHolder>() {
 
     private val list: MutableList<Gallery> = mutableListOf()
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateData(newList: MutableList<Gallery>) {
-        list.clear()
-        list.addAll(newList)
-        notifyDataSetChanged()
-    }
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val binding by viewBinding (ItemGalleryLayoutBinding::bind)
 
-        var galleryIMG: ImageView = itemView.findViewById(R.id.galleryIMG)
+        init {
+            itemView.setOnClickListener(this)
+        }
 
-        fun image(gallery: Gallery) {
-            with(itemView) {
-                Glide.with(this)
-                    .load(gallery.img)
-                    .into(galleryIMG)
+        override fun onClick(v: View?) {
+            val  position = bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
             }
         }
     }
@@ -39,19 +37,24 @@ class GalleryListAdapter(val fragment: GalleryFragment) :
 
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.item_gallery_layout, parent, false)
-        val holder = ViewHolder(itemView)
 
-        holder.itemView.setOnClickListener {
-            fragment.showImagesDetails(holder.bindingAdapterPosition)
-        }
-
-        return holder
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val galleryList = list[position]
-        holder.image(galleryList)
+        holder.binding.galleryIMG.loadImage(list[position].img)
     }
 
     override fun getItemCount() = list.size
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newList: MutableList<Gallery>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
 }

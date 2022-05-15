@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "pilots")
-open class Pilots (
+data class Pilots (
     @PrimaryKey var name: String,
     var city: String,
     var photo: String? = null,

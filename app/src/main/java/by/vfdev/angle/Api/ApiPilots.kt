@@ -13,7 +13,6 @@ interface ApiPilots {
     @GET("Pilots.json")
     suspend fun getPilots(): PilotsCallBack
 
-    // Возвращаем объект ретрофит
     companion object Factory {
         fun create(): ApiPilots {
             val okHttpClient = OkHttpClient.Builder()

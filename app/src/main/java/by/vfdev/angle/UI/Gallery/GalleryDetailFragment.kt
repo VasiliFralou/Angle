@@ -12,6 +12,7 @@ import androidx.annotation.Nullable
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import by.vfdev.angle.ViewModel.GalleryViewModel
 import by.vfdev.angle.databinding.FragmentGalleryDetailBinding
 import com.bumptech.glide.request.transition.Transition
 import com.bumptech.glide.request.target.CustomTarget

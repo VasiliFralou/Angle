@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="12dp"
     app:cardCornerRadius="8dp"
     android:background="@color/mainColor">
 
@@ -73,7 +73,7 @@
                         android:layout_height="match_parent"
                         android:background="@color/secondColor"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/angle_transparent"
+                        app:srcCompat="@drawable/load"
                         tools:ignore="ContentDescription" />
                 </androidx.cardview.widget.CardView>
 
@@ -165,13 +165,13 @@
             <com.ortiz.touchview.TouchImageView
                 android:id="@+id/pilotsAutoImg"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:contentDescription="@string/contentDescription"
                 android:scaleType="centerCrop"
-                android:src="@drawable/angle_transparent" />
+                android:src="@drawable/load" />
         </LinearLayout>
 
     </LinearLayout>

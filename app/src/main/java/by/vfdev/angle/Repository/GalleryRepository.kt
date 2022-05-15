@@ -2,38 +2,24 @@ package by.vfdev.angle.Repository
 
 import by.vfdev.angle.LocalModel.Gallery.GalleryLocalModel
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
-import by.vfdev.angle.RemoteModel.Gallery.GalleryCallBack
-import by.vfdev.angle.RemoteModel.Gallery.IGalleryRemoteModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import by.vfdev.angle.RemoteModel.Gallery.GalleryRemoteModel
 import javax.inject.Inject
 
 class GalleryRepository @Inject constructor(
-    private val galleryRemoteModel: IGalleryRemoteModel,
+    private val galleryRemoteModel: GalleryRemoteModel,
     private val galleryLocalModel: GalleryLocalModel
 ) {
 
-    suspend fun getDataGallery(): Result<MutableList<Gallery>> = withContext(Dispatchers.IO) {
+    suspend fun getDataGallery(): MutableList<Gallery> {
 
-        val galleryList = galleryLocalModel.getAllGallery()
+        var galleryList = galleryLocalModel.getAllGallery()
 
-        if (galleryList.isEmpty()) {
-            saveDataGalleryFromNetwork()
+        return if (galleryList.isEmpty()) {
+            galleryList = galleryRemoteModel.getGalleryRemoteData()
+            galleryLocalModel.insertGallery(galleryList)
+            galleryList
         } else {
-            launch {
-                saveDataGalleryFromNetwork()
-            }
+            galleryList
         }
-
-        return@withContext Result.success(galleryList)
-    }
-
-    private suspend fun saveDataGalleryFromNetwork(): Result<GalleryCallBack> {
-        val galleryList = galleryRemoteModel.getGalleryRemoteData()
-        galleryList.getOrNull()?.let {
-            galleryLocalModel.insertGallery(it.results)
-        }
-        return galleryList
     }
 }

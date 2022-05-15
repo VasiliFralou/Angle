@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
+import by.vfdev.angle.ViewModel.EventsViewModel
 import by.vfdev.angle.databinding.MapEventsFragmentBinding
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng

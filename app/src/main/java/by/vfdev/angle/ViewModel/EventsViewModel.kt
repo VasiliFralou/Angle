@@ -1,6 +1,5 @@
-package by.vfdev.angle.UI.Events
+package by.vfdev.angle.ViewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,6 +14,10 @@ class EventsViewModel @Inject constructor(
     private val eventsRepository: EventsRepository
 ) : ViewModel() {
 
+    init {
+        getListEvents()
+    }
+
     var latitudeEL: Double? = null
     var longitudeEL: Double? = null
     var titleEL: String? = null
@@ -24,16 +27,10 @@ class EventsViewModel @Inject constructor(
         MutableLiveData<MutableList<Events>>()
     }
 
-    fun getListEvents() {
+    private fun getListEvents() {
         viewModelScope.launch {
-            val data = eventsRepository.getDataEvents()
-            data
-                .onSuccess {
-                    eventsLive.postValue(it)
-                }.onFailure {
-                    eventsLive.postValue(mutableListOf())
-                    Log.e("!!!ErrorListEvents", it.stackTraceToString())
-                }
+            val list = eventsRepository.getDataEvents()
+            eventsLive.postValue(list)
         }
     }
 }

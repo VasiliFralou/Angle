@@ -13,7 +13,6 @@ interface ApiEvents {
     @GET("Events.json")
     suspend fun getEvents(): EventsCallBack
 
-    // Возвращаем объект ретрофит
     companion object Factory {
         fun create(): ApiEvents {
             val okHttpClient = OkHttpClient.Builder()

@@ -11,8 +11,10 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
+import by.vfdev.angle.ViewModel.PilotsViewModel
 import by.vfdev.angle.databinding.FragmentPilotsDetailBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 
@@ -34,11 +36,15 @@ class PilotsDetailFragment : Fragment(R.layout.fragment_pilots_detail) {
 
         pilotsVM.selectPilotsLD.observe(viewLifecycleOwner) { pilot ->
 
+            val option = RequestOptions().placeholder(R.drawable.load)
+                .error(R.drawable.load)
             Glide.with(this)
+                .setDefaultRequestOptions(option)
                 .load(pilot.photo)
                 .into(binding.pilotsProfileIMG)
 
             Glide.with(this)
+                .setDefaultRequestOptions(option)
                 .load(pilot.photoAuto)
                 .into(object : CustomTarget<Drawable?>() {
                     @SuppressLint("SetTextI18n")
@@ -64,10 +70,6 @@ class PilotsDetailFragment : Fragment(R.layout.fragment_pilots_detail) {
             binding.pilotsInstTV.text = "Instagram: ${pilot.instagram}"
             binding.pilotsDescriptionTV.text = desc ?: ("-").toString()
             binding.pilotsAutoTV.text = "Авто: ${pilot.auto}"
-
         }
-
     }
-
-
 }
