@@ -1,15 +1,21 @@
 package by.vfdev.angle.UI
 
 import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.databinding.ActivitySplashScreenBinding
+import kotlin.system.exitProcess
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity(R.layout.activity_splash_screen) {
@@ -29,6 +35,4 @@ class SplashScreen : AppCompatActivity(R.layout.activity_splash_screen) {
             finish()
         }, 3000)
     }
-
-
 }

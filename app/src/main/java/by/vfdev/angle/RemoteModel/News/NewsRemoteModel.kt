@@ -1,19 +1,20 @@
 package by.vfdev.angle.RemoteModel.News
 
+import android.util.Log
 import by.vfdev.angle.Api.ApiNews
 import java.lang.Exception
 import javax.inject.Inject
 
-class NewsRemoteModel @Inject constructor() : INewsRemoteModel {
+class NewsRemoteModel @Inject constructor() {
 
-    private val apiNews = ApiNews.create()
+    val apiNews = ApiNews.create()
 
-    override suspend fun getNewsRemoteData(): Result<NewsCallBack> {
+    suspend fun getNewsRemoteData(): MutableList<News> {
         return try {
-            val news: NewsCallBack = apiNews.getNews()
-            Result.success(news)
+            val news = apiNews.getNews()
+            news
         } catch (e: Exception) {
-            Result.failure(e)
+            mutableListOf()
         }
     }
 }
