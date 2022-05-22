@@ -12,19 +12,18 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.PilotsViewModel
-import by.vfdev.angle.databinding.FragmentPilotsDetailBinding
+import by.vfdev.angle.databinding.DetailPilotsFragmentBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 
 
-class PilotsDetailFragment : Fragment(R.layout.fragment_pilots_detail) {
+class PilotsDetailFragment : Fragment(R.layout.detail_pilots_fragment) {
 
     private val navController: NavController by lazy { findNavController() }
-
     private val pilotsVM: PilotsViewModel by activityViewModels()
-    private val binding by viewBinding(FragmentPilotsDetailBinding::bind)
+    private val binding by viewBinding(DetailPilotsFragmentBinding::bind)
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

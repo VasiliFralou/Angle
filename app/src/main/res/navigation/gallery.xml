@@ -10,7 +10,7 @@
         android:id="@+id/galleryFragment"
         android:name="by.vfdev.angle.UI.Gallery.GalleryFragment"
         android:label="fragment_gallery"
-        tools:layout="@layout/gallery_fragment" >
+        tools:layout="@layout/list_gallery_fragment" >
         <action
             android:id="@+id/action_galleryFragment_to_galleryDetailFragment"
             app:destination="@id/galleryDetailFragment" />
@@ -19,5 +19,5 @@
         android:id="@+id/galleryDetailFragment"
         android:name="by.vfdev.angle.UI.Gallery.GalleryDetailFragment"
         android:label="fragment_gallery_detail"
-        tools:layout="@layout/fragment_gallery_detail" />
+        tools:layout="@layout/detail_gallery_fragment" />
 </navigation>

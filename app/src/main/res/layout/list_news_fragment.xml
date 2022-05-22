@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainColor"
-    tools:context=".UI.Gallery.GalleryFragment">
+    android:id="@+id/swipeNews"
+    tools:context=".UI.News.NewsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,14 +15,13 @@
         tools:ignore="MissingConstraints">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/GalleryListRV"
+            android:id="@+id/PostNewsRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="12dp"
-            android:layout_marginStart="9dp"
-            android:layout_marginEnd="9dp"
-            android:background="@color/mainColor"
-            tools:listitem="@layout/item_gallery_layout" />
+            tools:listitem="@layout/item_news_layout">
+
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

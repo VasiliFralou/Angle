@@ -8,30 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.News.News
+import by.vfdev.angle.RemoteModel.Pilots.Pilots
 import by.vfdev.angle.Utils.loadImage
 import by.vfdev.angle.databinding.ItemNewsLayoutBinding
 
-class NewsListAdapter(private val listener: OnItemClickListener) :
+class NewsListAdapter(private val onClick: (news: News) -> Unit) :
     RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
 
     private val list: MutableList<News> = mutableListOf()
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val binding by viewBinding (ItemNewsLayoutBinding::bind)
-
-        init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-            val  position = bindingAdapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
-            }
-        }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -49,13 +39,15 @@ class NewsListAdapter(private val listener: OnItemClickListener) :
         holder.binding.dateTV.text = item.date
         holder.binding.descriptionTV.text = item.description
         holder.binding.postIV.loadImage(item.urlImg)
+
+        holder.itemView.setOnClickListener {
+            onClick.invoke(
+                list[holder.bindingAdapterPosition]
+            )
+        }
     }
 
     override fun getItemCount() = list.size
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newList: List<News>) {

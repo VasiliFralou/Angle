@@ -22,6 +22,7 @@
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/calendar_fragment.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/events_content.xml" value="0.4125" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_calendar.xml" value="0.4909722222222222" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_events_list.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_events_map.xml" value="0.1" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_gallery.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/fragment_gallery_detail.xml" value="0.2564814814814815" />
@@ -37,6 +38,10 @@
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_gallery_layout.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_news_layout.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_pilots_layout.xml" value="0.3021367521367521" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_events_fragment.xml" value="0.29831223628691983" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_gallery_fragment.xml" value="0.29831223628691983" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_news_fragment.xml" value="0.3021367521367521" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_pilots_fragment.xml" value="0.29831223628691983" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/map_events_fragment.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/postnews_content.xml" value="0.3" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/menu/bottom_menu.xml" value="0.24074074074074073" />

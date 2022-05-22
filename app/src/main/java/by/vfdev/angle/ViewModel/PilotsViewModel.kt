@@ -35,7 +35,7 @@ class PilotsViewModel @Inject constructor(
 
 
 
-    private fun getListPilots() {
+    fun getListPilots() {
         viewModelScope.launch {
             val list = pilotsRepository.getDataPilots()
             pilotsLive = list

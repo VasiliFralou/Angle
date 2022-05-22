@@ -1,5 +1,7 @@
 package by.vfdev.angle.ViewModel
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,7 +29,7 @@ class EventsViewModel @Inject constructor(
         MutableLiveData<MutableList<Events>>()
     }
 
-    private fun getListEvents() {
+    fun getListEvents() {
         viewModelScope.launch {
             val list = eventsRepository.getDataEvents()
             eventsLive.postValue(list)

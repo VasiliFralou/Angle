@@ -10,7 +10,7 @@
         android:id="@+id/calendarFragment"
         android:name="by.vfdev.angle.UI.Events.EventsFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/calendar_fragment" >
+        tools:layout="@layout/list_events_fragment" >
         <action
             android:id="@+id/action_calendarFragment_to_eventsMapFragment"
             app:destination="@id/eventsMapFragment" />
@@ -19,5 +19,5 @@
         android:id="@+id/eventsMapFragment"
         android:name="by.vfdev.angle.UI.Events.EventsDetailFragment"
         android:label="fragment_events_map"
-        tools:layout="@layout/map_events_fragment" />
+        tools:layout="@layout/detail_events_fragment" />
 </navigation>

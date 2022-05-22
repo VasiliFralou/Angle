@@ -2,6 +2,8 @@ package by.vfdev.angle.UI.Pilots
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -12,20 +14,23 @@ import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.PilotsViewModel
-import by.vfdev.angle.databinding.FragmentPilotsListBinding
+import by.vfdev.angle.databinding.ListPilotsFragmentBinding
 
-class PilotsFragment : Fragment(R.layout.fragment_pilots_list) {
+class PilotsFragment : Fragment(R.layout.list_pilots_fragment) {
 
     private val navController: NavController by lazy { findNavController() }
     private val pilotsVM: PilotsViewModel by activityViewModels()
-    private val binding by viewBinding(FragmentPilotsListBinding::bind)
+    private val binding by viewBinding(ListPilotsFragmentBinding::bind)
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = PilotsListAdapter(
-            onClick = { pilotsVM.onSelectPilots(it) }
+            onClick = {
+                binding.swipePilots.isRefreshing = false
+                pilotsVM.onSelectPilots(it)
+            }
         )
 
         binding.pilotsListRV.adapter = adapter
@@ -38,6 +43,16 @@ class PilotsFragment : Fragment(R.layout.fragment_pilots_list) {
         pilotsVM.onSelectPilotsEvent.observe(viewLifecycleOwner) {
             navController.navigate(R.id.pilotsDetailFragment)
         }
+
+        binding.swipePilots.setOnRefreshListener {
+            getList(
+                onSuccess = {
+                    binding.swipePilots.isRefreshing = false
+                }
+            )
+        }
+
+        binding.swipePilots.setColorSchemeResources(R.color.firstColor)
 
         binding.searchPilot.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -52,5 +67,10 @@ class PilotsFragment : Fragment(R.layout.fragment_pilots_list) {
                 return false
             }
         })
+    }
+
+    private fun getList(onSuccess: () -> Unit) {
+        pilotsVM.getListPilots()
+        onSuccess()
     }
 }

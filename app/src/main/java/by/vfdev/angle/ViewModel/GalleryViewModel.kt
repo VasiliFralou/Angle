@@ -24,7 +24,7 @@ class GalleryViewModel @Inject constructor(
         MutableLiveData<MutableList<Gallery>>()
     }
 
-    private fun getListGallery() {
+    fun getListGallery() {
         viewModelScope.launch {
             val list = galleryRepository.getDataGallery()
             galleryLive.postValue(list)

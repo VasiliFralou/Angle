@@ -13,17 +13,17 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.ViewModel.GalleryViewModel
-import by.vfdev.angle.databinding.FragmentGalleryDetailBinding
+import by.vfdev.angle.databinding.DetailGalleryFragmentBinding
 import com.bumptech.glide.request.transition.Transition
 import com.bumptech.glide.request.target.CustomTarget
 
 
-class GalleryDetailFragment : Fragment(R.layout.fragment_gallery_detail) {
+class GalleryDetailFragment : Fragment(R.layout.detail_gallery_fragment) {
 
     private val navController: NavController by lazy { findNavController() }
 
     private val galleryVM: GalleryViewModel by activityViewModels()
-    private val binding by viewBinding(FragmentGalleryDetailBinding::bind)
+    private val binding by viewBinding(DetailGalleryFragmentBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

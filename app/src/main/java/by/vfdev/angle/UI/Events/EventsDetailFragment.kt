@@ -9,19 +9,19 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.EventsViewModel
-import by.vfdev.angle.databinding.MapEventsFragmentBinding
+import by.vfdev.angle.databinding.DetailEventsFragmentBinding
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class EventsDetailFragment : Fragment(R.layout.map_events_fragment), OnMapReadyCallback {
+class EventsDetailFragment : Fragment(R.layout.detail_events_fragment), OnMapReadyCallback {
 
     private val navController: NavController by lazy { findNavController() }
 
     private var mMap: GoogleMap? = null
 
     private val eventsVM: EventsViewModel by activityViewModels()
-    private val binding by viewBinding(MapEventsFragmentBinding::bind)
+    private val binding by viewBinding(DetailEventsFragmentBinding::bind)
 
     companion object {
         var mapFragment : SupportMapFragment? = null

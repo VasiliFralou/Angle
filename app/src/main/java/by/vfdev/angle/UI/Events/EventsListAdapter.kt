@@ -62,4 +62,16 @@ class EventsListAdapter (private val listener: OnItemClickListener) :
         list.addAll(newList)
         notifyDataSetChanged()
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun clear() {
+        list.clear()
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addAll(tweetList: List<Events>) {
+        list.addAll(tweetList)
+        notifyDataSetChanged()
+    }
 }
