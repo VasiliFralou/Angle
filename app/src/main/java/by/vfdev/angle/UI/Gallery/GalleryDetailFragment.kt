@@ -21,27 +21,28 @@ import com.bumptech.glide.request.target.CustomTarget
 class GalleryDetailFragment : Fragment(R.layout.detail_gallery_fragment) {
 
     private val navController: NavController by lazy { findNavController() }
-
     private val galleryVM: GalleryViewModel by activityViewModels()
     private val binding by viewBinding(DetailGalleryFragmentBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Glide.with(this)
-            .load(galleryVM.linkImages)
-            .into(object : CustomTarget<Drawable?>() {
-                @SuppressLint("SetTextI18n")
-                override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
-                    binding.fullImg.setImageDrawable(resource)
-                }
-
-                override fun onLoadCleared(@Nullable placeholder: Drawable?) = Unit
-
-            })
-
         binding.btnCloseImages.setOnClickListener {
             navController.popBackStack()
+        }
+
+        galleryVM.selectGalleryLD.observe(viewLifecycleOwner) { gallery ->
+            Glide.with(this)
+                .load(gallery.img)
+                .into(object : CustomTarget<Drawable?>() {
+                    @SuppressLint("SetTextI18n")
+                    override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
+                        binding.fullImg.setImageDrawable(resource)
+                    }
+
+                    override fun onLoadCleared(@Nullable placeholder: Drawable?) = Unit
+
+                })
         }
     }
 }

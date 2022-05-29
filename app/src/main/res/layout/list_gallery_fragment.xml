@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="12dp"
-            android:layout_marginStart="9dp"
-            android:layout_marginEnd="9dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:background="@color/mainColor"
             tools:listitem="@layout/item_gallery_layout" />
     </LinearLayout>

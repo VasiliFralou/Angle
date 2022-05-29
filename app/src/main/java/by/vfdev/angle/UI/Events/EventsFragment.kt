@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -15,8 +16,7 @@ import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.EventsViewModel
 import by.vfdev.angle.databinding.ListEventsFragmentBinding
 
-class EventsFragment : Fragment(R.layout.list_events_fragment),
-    EventsListAdapter.OnItemClickListener{
+class EventsFragment : Fragment(R.layout.list_events_fragment) {
 
     private val navController: NavController by lazy { findNavController() }
     private val eventsVM : EventsViewModel by activityViewModels()
@@ -27,13 +27,21 @@ class EventsFragment : Fragment(R.layout.list_events_fragment),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = EventsListAdapter(this)
+        val adapter = EventsListAdapter(
+            onClick = {
+                eventsVM.onSelectEvents(it)
+            }
+        )
 
         binding.EventsRV.adapter = adapter
         binding.EventsRV.layoutManager = LinearLayoutManager(requireActivity())
 
         eventsVM.eventsLive.observe(viewLifecycleOwner) { list ->
             (binding.EventsRV.adapter as EventsListAdapter).updateData(list)
+        }
+
+        eventsVM.onSelectEventsEvent.observe(viewLifecycleOwner) {
+            navController.navigate(R.id.eventsMapFragment)
         }
 
         binding.swipeEvents.setOnRefreshListener {
@@ -49,17 +57,5 @@ class EventsFragment : Fragment(R.layout.list_events_fragment),
     private fun getList(onSuccess: () -> Unit) {
         eventsVM.getListEvents()
         onSuccess()
-    }
-
-    override fun onItemClick(position: Int) {
-
-        val item = eventsVM.eventsLive.value?.get(position)
-
-        eventsVM.latitudeEL = item?.latitude
-        eventsVM.longitudeEL = item?.longitude
-        eventsVM.titleEL = item?.title
-        eventsVM.nameEL = item?.name
-
-        navController.navigate(R.id.eventsMapFragment)
     }
 }

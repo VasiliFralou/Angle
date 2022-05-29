@@ -17,11 +17,10 @@ import com.google.android.gms.maps.model.MarkerOptions
 class EventsDetailFragment : Fragment(R.layout.detail_events_fragment), OnMapReadyCallback {
 
     private val navController: NavController by lazy { findNavController() }
-
-    private var mMap: GoogleMap? = null
-
     private val eventsVM: EventsViewModel by activityViewModels()
     private val binding by viewBinding(DetailEventsFragmentBinding::bind)
+
+    private var mMap: GoogleMap? = null
 
     companion object {
         var mapFragment : SupportMapFragment? = null
@@ -33,21 +32,28 @@ class EventsDetailFragment : Fragment(R.layout.detail_events_fragment), OnMapRea
         mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment?.getMapAsync(this)
 
-        binding.titleEventMap.text = eventsVM.nameEL
-
         binding.btnCloseEventsMap.setOnClickListener {
             navController.popBackStack()
+        }
+
+        eventsVM.selectEventsLD.observe(viewLifecycleOwner) { events ->
+
+            binding.titleEventMap.text = events.name
         }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val location = LatLng(eventsVM.latitudeEL!!,eventsVM.longitudeEL!!)
 
         mMap = googleMap
 
-        mMap!!.addMarker(MarkerOptions()
-                .position(LatLng(eventsVM.latitudeEL!!, eventsVM.longitudeEL!!))
-                .title(eventsVM.titleEL))
-        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+        eventsVM.selectEventsLD.observe(viewLifecycleOwner) { events ->
+
+            val location = LatLng(events.latitude!!,events.longitude!!)
+
+            mMap!!.addMarker(MarkerOptions()
+                .position(LatLng(events.latitude, events.longitude))
+                .title(events.title))
+            mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+        }
     }
 }

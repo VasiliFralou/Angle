@@ -12,7 +12,8 @@ class EventsRepository @Inject constructor(
     private val eventsRemoteModel: EventsRemoteModel,
     private val eventsLocalModel: EventsLocalModel) {
 
-    suspend fun getDataEvents(): MutableList<Events> = withContext(Dispatchers.IO) {
+    suspend fun getDataEvents():
+            Result<MutableList<Events>> = withContext(Dispatchers.IO) {
 
         var eventsList = eventsRemoteModel.getEventsRemoteData()
 
@@ -23,7 +24,7 @@ class EventsRepository @Inject constructor(
                 updateDataEventsFromDB()
             }
         }
-        return@withContext eventsList
+        return@withContext Result.success(eventsList)
     }
 
     private suspend fun updateDataEventsFromDB(): MutableList<Events> {

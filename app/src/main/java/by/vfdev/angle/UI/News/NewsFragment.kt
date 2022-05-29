@@ -2,8 +2,6 @@ package by.vfdev.angle.UI.News
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -15,8 +13,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.NewsViewModel
 import by.vfdev.angle.databinding.ListNewsFragmentBinding
-import java.util.*
-import kotlin.concurrent.schedule
 
 class NewsFragment : Fragment(R.layout.list_news_fragment) {
 
@@ -24,7 +20,7 @@ class NewsFragment : Fragment(R.layout.list_news_fragment) {
     private val newsVM: NewsViewModel by activityViewModels()
     private val binding by viewBinding(ListNewsFragmentBinding::bind)
 
-    @SuppressLint("NotifyDataSetChanged", "ResourceAsColor")
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -52,7 +48,6 @@ class NewsFragment : Fragment(R.layout.list_news_fragment) {
                 }
             )
         }
-
         binding.swipeNews.setColorSchemeResources(R.color.firstColor)
     }
 

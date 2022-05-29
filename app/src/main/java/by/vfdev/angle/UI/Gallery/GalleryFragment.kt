@@ -2,8 +2,6 @@ package by.vfdev.angle.UI.Gallery
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -15,8 +13,7 @@ import by.vfdev.angle.R
 import by.vfdev.angle.ViewModel.GalleryViewModel
 import by.vfdev.angle.databinding.ListGalleryFragmentBinding
 
-class GalleryFragment : Fragment(R.layout.list_gallery_fragment),
-    GalleryListAdapter.OnItemClickListener {
+class GalleryFragment : Fragment(R.layout.list_gallery_fragment) {
 
     private val navController: NavController by lazy { findNavController() }
     private val galleryVM: GalleryViewModel by activityViewModels()
@@ -26,14 +23,22 @@ class GalleryFragment : Fragment(R.layout.list_gallery_fragment),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = GalleryListAdapter( this)
+        val adapter = GalleryListAdapter(
+            onClick = {
+                galleryVM.onSelectGallery(it)
+            }
+        )
 
         binding.GalleryListRV.adapter = adapter
         binding.GalleryListRV.layoutManager = GridLayoutManager(
-            requireActivity(), 3)
+            requireActivity(), 2)
 
         galleryVM.galleryLive.observe(viewLifecycleOwner) { list ->
             (binding.GalleryListRV.adapter as GalleryListAdapter).updateData(list)
+        }
+
+        galleryVM.onSelectGalleryEvent.observe(viewLifecycleOwner) {
+            navController.navigate(R.id.galleryDetailFragment)
         }
 
         binding.swipeGallery.setOnRefreshListener {
@@ -50,12 +55,5 @@ class GalleryFragment : Fragment(R.layout.list_gallery_fragment),
     private fun getList(onSuccess: () -> Unit) {
         galleryVM.getListGallery()
         onSuccess()
-    }
-
-    override fun onItemClick(position: Int) {
-
-        galleryVM.linkImages = galleryVM.galleryLive.value?.get(position)?.img
-
-        navController.navigate(R.id.galleryDetailFragment)
     }
 }

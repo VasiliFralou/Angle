@@ -8,28 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Events.Events
+import by.vfdev.angle.Utils.loadImage
 import by.vfdev.angle.databinding.ItemEventsLayoutBinding
 
-class EventsListAdapter (private val listener: OnItemClickListener) :
+class EventsListAdapter (private val onClick: (event: Events) -> Unit) :
     RecyclerView.Adapter<EventsListAdapter.ViewHolder>() {
 
     private val list: MutableList<Events> = mutableListOf()
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val binding by viewBinding (ItemEventsLayoutBinding::bind)
-
-        init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-            val  position = bindingAdapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,34 +33,25 @@ class EventsListAdapter (private val listener: OnItemClickListener) :
 
         val item = list[position]
 
-        holder.binding.nameEventTV.text = item.name
+        holder.binding.locationIMG.loadImage(item.location)
         holder.binding.titleEventTV.text = item.title
+        holder.binding.nameEventTV.text = item.name
         holder.binding.dataEventTV.text = item.day
         holder.binding.cityEventTV.text = item.city
+
+        holder.itemView.setOnClickListener {
+            onClick.invoke(
+                list[holder.bindingAdapterPosition]
+            )
+        }
     }
 
     override fun getItemCount() = list.size
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newList: List<Events>) {
         list.clear()
         list.addAll(newList)
-        notifyDataSetChanged()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun clear() {
-        list.clear()
-        notifyDataSetChanged()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun addAll(tweetList: List<Events>) {
-        list.addAll(tweetList)
         notifyDataSetChanged()
     }
 }

@@ -9,5 +9,6 @@ data class News(
     val description: String? = null,
     val date: String? = null,
     val urlImg: String? = null,
-    @PrimaryKey val urlPost: String) {
+    val urlPost: String,
+    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0) {
 }

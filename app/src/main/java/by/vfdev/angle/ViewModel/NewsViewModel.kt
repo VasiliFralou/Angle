@@ -14,8 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val newsRepository: NewsRepository
-) : ViewModel() {
+    private val newsRepository: NewsRepository) : ViewModel() {
 
     init {
         getListNews()
@@ -26,6 +25,7 @@ class NewsViewModel @Inject constructor(
 
     private val _onSelectNewsEvent = SingleLiveEvent<Unit?>()
     val onSelectNewsEvent: LiveData<Unit?> = _onSelectNewsEvent
+
     fun onSelectNews(news: News) {
         _selectNewsLD.value = news
         _onSelectNewsEvent.call()

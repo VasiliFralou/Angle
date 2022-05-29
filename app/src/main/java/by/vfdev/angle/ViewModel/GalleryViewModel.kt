@@ -1,10 +1,12 @@
 package by.vfdev.angle.ViewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import by.vfdev.angle.Repository.GalleryRepository
+import by.vfdev.angle.Utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,8 +19,16 @@ class GalleryViewModel @Inject constructor(
         getListGallery()
     }
 
-    var data: Boolean = false
-    var linkImages: String? = null
+    private val _selectGalleryLD = MutableLiveData<Gallery>()
+    val selectGalleryLD: LiveData<Gallery> = _selectGalleryLD
+
+    private val _onSelectGalleryEvent = SingleLiveEvent<Unit?>()
+    val onSelectGalleryEvent: LiveData<Unit?> = _onSelectGalleryEvent
+
+    fun onSelectGallery(gallery: Gallery) {
+        _selectGalleryLD.value = gallery
+        _onSelectGalleryEvent.call()
+    }
 
     val galleryLive: MutableLiveData<MutableList<Gallery>> by lazy {
         MutableLiveData<MutableList<Gallery>>()

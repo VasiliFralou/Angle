@@ -2,11 +2,14 @@
 <resources>
     <color name="mainColor">#FF1d1b1b</color>
     <color name="secondColor">#2C2A2A</color>
+    <color name="theeColor">#403E3E</color>
     <color name="bgPilotsListColor">#252323</color>
     <color name="firstColor">#F44336</color>
+    <color name="lightRed">#FF6256</color>
     <color name="logoTextColor">#770303</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="darkWhite">#989898</color>
+    <color name="transparent">#00000000</color>
 </resources>

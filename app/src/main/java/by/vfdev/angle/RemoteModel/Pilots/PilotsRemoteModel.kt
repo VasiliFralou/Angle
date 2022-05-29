@@ -13,7 +13,6 @@ class PilotsRemoteModel @Inject constructor() {
             val pilots: MutableList<Pilots> = apiPilots.getPilots().results
             pilots
         } catch (e: Exception) {
-            Log.e("!!!ERROR", e.toString())
             mutableListOf()
         }
     }

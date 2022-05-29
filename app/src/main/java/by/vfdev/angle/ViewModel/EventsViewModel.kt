@@ -1,29 +1,35 @@
 package by.vfdev.angle.ViewModel
 
 import android.util.Log
-import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.Events.Events
 import by.vfdev.angle.Repository.EventsRepository
+import by.vfdev.angle.Utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class EventsViewModel @Inject constructor(
-    private val eventsRepository: EventsRepository
-) : ViewModel() {
+    private val eventsRepository: EventsRepository) : ViewModel() {
 
     init {
         getListEvents()
     }
 
-    var latitudeEL: Double? = null
-    var longitudeEL: Double? = null
-    var titleEL: String? = null
-    var nameEL: String? = null
+    private val _selectEventsLD = MutableLiveData<Events>()
+    val selectEventsLD: LiveData<Events> = _selectEventsLD
+
+    private val _onSelectEventsEvent = SingleLiveEvent<Unit?>()
+    val onSelectEventsEvent: LiveData<Unit?> = _onSelectEventsEvent
+
+    fun onSelectEvents(event: Events) {
+        _selectEventsLD.value = event
+        _onSelectEventsEvent.call()
+    }
 
     val eventsLive: MutableLiveData<MutableList<Events>> by lazy {
         MutableLiveData<MutableList<Events>>()
@@ -32,7 +38,13 @@ class EventsViewModel @Inject constructor(
     fun getListEvents() {
         viewModelScope.launch {
             val list = eventsRepository.getDataEvents()
-            eventsLive.postValue(list)
+            list.onSuccess {
+                eventsLive.postValue(it)
+                Log.e("!!!ErrorListNews", list.toString())
+            }.onFailure {
+                eventsLive.postValue(mutableListOf())
+                Log.e("!!!ErrorListNews", it.stackTraceToString())
+            }
         }
     }
 }

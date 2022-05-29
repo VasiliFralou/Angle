@@ -18,7 +18,9 @@
             android:id="@+id/searchPilot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginHorizontal="8dp"
             android:background="@drawable/searchview_backgound"
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent"
@@ -30,8 +32,6 @@
             android:id="@+id/pilotsListRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
             android:background="@color/mainColor"
             tools:listitem="@layout/item_pilots_layout" />
 

@@ -1,6 +1,8 @@
 package by.vfdev.angle.UI
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,6 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
+    var prefs: SharedPreferences? = null
+
     private val navController by lazy {
         supportFragmentManager.findFragmentById(
             R.id.nav_host_container
@@ -25,8 +29,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        prefs = getSharedPreferences("by.vfdev.angle", MODE_PRIVATE);
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavigationView.setupWithNavController(navController)
+
+        val dialog = FirstStartDialogFragment()
+        dialog.show(this.supportFragmentManager, "customDialog")
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -45,5 +54,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onBackPressed() {
         if (navController.currentDestination?.id != R.id.newsFragment) navController.popBackStack()
         else super.onBackPressed()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (prefs!!.getBoolean("firstrun", true)) {
+
+            val dialog = FirstStartDialogFragment()
+            dialog.show(this.supportFragmentManager, "customDialog")
+
+            prefs!!.edit().putBoolean("firstrun", false).apply()
+        }
     }
 }

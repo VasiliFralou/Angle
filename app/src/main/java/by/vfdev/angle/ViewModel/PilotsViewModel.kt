@@ -23,6 +23,7 @@ class PilotsViewModel @Inject constructor(
 
     private val _onSelectPilotsEvent = SingleLiveEvent<Unit?>()
     val onSelectPilotsEvent: LiveData<Unit?> = _onSelectPilotsEvent
+
     fun onSelectPilots(pilot: Pilots) {
         _selectPilotsLD.value = pilot
         _onSelectPilotsEvent.call()

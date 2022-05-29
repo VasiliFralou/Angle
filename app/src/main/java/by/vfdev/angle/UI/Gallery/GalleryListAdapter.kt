@@ -11,26 +11,14 @@ import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import by.vfdev.angle.Utils.loadImage
 import by.vfdev.angle.databinding.ItemGalleryLayoutBinding
 
-class GalleryListAdapter(private val listener: OnItemClickListener) :
+class GalleryListAdapter(private val onClick: (gallery: Gallery) -> Unit) :
     RecyclerView.Adapter<GalleryListAdapter.ViewHolder>() {
 
     private val list: MutableList<Gallery> = mutableListOf()
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val binding by viewBinding (ItemGalleryLayoutBinding::bind)
-
-        init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-            val  position = bindingAdapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,14 +30,17 @@ class GalleryListAdapter(private val listener: OnItemClickListener) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.binding.galleryIMG.loadImage(list[position].img)
+
+        holder.itemView.setOnClickListener {
+            onClick.invoke(
+                list[holder.bindingAdapterPosition]
+            )
+        }
     }
 
     override fun getItemCount() = list.size
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newList: MutableList<Gallery>) {

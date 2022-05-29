@@ -3,79 +3,85 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@color/secondColor"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@color/secondColor"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imgView"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_margin="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/location"
-                android:contentDescription="@string/contentDescription" />
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imgView"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_gravity="end">
 
-                <TextView
-                    android:id="@+id/titleEventTV"
+                <ImageView
+                    android:id="@+id/locationIMG"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/nameEventTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp" />
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/contentDescription"
+                    android:maxHeight="500dp"
+                    android:minHeight="100dp"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/dataEventTV"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/black"
+                    android:background="@color/white"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:layout_gravity="end|bottom"
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/cityEventTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"/>
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/titleEventTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="6dp"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/nameEventTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="24dp"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/cityEventTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="12dp"
+                android:textColor="@color/white"
+                android:gravity="end"
+                android:textSize="14sp" />
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
