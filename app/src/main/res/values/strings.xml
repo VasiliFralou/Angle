@@ -9,7 +9,7 @@
     <!-- Update -->
     <string name="update1">• Исправлены ошибки в работе приложения;</string>
     <string name="update2">• Обновлен дизайн раздела \"Календарь\" и \"Галерея\";</string>
-    <string name="update3">• Добавлена возможность обновить раздел при помощи свайпа;</string>
-    <string name="update4"></string>
-    <string name="update5"></string>
+    <string name="update3">• Добавлена возможность обновить раздел при помощи свайпа.</string>
+
+    <string name="btnText">OK</string>
 </resources>

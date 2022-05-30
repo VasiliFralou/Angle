@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.News.News
-import by.vfdev.angle.RemoteModel.Pilots.Pilots
 import by.vfdev.angle.Utils.loadImage
 import by.vfdev.angle.databinding.ItemNewsLayoutBinding
 

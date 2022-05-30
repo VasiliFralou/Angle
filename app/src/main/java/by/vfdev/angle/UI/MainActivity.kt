@@ -2,7 +2,6 @@ package by.vfdev.angle.UI
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -29,13 +28,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        prefs = getSharedPreferences("by.vfdev.angle", MODE_PRIVATE);
+        prefs = getSharedPreferences("by.vfdev.angle", MODE_PRIVATE)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavigationView.setupWithNavController(navController)
-
-        val dialog = FirstStartDialogFragment()
-        dialog.show(this.supportFragmentManager, "customDialog")
 
         appBarConfiguration = AppBarConfiguration(
             setOf(

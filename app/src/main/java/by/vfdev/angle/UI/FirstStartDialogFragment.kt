@@ -21,6 +21,10 @@ class FirstStartDialogFragment : DialogFragment(R.layout.fragment_first_start_di
 
         val info = manager.getPackageInfo(requireActivity().packageName, PackageManager.GET_ACTIVITIES)
 
+        binding.btnOK.setOnClickListener {
+            dismiss()
+        }
+
         binding.titleDialogTV.text = "Что нового в версии ${info.versionName}?"
     }
 
@@ -28,7 +32,6 @@ class FirstStartDialogFragment : DialogFragment(R.layout.fragment_first_start_di
         super.onStart()
 
         val window = dialog!!.window
-        // Устанавливаем цвет фона всплывающего окна, чтобы установить размер и положение всплывающего окна
-        window?.setBackgroundDrawableResource(by.vfdev.angle.R.color.transparent)
+        window?.setBackgroundDrawableResource(R.color.transparent)
     }
 }
