@@ -66,7 +66,6 @@ class PilotsDetailFragment : Fragment(R.layout.detail_pilots_fragment) {
             binding.pilotsCityTV.text = "Город: ${pilot.city}"
             binding.pilotsBirthdayTV.text = brd ?: ("-").toString()
             binding.pilotsTeamTV.text = "Команда: ${team ?: ("-").toString()}"
-            binding.pilotsInstTV.text = "Instagram: ${pilot.instagram}"
             binding.pilotsDescriptionTV.text = desc ?: ("-").toString()
             binding.pilotsAutoTV.text = "Авто: ${pilot.auto}"
         }

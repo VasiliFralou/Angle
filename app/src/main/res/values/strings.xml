@@ -5,6 +5,7 @@
     <string name="btnReadNews">Читать</string>
     <string name="textCloseBtn">x</string>
     <string name="btnShowEventsMap">Показать карту</string>
+    <string name="all">TODO</string>
 
     <!-- Update -->
     <string name="update1">• Исправлены ошибки в работе приложения;</string>

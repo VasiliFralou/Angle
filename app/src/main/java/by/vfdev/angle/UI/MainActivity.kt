@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             val dialog = FirstStartDialogFragment()
             dialog.show(this.supportFragmentManager, "customDialog")
 
+            application.deleteDatabase("events_db")
+
             prefs!!.edit().putBoolean("firstrun", false).apply()
         }
     }
