@@ -46,6 +46,12 @@
             android:layout_height="wrap_content"
             android:text="@string/update3" />
 
+        <TextView
+            android:id="@+id/updTV4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update4" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

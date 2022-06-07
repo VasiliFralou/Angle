@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import by.vfdev.angle.R
+import by.vfdev.angle.UI.Dialog.FirstStartDialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             setOf(
                 R.id.newsFragment,
                 R.id.calendarFragment,
+                R.id.resultFragment,
                 R.id.galleryFragment,
                 R.id.pilotsListFragment
             )

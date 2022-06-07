@@ -20,15 +20,13 @@ class NewsViewModel @Inject constructor(
         getListNews()
     }
 
+    var link: String? = null
+
     private val _selectNewsLD = MutableLiveData<News>()
     val selectNewsLD: LiveData<News> = _selectNewsLD
 
-    private val _onSelectNewsEvent = SingleLiveEvent<Unit?>()
-    val onSelectNewsEvent: LiveData<Unit?> = _onSelectNewsEvent
-
     fun onSelectNews(news: News) {
         _selectNewsLD.value = news
-        _onSelectNewsEvent.call()
     }
 
     val newsLive: MutableLiveData<MutableList<News>> by lazy {

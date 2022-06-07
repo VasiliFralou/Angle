@@ -2,19 +2,13 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/news">
 
     <include app:graph="@navigation/news"/>
     <include app:graph="@navigation/events"/>
+    <include app:graph="@navigation/results"/>
     <include app:graph="@navigation/gallery"/>
     <include app:graph="@navigation/pilots"/>
-
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="by.vfdev.angle.UI.Setting.SettingFragment"
-        android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
     <include app:graph="@navigation/videos" />
 </navigation>

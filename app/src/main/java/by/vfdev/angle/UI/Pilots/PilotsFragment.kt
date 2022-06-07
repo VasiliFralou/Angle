@@ -26,7 +26,6 @@ class PilotsFragment : Fragment(R.layout.list_pilots_fragment) {
 
         val adapter = PilotsListAdapter(
             onClick = {
-                binding.swipePilots.isRefreshing = false
                 pilotsVM.onSelectPilots(it)
             }
         )
@@ -42,16 +41,6 @@ class PilotsFragment : Fragment(R.layout.list_pilots_fragment) {
             navController.navigate(R.id.pilotsDetailFragment)
         }
 
-        binding.swipePilots.setOnRefreshListener {
-            getList(
-                onSuccess = {
-                    binding.swipePilots.isRefreshing = false
-                }
-            )
-        }
-
-        binding.swipePilots.setColorSchemeResources(R.color.firstColor)
-
         binding.searchPilot.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -65,10 +54,5 @@ class PilotsFragment : Fragment(R.layout.list_pilots_fragment) {
                 return false
             }
         })
-    }
-
-    private fun getList(onSuccess: () -> Unit) {
-        pilotsVM.getListPilots()
-        onSuccess()
     }
 }

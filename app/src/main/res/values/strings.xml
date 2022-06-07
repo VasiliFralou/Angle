@@ -8,9 +8,28 @@
     <string name="all">TODO</string>
 
     <!-- Update -->
-    <string name="update1">• Исправлены ошибки в работе приложения;</string>
-    <string name="update2">• Обновлен дизайн раздела \"Календарь\" и \"Галерея\";</string>
-    <string name="update3">• Добавлена возможность обновить раздел при помощи свайпа.</string>
+    <string name="update1">• Обновлен дизайн профиля пилотов;</string>
+    <string name="update2">• Добавлен новый раздел \"Результаты\";</string>
+    <string name="update3">• Изменён раздел \"Новости\" и просмотр подробной новости;</string>
+    <string name="update4">• Исправлены ошибки в работе приложения.</string>
 
     <string name="btnText">OK</string>
+    <string name="btnCancel">Отмена</string>
+    <string name="btnGo">Перейти</string>
+    <string name="title1Column">Этап</string>
+    <string name="title2Column">Квал.</string>
+    <string name="title3Column">Парные</string>
+    <string name="title4Column">Итог</string>
+    <string name="title1Row">1 этап</string>
+    <string name="title2Row">2 этап</string>
+    <string name="title3Row">3 этап</string>
+    <string name="title4Row">4 этап</string>
+    <string name="title5Row">5 этап</string>
+    <string name="titleMenuNews">Новости</string>
+    <string name="titleMenuEvents">Календарь</string>
+    <string name="titleMenuResults">Результаты</string>
+    <string name="titleMenuGallery">Галерея</string>
+    <string name="titleMenuPilots">Пилоты</string>
+    <string name="titleResults">Результат в чемпионате РБ</string>
+    <string name="titleDescriptionPilots">Описание:</string>
 </resources>

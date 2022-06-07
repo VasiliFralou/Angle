@@ -10,14 +10,5 @@
         android:id="@+id/newsFragment"
         android:name="by.vfdev.angle.UI.News.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/list_news_fragment" >
-        <action
-            android:id="@+id/action_newsFragment_to_newsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newsDetailFragment"
-        android:name="by.vfdev.angle.UI.News.NewsDetailFragment"
-        android:label="fragment_news_detal"
-        tools:layout="@layout/detail_news_fragment" />
+        tools:layout="@layout/list_news_fragment" />
 </navigation>

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
+import by.vfdev.angle.UI.Dialog.LinkDialogFragment
 import by.vfdev.angle.ViewModel.NewsViewModel
 import by.vfdev.angle.databinding.ListNewsFragmentBinding
 
@@ -26,6 +27,9 @@ class NewsFragment : Fragment(R.layout.list_news_fragment) {
         val adapter = NewsListAdapter(
             onClick = {
                 newsVM.onSelectNews(it)
+                newsVM.link = newsVM.selectNewsLD.value?.urlPost
+                val dialog = LinkDialogFragment()
+                dialog.show(requireActivity().supportFragmentManager, "customDialog")
             }
         )
 
@@ -34,10 +38,6 @@ class NewsFragment : Fragment(R.layout.list_news_fragment) {
 
         newsVM.newsLive.observe(viewLifecycleOwner) { list ->
             (binding.PostNewsRV.adapter as NewsListAdapter).updateData(list)
-        }
-
-        newsVM.onSelectNewsEvent.observe(viewLifecycleOwner) {
-            navController.navigate(R.id.newsDetailFragment)
         }
 
         binding.swipeNews.setOnRefreshListener {

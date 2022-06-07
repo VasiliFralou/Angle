@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 interface ApiNews {
 
-    @GET("News.json")
+    @GET("News_v2.json")
     suspend fun getNews(): NewsCallBack
 
     companion object Factory {

@@ -1,7 +1,6 @@
 package by.vfdev.angle.RemoteModel.News
 
 import by.vfdev.angle.Api.ApiNews
-import java.lang.Exception
 import javax.inject.Inject
 
 class NewsRemoteModel @Inject constructor() {

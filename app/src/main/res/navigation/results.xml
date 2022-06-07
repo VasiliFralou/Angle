@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/results"
+    app:startDestination="@id/resultFragment">
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="by.vfdev.angle.UI.Results.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/list_result_fragment" />
+</navigation>

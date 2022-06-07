@@ -11,6 +11,7 @@ import by.vfdev.angle.RemoteModel.News.News
 import by.vfdev.angle.Utils.loadImage
 import by.vfdev.angle.databinding.ItemNewsLayoutBinding
 
+
 class NewsListAdapter(private val onClick: (news: News) -> Unit) :
     RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
 
@@ -20,7 +21,6 @@ class NewsListAdapter(private val onClick: (news: News) -> Unit) :
 
         val binding by viewBinding (ItemNewsLayoutBinding::bind)
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -38,7 +38,7 @@ class NewsListAdapter(private val onClick: (news: News) -> Unit) :
         holder.binding.dateTV.text = item.date
         holder.binding.descriptionTV.text = item.description
         holder.binding.postIV.loadImage(item.urlImg)
-
+        holder.binding.sourceTV.text = item.source
         holder.itemView.setOnClickListener {
             onClick.invoke(
                 list[holder.bindingAdapterPosition]

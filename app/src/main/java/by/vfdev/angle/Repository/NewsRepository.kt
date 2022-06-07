@@ -1,5 +1,6 @@
 package by.vfdev.angle.Repository
 
+import android.util.Log
 import by.vfdev.angle.LocalModel.News.NewsLocalModel
 import by.vfdev.angle.RemoteModel.News.News
 import by.vfdev.angle.RemoteModel.News.NewsRemoteModel

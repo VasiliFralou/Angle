@@ -40,19 +40,5 @@ class EventsFragment : Fragment(R.layout.list_events_fragment) {
         eventsVM.onSelectEventsEvent.observe(viewLifecycleOwner) {
             navController.navigate(R.id.eventsMapFragment)
         }
-
-        binding.swipeEvents.setOnRefreshListener {
-            getList(
-                onSuccess = {
-                    binding.swipeEvents.isRefreshing = false
-                }
-            )
-        }
-        binding.swipeEvents.setColorSchemeResources(R.color.firstColor)
-    }
-
-    private fun getList(onSuccess: () -> Unit) {
-        eventsVM.getListEvents()
-        onSuccess()
     }
 }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipeEvents"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.Events.EventsFragment">
@@ -21,4 +20,4 @@
             tools:listitem="@layout/item_events_layout" />
     </LinearLayout>
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

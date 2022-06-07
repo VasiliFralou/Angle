@@ -40,20 +40,5 @@ class GalleryFragment : Fragment(R.layout.list_gallery_fragment) {
         galleryVM.onSelectGalleryEvent.observe(viewLifecycleOwner) {
             navController.navigate(R.id.galleryDetailFragment)
         }
-
-        binding.swipeGallery.setOnRefreshListener {
-            getList(
-                onSuccess = {
-                    binding.swipeGallery.isRefreshing = false
-                }
-            )
-        }
-
-        binding.swipeGallery.setColorSchemeResources(R.color.firstColor)
-    }
-
-    private fun getList(onSuccess: () -> Unit) {
-        galleryVM.getListGallery()
-        onSuccess()
     }
 }
