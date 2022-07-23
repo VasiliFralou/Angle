@@ -1,6 +1,5 @@
 package by.vfdev.angle.RemoteModel.Pilots
 
-import android.util.Log
 import by.vfdev.angle.Api.ApiPilots
 import javax.inject.Inject
 

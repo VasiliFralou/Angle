@@ -13,25 +13,28 @@ class GalleryRepository @Inject constructor(
     private val galleryLocalModel: GalleryLocalModel
 ) {
 
-    suspend fun getDataGallery(): MutableList<Gallery> = withContext(Dispatchers.IO) {
+    suspend fun getDataGallery():
+            Result<MutableList<Gallery>> = withContext(Dispatchers.IO) {
 
-        var galleryList = galleryRemoteModel.getGalleryRemoteData()
+        val galleryListEthernet = galleryRemoteModel.getGalleryRemoteData()
+        var galleryListLocal = galleryLocalModel.getAllGallery()
 
-        if (galleryList.isNullOrEmpty()) {
-            galleryList = galleryLocalModel.getAllGallery()
-        }  else {
+        if (galleryListLocal.isEmpty()) {
+            galleryListLocal = updateDataGalleryFromDB(galleryListEthernet)
+        } else {
             launch {
-                updateDataGalleryFromDB()
+                updateDataGalleryFromDB(galleryListEthernet)
             }
         }
-        return@withContext galleryList
+        return@withContext Result.success(galleryListLocal)
     }
 
-    private suspend fun updateDataGalleryFromDB(): MutableList<Gallery> {
+    private suspend fun updateDataGalleryFromDB(list: MutableList<Gallery>): MutableList<Gallery> {
 
-        val galleryList = galleryRemoteModel.getGalleryRemoteData()
-        galleryLocalModel.insertGallery(galleryList)
+        if (list.isNotEmpty()) {
+            galleryLocalModel.insertGallery(list)
+        }
 
-        return galleryList
+        return list
     }
 }

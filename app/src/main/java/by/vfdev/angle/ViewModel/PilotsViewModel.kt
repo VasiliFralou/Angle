@@ -1,5 +1,6 @@
 package by.vfdev.angle.ViewModel
 
+import android.util.Log
 import androidx.lifecycle.*
 import by.vfdev.angle.RemoteModel.Pilots.Pilots
 import by.vfdev.angle.Repository.PilotsRepository
@@ -41,8 +42,13 @@ class PilotsViewModel @Inject constructor(
     fun getListPilots() {
         viewModelScope.launch {
             val list = pilotsRepository.getDataPilots()
-            pilotsLive = list
-            _searchListPilots.postValue(pilotsLive)
+            list.onSuccess {
+                pilotsLive = it
+                _searchListPilots.value = pilotsLive
+            }.onFailure {
+                _searchListPilots.value = null
+                Log.e("!!!ErrorListPilots", it.stackTraceToString())
+            }
         }
     }
 

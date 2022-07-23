@@ -5,4 +5,5 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "images")
 data class Gallery(
-    @PrimaryKey val img: String)
+    val img: String,
+    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0)

@@ -12,25 +12,27 @@ class PilotsRepository @Inject constructor(
     private val pilotsRemoteModel: PilotsRemoteModel,
     private val pilotsLocalModel: PilotsLocalModel) {
 
-    suspend fun getDataPilots(): MutableList<Pilots> = withContext(Dispatchers.IO) {
+    suspend fun getDataPilots():
+            Result<MutableList<Pilots>> = withContext(Dispatchers.IO) {
 
-        var pilotsNews = pilotsRemoteModel.getPilotsRemoteData()
+        val pilotsListEthernet = pilotsRemoteModel.getPilotsRemoteData()
+        var pilotsListLocal = pilotsLocalModel.getAllPilots()
 
-        if (pilotsNews.isNullOrEmpty()) {
-            pilotsNews = pilotsLocalModel.getAllPilots()
-        }  else {
+        if (pilotsListLocal.isEmpty()) {
+            pilotsListLocal = updateDataPilotsFromDB(pilotsListEthernet)
+        } else {
             launch {
-                updateDataPilotsFromDB()
+                updateDataPilotsFromDB(pilotsListEthernet)
             }
         }
-        return@withContext pilotsNews
+        return@withContext Result.success(pilotsListLocal)
     }
 
-    private suspend fun updateDataPilotsFromDB(): MutableList<Pilots> {
+    private suspend fun updateDataPilotsFromDB(list: MutableList<Pilots>): MutableList<Pilots> {
 
-        val pilotsList = pilotsRemoteModel.getPilotsRemoteData()
-        pilotsLocalModel.insertPilots(pilotsList)
-
-        return pilotsList
+        if (list.isNotEmpty()) {
+            pilotsLocalModel.insertPilots(list)
+        }
+        return list
     }
 }

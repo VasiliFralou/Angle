@@ -37,9 +37,9 @@ class NewsViewModel @Inject constructor(
         viewModelScope.launch {
             val list = newsRepository.getDataNews()
             list.onSuccess {
-                newsLive.postValue(it)
+                newsLive.value = it
             }.onFailure {
-                newsLive.postValue(mutableListOf())
+                newsLive.value = mutableListOf()
                 Log.e("!!!ErrorListNews", it.stackTraceToString())
             }
         }

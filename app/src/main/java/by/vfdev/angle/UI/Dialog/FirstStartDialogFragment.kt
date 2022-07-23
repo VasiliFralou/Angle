@@ -25,13 +25,15 @@ class FirstStartDialogFragment : DialogFragment(R.layout.fragment_first_start_di
             dismiss()
         }
 
+        requireActivity().deleteDatabase("news_db")
+        requireActivity().deleteDatabase("events_db")
+
+
         binding.titleDialogTV.text = "Что нового в версии ${info.versionName}?"
     }
 
     override fun onStart() {
         super.onStart()
-
-        requireActivity().deleteDatabase("news_db")
 
         val window = dialog!!.window
         window?.setBackgroundDrawableResource(R.color.transparent)

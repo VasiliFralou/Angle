@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "pilots")
 data class Pilots (
-    @PrimaryKey var name: String,
+    var name: String,
     var city: String,
     var photo: String? = null,
     var birthday: String? = "-",
@@ -13,4 +13,5 @@ data class Pilots (
     var instagram: String = "-",
     var description: String? = "-",
     var auto: String,
-    var photoAuto: String)
+    var photoAuto: String,
+    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0)

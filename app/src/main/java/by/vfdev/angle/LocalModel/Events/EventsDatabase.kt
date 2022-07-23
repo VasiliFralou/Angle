@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import by.vfdev.angle.RemoteModel.Events.Events
 
-@Database(entities = [Events::class], version = 1)
+@Database(entities = [Events::class], version = 2)
 abstract class EventsDatabase : RoomDatabase() {
     abstract fun eventsDao(): IEventsDao
 
@@ -17,7 +17,8 @@ abstract class EventsDatabase : RoomDatabase() {
                 eventsDatabase = Room.databaseBuilder(
                     contextApplication,
                     EventsDatabase::class.java, "events_db"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
             }
             return eventsDatabase!!
         }

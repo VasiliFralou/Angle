@@ -37,7 +37,7 @@ class NewsFragment : Fragment(R.layout.list_news_fragment) {
         binding.PostNewsRV.layoutManager = LinearLayoutManager(requireActivity())
 
         newsVM.newsLive.observe(viewLifecycleOwner) { list ->
-            (binding.PostNewsRV.adapter as NewsListAdapter).updateData(list)
+            adapter.updateData(list)
         }
 
         binding.swipeNews.setOnRefreshListener {

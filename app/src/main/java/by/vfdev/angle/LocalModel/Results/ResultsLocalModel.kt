@@ -10,6 +10,7 @@ class ResultsLocalModel @Inject constructor(@ApplicationContext context: Context
     private val database = ResultsDatabase.getDataBase(context).resultsDao()
 
     suspend fun insertResults(results: MutableList<Results>) {
+
         database.deleteAllResults()
         database.insertResults(results)
     }
