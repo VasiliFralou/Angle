@@ -39,10 +39,9 @@ class EventsViewModel @Inject constructor(
         viewModelScope.launch {
             val list = eventsRepository.getDataEvents()
             list.onSuccess {
-                eventsLive.postValue(it)
-                Log.e("!!!ErrorListNews", list.toString())
+                eventsLive.value = it
             }.onFailure {
-                eventsLive.postValue(mutableListOf())
+                eventsLive.value = mutableListOf()
                 Log.e("!!!ErrorListNews", it.stackTraceToString())
             }
         }

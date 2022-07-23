@@ -17,6 +17,7 @@ import by.vfdev.angle.R
 import by.vfdev.angle.Utils.loadImage
 import by.vfdev.angle.ViewModel.PilotsViewModel
 import by.vfdev.angle.databinding.DetailPilotsFragmentBinding
+import coil.load
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
@@ -74,7 +75,7 @@ class PilotsDetailFragment : Fragment(R.layout.detail_pilots_fragment) {
             val desc = pilot.description
 
             binding.pilotsNameTV.text = pilot.name
-            binding.pilotsCityTV.text = "Город: ${pilot.city}"
+            binding.pilotsCityTV.text = pilot.city
             binding.pilotsBirthdayTV.text = "Дата рождения: ${brd ?: ("-").toString()}"
             // if (team == "") team = "-"
             binding.pilotsTeamTV.text = "Команда: ${team ?: ("-").toString()}"

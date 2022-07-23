@@ -1,5 +1,6 @@
 package by.vfdev.angle.Repository
 
+import android.util.Log
 import by.vfdev.angle.LocalModel.Events.EventsLocalModel
 import by.vfdev.angle.RemoteModel.Events.Events
 import by.vfdev.angle.RemoteModel.Events.EventsRemoteModel
@@ -15,23 +16,25 @@ class EventsRepository @Inject constructor(
     suspend fun getDataEvents():
             Result<MutableList<Events>> = withContext(Dispatchers.IO) {
 
-        var eventsList = eventsRemoteModel.getEventsRemoteData()
+        val eventsListEthernet = eventsRemoteModel.getEventsRemoteData()
+        var eventsListLocal = eventsLocalModel.getAllEvents()
 
-        if (eventsList.isNullOrEmpty()) {
-            eventsList = eventsLocalModel.getAllEvents()
-        }  else {
+        if (eventsListLocal.isEmpty()) {
+            eventsListLocal = updateDataEventsFromDB(eventsListEthernet)
+        } else {
             launch {
-                updateDataEventsFromDB()
+                updateDataEventsFromDB(eventsListEthernet)
             }
         }
-        return@withContext Result.success(eventsList)
+        return@withContext Result.success(eventsListLocal)
     }
 
-    private suspend fun updateDataEventsFromDB(): MutableList<Events> {
+    private suspend fun updateDataEventsFromDB(list: MutableList<Events>): MutableList<Events> {
 
-        val eventsList = eventsRemoteModel.getEventsRemoteData()
-        eventsLocalModel.insertEvents(eventsList)
-
-        return eventsList
+        if (list.isNotEmpty()) {
+            eventsLocalModel.insertEvents(list)
+            Log.e("!!!", list.size.toString())
+        }
+        return list
     }
 }

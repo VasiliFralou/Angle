@@ -20,17 +20,6 @@ class ResultsViewModel @Inject constructor(
         getListResults()
     }
 
-    private val _selectResultsLD = MutableLiveData<Results>()
-    val selectResultsLD: LiveData<Results> = _selectResultsLD
-
-    private val _onSelectResultsEvent = SingleLiveEvent<Unit?>()
-    val onSelectResultsEvent: LiveData<Unit?> = _onSelectResultsEvent
-
-    fun onSelectResults(results: Results) {
-        _selectResultsLD.value = results
-        _onSelectResultsEvent.call()
-    }
-
     val resultsLive: MutableLiveData<MutableList<Results>> by lazy {
         MutableLiveData<MutableList<Results>>()
     }
@@ -39,9 +28,9 @@ class ResultsViewModel @Inject constructor(
         viewModelScope.launch {
             val list = resultsRepository.getDataResults()
             list.onSuccess {
-                resultsLive.postValue(it)
+                resultsLive.value = it
             }.onFailure {
-                resultsLive.postValue(mutableListOf())
+                resultsLive.value = mutableListOf()
                 Log.e("!!!ErrorListResults", it.stackTraceToString())
             }
         }

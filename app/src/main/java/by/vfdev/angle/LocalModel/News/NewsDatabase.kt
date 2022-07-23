@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import by.vfdev.angle.RemoteModel.News.News
 
-@Database(entities = [News::class], version = 1)
+@Database(entities = [News::class], version = 2)
 abstract class NewsDatabase : RoomDatabase() {
     abstract fun newsDao(): INewsDao
 
@@ -17,7 +17,8 @@ abstract class NewsDatabase : RoomDatabase() {
                 newsDatabase = Room.databaseBuilder(
                     contextApplication,
                     NewsDatabase::class.java, "news_db"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
             }
             return newsDatabase!!
         }

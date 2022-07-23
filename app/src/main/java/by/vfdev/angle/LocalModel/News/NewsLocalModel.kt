@@ -9,12 +9,13 @@ class NewsLocalModel @Inject constructor(@ApplicationContext context: Context) {
 
     private val database = NewsDatabase.getDataBase(context).newsDao()
 
-    suspend fun insertNews(news: MutableList<News>) {
-        database.deleteAllEvents()
-        database.insertNews(news)
-    }
-
     suspend fun getAllNews(): MutableList<News> {
         return database.getAllNews()
+    }
+
+    suspend fun insertNews(news: MutableList<News>) {
+
+        database.deleteAllEvents()
+        database.insertNews(news)
     }
 }

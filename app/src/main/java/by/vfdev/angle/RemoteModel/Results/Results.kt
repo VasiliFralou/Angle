@@ -18,5 +18,4 @@ data class Results(
     val pointsRnd5: Int? = null,
     val pointResult: Int? = null,
     var expandable: Boolean = false,
-    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0) {
-}
+    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0)

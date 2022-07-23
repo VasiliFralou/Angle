@@ -12,25 +12,28 @@ class ResultsRepository @Inject constructor(
     private val resultsRemoteModel: ResultsRemoteModel,
     private val resultsLocalModel: ResultsLocalModel) {
 
-    suspend fun getDataResults(): Result<MutableList<Results>> = withContext(Dispatchers.IO) {
+    suspend fun getDataResults():
+            Result<MutableList<Results>> = withContext(Dispatchers.IO) {
 
-        var resultsList = resultsRemoteModel.getResultsRemoteData()
+        val resultsListEthernet = resultsRemoteModel.getResultsRemoteData()
+        var resultsLisLocal = resultsLocalModel.getAllResults()
 
-        if (resultsList.isNullOrEmpty()) {
-            resultsList = resultsLocalModel.getAllResults()
+        if (resultsLisLocal.isEmpty()) {
+            resultsLisLocal = updateDataResultsFromDB(resultsListEthernet)
         } else {
             launch {
-                updateDataResultsFromDB()
+                updateDataResultsFromDB(resultsListEthernet)
             }
+
         }
-        return@withContext Result.success(resultsList)
+        return@withContext Result.success(resultsLisLocal)
     }
 
-    private suspend fun updateDataResultsFromDB(): MutableList<Results> {
+    private suspend fun updateDataResultsFromDB(list: MutableList<Results>): MutableList<Results> {
 
-        val resultsList = resultsRemoteModel.getResultsRemoteData()
-        resultsLocalModel.insertResults(resultsList)
-
-        return resultsList
+        if (list.isNotEmpty()) {
+            resultsLocalModel.insertResults(list)
+        }
+        return list
     }
 }

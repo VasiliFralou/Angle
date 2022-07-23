@@ -13,25 +13,27 @@ class NewsRepository @Inject constructor(
     private val newsRemoteModel: NewsRemoteModel,
     private val newsLocalModel: NewsLocalModel) {
 
-    suspend fun getDataNews(): Result<MutableList<News>> = withContext(Dispatchers.IO) {
+    suspend fun getDataNews():
+            Result<MutableList<News>> = withContext(Dispatchers.IO) {
 
-        var newsList = newsRemoteModel.getNewsRemoteData()
+        val newsListEthernet = newsRemoteModel.getNewsRemoteData()
+        var newsListLocal = newsLocalModel.getAllNews()
 
-        if (newsList.isNullOrEmpty()) {
-            newsList = newsLocalModel.getAllNews()
-        }  else {
+        if (newsListLocal.isEmpty()) {
+            newsListLocal = updateDataNewsFromDB(newsListEthernet)
+        } else {
             launch {
-                updateDataNewsFromDB()
+                updateDataNewsFromDB(newsListEthernet)
             }
         }
-        return@withContext Result.success(newsList)
+        return@withContext Result.success(newsListLocal)
     }
 
-    private suspend fun updateDataNewsFromDB(): MutableList<News> {
+    private suspend fun updateDataNewsFromDB(list: MutableList<News>): MutableList<News> {
 
-        val newsList = newsRemoteModel.getNewsRemoteData()
-        newsLocalModel.insertNews(newsList)
-
-        return newsList
+        if (list.isNotEmpty()) {
+            newsLocalModel.insertNews(list)
+        }
+        return list
     }
 }

@@ -1,5 +1,6 @@
 package by.vfdev.angle.ViewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,7 +38,12 @@ class GalleryViewModel @Inject constructor(
     fun getListGallery() {
         viewModelScope.launch {
             val list = galleryRepository.getDataGallery()
-            galleryLive.postValue(list)
+            list.onSuccess {
+                galleryLive.value = it
+            }.onFailure {
+                galleryLive.value = mutableListOf()
+                Log.e("!!!ErrorListGallery", it.stackTraceToString())
+            }
         }
     }
 }

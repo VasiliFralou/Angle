@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.ViewModel.GalleryViewModel
 import by.vfdev.angle.databinding.DetailGalleryFragmentBinding
+import coil.load
 import com.bumptech.glide.request.transition.Transition
 import com.bumptech.glide.request.target.CustomTarget
 
