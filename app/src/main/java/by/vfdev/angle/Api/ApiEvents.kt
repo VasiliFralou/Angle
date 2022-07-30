@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 interface ApiEvents {
 
-    @GET("Events.json")
+    @GET("Events_v2.json")
     suspend fun getEvents(): EventsCallBack
 
     companion object Factory {

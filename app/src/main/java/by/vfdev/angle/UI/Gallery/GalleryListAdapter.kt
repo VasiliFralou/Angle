@@ -4,15 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
 import by.vfdev.angle.Utils.loadImage
 import by.vfdev.angle.databinding.ItemGalleryLayoutBinding
-import coil.load
-import coil.transform.CircleCropTransformation
 
 class GalleryListAdapter(private val onClick: (gallery: Gallery) -> Unit) :
     RecyclerView.Adapter<GalleryListAdapter.ViewHolder>() {

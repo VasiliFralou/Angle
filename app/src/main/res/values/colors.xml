@@ -7,11 +7,13 @@
     <color name="bgPilotsListColor">#252323</color>
     <color name="firstColor">#F44336</color>
     <color name="lightRed">#FF6256</color>
+    <color name="lightGreen">#38AA2A</color>
     <color name="logoTextColor">#770303</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="darkWhite">#989898</color>
     <color name="transparent">#00000000</color>
+    <color name="transparent_title_photo">#80000000</color>
     <color name="ic_launcher_background">#1D1D1D</color>
 </resources>
