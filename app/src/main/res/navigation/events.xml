@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/calendar"
-    app:startDestination="@id/calendarFragment">
+    app:startDestination="@id/eventsFragment">
 
     <fragment
-        android:id="@+id/calendarFragment"
+        android:id="@+id/eventsFragment"
         android:name="by.vfdev.angle.UI.Events.EventsFragment"
-        android:label="fragment_calendar"
+        android:label="fragment_events"
         tools:layout="@layout/list_events_fragment" >
         <action
             android:id="@+id/action_calendarFragment_to_eventsMapFragment"
@@ -19,5 +19,14 @@
         android:id="@+id/eventsMapFragment"
         android:name="by.vfdev.angle.UI.Events.EventsDetailFragment"
         android:label="fragment_events_map"
-        tools:layout="@layout/detail_events_fragment" />
+        tools:layout="@layout/detail_events_fragment" >
+        <action
+            android:id="@+id/action_eventsMapFragment_to_eventsDetailFragment"
+            app:destination="@id/eventsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventsDetailFragment"
+        android:name="by.vfdev.angle.UI.Events.ViewPhotoEventsDetailFragment"
+        android:label="fragment_events_detail"
+        tools:layout="@layout/view_photo_events_fragment" />
 </navigation>

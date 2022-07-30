@@ -33,11 +33,11 @@ class EventsListAdapter (private val onClick: (event: Events) -> Unit) :
 
         val item = list[position]
 
-        holder.binding.locationIMG.loadImage(item.location)
+        holder.binding.locationIMG.loadImage(item.promo)
         holder.binding.titleEventTV.text = item.title
         holder.binding.nameEventTV.text = item.name
-        holder.binding.dataEventTV.text = item.day
-        holder.binding.cityEventTV.text = item.city
+        holder.binding.dataEventTV.text = item.date
+        holder.binding.cityEventTV.text = item.location
 
         holder.itemView.setOnClickListener {
             onClick.invoke(

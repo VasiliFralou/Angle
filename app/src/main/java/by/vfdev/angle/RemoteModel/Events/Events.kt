@@ -5,12 +5,19 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "events")
 data class Events(
-    val city: String? = null,
-    val day : String,
-    val name: String? = null,
-    val title: String? = null,
-    val latitude: Double? = null,
-    val longitude: Double? = null,
-    val location: String? = null,
-    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0
-)
+    val date: String? = null,
+    val eventScheme: String? = null,
+    val grid: String? = null,
+    var judgesTask: String? = null,
+    var latitude: Double? = null,
+    var listPilots: List<String> = arrayListOf(),
+    var locationImg: String? = null,
+    var longitude: Double? = null,
+    var location: String? = null,
+    var name: String? = null,
+    var title: String? = null,
+    var promo: String? = null,
+    var results: String? = null,
+    var ticket: String? = null,
+    var qualification: String? = null,
+    @PrimaryKey(autoGenerate = true) var primaryKey: Int = 0)

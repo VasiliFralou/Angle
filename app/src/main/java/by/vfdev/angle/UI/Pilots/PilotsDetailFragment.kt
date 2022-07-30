@@ -12,12 +12,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import by.vfdev.angle.UI.Dialog.LinkDialogFragment
 import by.vfdev.angle.R
 import by.vfdev.angle.Utils.loadImage
 import by.vfdev.angle.ViewModel.PilotsViewModel
 import by.vfdev.angle.databinding.DetailPilotsFragmentBinding
-import coil.load
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget

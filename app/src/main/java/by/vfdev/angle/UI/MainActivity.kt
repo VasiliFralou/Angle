@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.newsFragment,
-                R.id.calendarFragment,
+                R.id.eventsFragment,
                 R.id.resultFragment,
                 R.id.galleryFragment,
                 R.id.pilotsListFragment
