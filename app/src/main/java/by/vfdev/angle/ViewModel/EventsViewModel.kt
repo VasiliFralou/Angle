@@ -32,6 +32,7 @@ class EventsViewModel @Inject constructor(
     }
 
     var link: String = ""
+    var title: String = ""
 
     val eventsLive: MutableLiveData<MutableList<Events>> by lazy {
         MutableLiveData<MutableList<Events>>()
