@@ -30,6 +30,8 @@ class ViewPhotoEventsDetailFragment : Fragment(R.layout.view_photo_events_fragme
             navController.popBackStack()
         }
 
+        binding.titlePhotoEvents.text = eventsVM.title
+
         Glide.with(this)
             .load(eventsVM.link)
             .into(object : CustomTarget<Drawable?>() {

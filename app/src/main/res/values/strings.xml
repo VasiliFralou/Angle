@@ -14,7 +14,7 @@
     <string name="update4">• Исправлены ошибки в работе приложения.</string>
 
     <string name="btnText">OK</string>
-    <string name="btnCancel">Отмена</string>
+    <string name="btnCancel">Закрыть</string>
     <string name="btnGo">Перейти</string>
     <string name="title1Column">Этап</string>
     <string name="title2Column">Квал.</string>
@@ -31,5 +31,14 @@
     <string name="titleMenuGallery">Галерея</string>
     <string name="titleMenuPilots">Пилоты</string>
     <string name="titleResults">Результат в чемпионате РБ</string>
-    <string name="titleDescriptionPilots">Описание:</string>
+    <string name="titleDescriptionPilots">Описание</string>
+    <string name="viewInMap">Просмотр на карте</string>
+    <string name="titleTicket">Билеты</string>
+    <string name="ticketproBy">ticketpro.by</string>
+    <string name="schemaEventsTitle">Схема мероприятия</string>
+    <string name="ListRegPilotsTitle">Список предварительно зарегистрированных пилотов</string>
+    <string name="judgesTask">Судейское задание</string>
+    <string name="resultsEventsTitle">Результаты этапа</string>
+    <string name="qualificationTitle">Квалификация</string>
+    <string name="gridTitle">Сетка</string>
 </resources>
