@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import by.vfdev.angle.RemoteModel.Pilots.Pilots
 
-@Database(entities = [Pilots::class], version = 1)
+@Database(entities = [Pilots::class], version = 2)
 abstract class PilotsDatabase : RoomDatabase() {
     abstract fun pilotsDao() : IPilotsDao
 
@@ -17,7 +17,8 @@ abstract class PilotsDatabase : RoomDatabase() {
                 pilotsDatabase = Room.databaseBuilder(
                     contextApplication,
                     PilotsDatabase::class.java, "pilots_db"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
             }
             return pilotsDatabase!!
         }

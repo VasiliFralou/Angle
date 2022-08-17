@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "events")
 data class Events(
-    val date: String? = null,
-    val eventScheme: String? = null,
-    val grid: String? = null,
+    var date: String? = null,
+    var eventScheme: String? = null,
+    var grid: String? = null,
     var judgesTask: String? = null,
     var latitude: Double? = null,
     var listPilots: List<String> = arrayListOf(),

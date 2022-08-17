@@ -27,6 +27,9 @@ class FirstStartDialogFragment : DialogFragment(R.layout.fragment_first_start_di
 
         requireActivity().deleteDatabase("news_db")
         requireActivity().deleteDatabase("events_db")
+        requireActivity().deleteDatabase("gallery_db")
+        requireActivity().deleteDatabase("pilots_db")
+        requireActivity().deleteDatabase("results_db")
 
 
         binding.titleDialogTV.text = "Что нового в версии ${info.versionName}?"
