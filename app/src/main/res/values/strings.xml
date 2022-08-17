@@ -10,7 +10,7 @@
     <!-- Update -->
     <string name="update1">• Улучшена работа приложения в режиме Offline;</string>
     <string name="update2">• Обновлен дизайн подробной информации о мероприятии;</string>
-    <string name="update3">• </string>
+    <string name="update3">• Обновлено окно просмотра фото в разделе «Галерея»;</string>
     <string name="update4">• Исправлены ошибки в работе приложения.</string>
 
     <string name="btnText">OK</string>

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import by.vfdev.angle.RemoteModel.Gallery.Gallery
 
-@Database(entities = [Gallery::class], version = 1)
+@Database(entities = [Gallery::class], version = 2)
 abstract class GalleryDatabase : RoomDatabase() {
     abstract fun galleryDao(): IGalleryDao
 
@@ -17,7 +17,8 @@ abstract class GalleryDatabase : RoomDatabase() {
                 galleryDatabase = Room.databaseBuilder(
                     contextApplication,
                     GalleryDatabase::class.java, "gallery_db"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
             }
             return galleryDatabase!!
         }

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import by.vfdev.angle.RemoteModel.Results.Results
 
-@Database(entities = [Results::class], version = 1)
+@Database(entities = [Results::class], version = 3)
 abstract class ResultsDatabase : RoomDatabase() {
     abstract fun resultsDao(): IResultsDao
 
