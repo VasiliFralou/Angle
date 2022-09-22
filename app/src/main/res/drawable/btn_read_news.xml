@@ -7,8 +7,8 @@
     <corners android:radius="10dp"/>
 
     <gradient
-        android:startColor="@color/bgPilotsListColor"
-        android:endColor="@color/bgPilotsListColor"
+        android:startColor="@color/secondColor"
+        android:endColor="@color/secondColor"
         android:type="linear"
         android:angle="270"/>
 </shape>

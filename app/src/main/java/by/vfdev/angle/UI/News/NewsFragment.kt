@@ -5,8 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
@@ -16,7 +14,6 @@ import by.vfdev.angle.databinding.ListNewsFragmentBinding
 
 class NewsFragment : Fragment(R.layout.list_news_fragment) {
 
-    private val navController: NavController by lazy { findNavController() }
     private val newsVM: NewsViewModel by activityViewModels()
     private val binding by viewBinding(ListNewsFragmentBinding::bind)
 

@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import by.vfdev.angle.RemoteModel.News.News
 import by.vfdev.angle.Repository.NewsRepository
-import by.vfdev.angle.Utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,8 +28,8 @@ class NewsViewModel @Inject constructor(
         _selectNewsLD.value = news
     }
 
-    val newsLive: MutableLiveData<MutableList<News>> by lazy {
-        MutableLiveData<MutableList<News>>()
+    val newsLive: MutableLiveData<List<News>> by lazy {
+        MutableLiveData<List<News>>()
     }
 
     fun getListNews() {

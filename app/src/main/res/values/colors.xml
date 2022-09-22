@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="mainColor">#FF1d1b1b</color>
+    <color name="mainBGColor">#232121</color>
     <color name="secondColor">#2C2A2A</color>
     <color name="theeColor">#403E3E</color>
     <color name="fourColor">#615E5E</color>

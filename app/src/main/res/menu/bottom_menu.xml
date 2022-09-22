@@ -20,10 +20,10 @@
         android:title="@string/titleMenuResults" />
 
     <item
-        android:id="@+id/gallery"
-        android:icon="@drawable/ic_gallery"
+        android:id="@+id/media"
+        android:icon="@drawable/ic_media"
         android:orderInCategory="4"
-        android:title="@string/titleMenuGallery" />
+        android:title="@string/titleMenuMedia" />
     <item
         android:id="@+id/pilots"
         android:icon="@drawable/ic_pilots"

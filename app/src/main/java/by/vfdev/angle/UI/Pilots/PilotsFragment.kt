@@ -41,7 +41,8 @@ class PilotsFragment : Fragment(R.layout.list_pilots_fragment) {
             navController.navigate(R.id.pilotsDetailFragment)
         }
 
-        binding.searchPilot.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchPilot.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onQueryTextSubmit(query: String?): Boolean {
                 pilotsVM.filteredPilots(query)

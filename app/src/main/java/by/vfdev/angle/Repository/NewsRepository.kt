@@ -1,6 +1,5 @@
 package by.vfdev.angle.Repository
 
-import android.util.Log
 import by.vfdev.angle.LocalModel.News.NewsLocalModel
 import by.vfdev.angle.RemoteModel.News.News
 import by.vfdev.angle.RemoteModel.News.NewsRemoteModel
@@ -14,7 +13,7 @@ class NewsRepository @Inject constructor(
     private val newsLocalModel: NewsLocalModel) {
 
     suspend fun getDataNews():
-            Result<MutableList<News>> = withContext(Dispatchers.IO) {
+            Result<List<News>> = withContext(Dispatchers.IO) {
 
         val newsListEthernet = newsRemoteModel.getNewsRemoteData()
         var newsListLocal = newsLocalModel.getAllNews()
@@ -29,7 +28,7 @@ class NewsRepository @Inject constructor(
         return@withContext Result.success(newsListLocal)
     }
 
-    private suspend fun updateDataNewsFromDB(list: MutableList<News>): MutableList<News> {
+    private suspend fun updateDataNewsFromDB(list: List<News>): List<News> {
 
         if (list.isNotEmpty()) {
             newsLocalModel.insertNews(list)

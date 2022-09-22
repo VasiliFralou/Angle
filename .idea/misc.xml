@@ -21,6 +21,8 @@
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/ic_results.xml" value="0.364" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/ic_settings.xml" value="0.28828125" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/ic_video.xml" value="0.2885" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/ic_videos.xml" value="0.369" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/ic_youtube.xml" value="0.3385" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/searchview_backgound.xml" value="0.111" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/splashlayou.xml" value="0.369" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/drawable/tab_indicator.xml" value="0.28828125" />
@@ -31,6 +33,7 @@
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/calendar_fragment.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/detail_events_fragment.xml" value="0.36822916666666666" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/detail_gallery_fragment.xml" value="0.36822916666666666" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/detail_media_fragment.xml" value="0.36822916666666666" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/detail_news_fragment.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/detail_pilots_fragment.xml" value="0.25" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/detail_result_fragment.xml" value="0.3021367521367521" />
@@ -54,15 +57,18 @@
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/gallery_fragment.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_event_pilots_layout.xml" value="0.30128205128205127" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_events_layout.xml" value="0.3021367521367521" />
-        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_gallery_layout.xml" value="0.1" />
-        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_news_layout.xml" value="0.2931596091205212" />
-        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_pilots_layout.xml" value="0.29831223628691983" />
-        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_results_layout.xml" value="0.29831223628691983" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_gallery_layout.xml" value="0.3425925925925926" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_news_layout.xml" value="0.306282722513089" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_pilots_layout.xml" value="0.36822916666666666" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_results_layout.xml" value="0.24537037037037038" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_videos_fragment.xml" value="0.18854166666666666" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/item_videos_layout.xml" value="0.3435185185185185" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_events_fragment.xml" value="0.29831223628691983" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_gallery_fragment.xml" value="0.3021367521367521" />
-        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_news_fragment.xml" value="0.25277777777777777" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_news_fragment.xml" value="0.1" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_pilots_fragment.xml" value="0.19444444444444445" />
-        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_result_fragment.xml" value="0.29831223628691983" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_result_fragment.xml" value="0.1" />
+        <entry key="..\:/ASProject/Angle/app/src/main/res/layout/list_videos_fragment.xml" value="0.1" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/map_events_fragment.xml" value="0.3021367521367521" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/postnews_content.xml" value="0.3" />
         <entry key="..\:/ASProject/Angle/app/src/main/res/layout/view_photo_events_fragment.xml" value="0.36822916666666666" />

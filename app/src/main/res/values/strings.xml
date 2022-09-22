@@ -25,11 +25,13 @@
     <string name="title3Row">3 этап</string>
     <string name="title4Row">4 этап</string>
     <string name="title5Row">5 этап</string>
+
     <string name="titleMenuNews">Новости</string>
     <string name="titleMenuEvents">Календарь</string>
     <string name="titleMenuResults">Результаты</string>
-    <string name="titleMenuGallery">Галерея</string>
+    <string name="titleMenuMedia">Медиа</string>
     <string name="titleMenuPilots">Пилоты</string>
+
     <string name="titleResults">Результат в чемпионате РБ</string>
     <string name="titleDescriptionPilots">Описание</string>
     <string name="viewInMap">Просмотр на карте</string>
@@ -41,4 +43,5 @@
     <string name="resultsEventsTitle">Результаты этапа</string>
     <string name="qualificationTitle">Квалификация</string>
     <string name="gridTitle">Сетка</string>
+    <string name="todo">TODO</string>
 </resources>

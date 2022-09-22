@@ -22,7 +22,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/secondColor"
+            android:background="@color/mainBGColor"
             android:orientation="vertical">
 
             <LinearLayout
@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:background="@color/secondColor"
+                    android:background="@color/mainBGColor"
                     android:gravity="start"
                     android:layout_weight="9"
                     android:padding="8dp"
@@ -69,7 +69,7 @@
                 android:id="@+id/expandable_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/theeColor"
+                android:background="@color/secondColor"
                 android:visibility="visible"
                 android:orientation="vertical">
 
