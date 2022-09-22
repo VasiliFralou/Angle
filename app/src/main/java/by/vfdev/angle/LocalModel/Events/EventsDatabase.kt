@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import by.vfdev.angle.RemoteModel.Events.Events
 import by.vfdev.angle.Utils.Converters
 
-@Database(entities = [Events::class], version = 2)
+@Database(entities = [Events::class], version = 3)
 @TypeConverters(Converters::class)
 abstract class EventsDatabase : RoomDatabase() {
     abstract fun eventsDao(): IEventsDao

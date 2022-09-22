@@ -19,7 +19,6 @@
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent"
             android:queryHint="Введите имя или фамилию пилота">
-
         </SearchView>
 
         <androidx.recyclerview.widget.RecyclerView

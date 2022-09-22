@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class NewsCallBack(
     @SerializedName("News")
-    var results: MutableList<News>
+    var results: List<News>
 )

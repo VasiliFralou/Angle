@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 R.id.newsFragment,
                 R.id.eventsFragment,
                 R.id.resultFragment,
-                R.id.galleryFragment,
+                R.id.mediaFragment,
                 R.id.pilotsListFragment
             )
         )

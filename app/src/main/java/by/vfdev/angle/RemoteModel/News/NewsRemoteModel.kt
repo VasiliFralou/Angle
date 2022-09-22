@@ -7,9 +7,9 @@ class NewsRemoteModel @Inject constructor() {
 
     private val apiNews = ApiNews.create()
 
-    suspend fun getNewsRemoteData(): MutableList<News> {
+    suspend fun getNewsRemoteData(): List<News> {
         return try {
-            val news: MutableList<News> = apiNews.getNews().results
+            val news: List<News> = apiNews.getNews().results
             news
         } catch (e: Exception) {
             mutableListOf()

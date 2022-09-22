@@ -9,10 +9,10 @@ import by.vfdev.angle.RemoteModel.News.News
 interface INewsDao {
 
     @Insert
-    suspend fun insertNews(news: MutableList<News>)
+    suspend fun insertNews(news: List<News>)
 
     @Query("SELECT * FROM News")
-    suspend fun getAllNews(): MutableList<News>
+    suspend fun getAllNews(): List<News>
 
     @Query("DELETE FROM News")
     suspend fun deleteAllEvents()

@@ -40,7 +40,7 @@
             <nav-graph android:value="@navigation/news" />
             <nav-graph android:value="@navigation/events" />
             <nav-graph android:value="@navigation/results" />
-            <nav-graph android:value="@navigation/gallery" />
+            <nav-graph android:value="@navigation/media" />
             <nav-graph android:value="@navigation/pilots" />
         </activity>
         <activity

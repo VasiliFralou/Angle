@@ -8,7 +8,6 @@
     <include app:graph="@navigation/news"/>
     <include app:graph="@navigation/events"/>
     <include app:graph="@navigation/results"/>
-    <include app:graph="@navigation/gallery"/>
+    <include app:graph="@navigation/media"/>
     <include app:graph="@navigation/pilots"/>
-    <include app:graph="@navigation/videos" />
 </navigation>
