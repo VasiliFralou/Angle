@@ -65,5 +65,19 @@ class MediaFragment : Fragment(R.layout.list_media_fragment) {
                 return false
             }
         })
+
+        binding.swipeMedia.setOnRefreshListener {
+            getList(
+                onSuccess = {
+                    binding.swipeMedia.isRefreshing = false
+                }
+            )
+        }
+        binding.swipeMedia.setColorSchemeResources(R.color.firstColor)
+    }
+
+    private fun getList(onSuccess: () -> Unit) {
+        mediaVM.getListMedia()
+        onSuccess()
     }
 }

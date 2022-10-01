@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/swipeEvents"
     tools:context=".UI.Events.EventsFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -19,4 +20,4 @@
             tools:listitem="@layout/item_events_layout" />
     </androidx.core.widget.NestedScrollView>
 
-</FrameLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

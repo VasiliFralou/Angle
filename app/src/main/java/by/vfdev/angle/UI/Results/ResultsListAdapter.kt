@@ -75,4 +75,13 @@ class ResultsListAdapter(val list: MutableList<Results>) :
     }
 
     override fun getItemCount() = list.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newList: List<Results>) {
+
+        list.clear()
+        list.addAll(newList)
+        list.sortByDescending { it.pointResult }
+        notifyDataSetChanged()
+    }
 }

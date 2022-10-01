@@ -8,10 +8,11 @@
     <string name="all">TODO</string>
 
     <!-- Update -->
-    <string name="update1">• Улучшена работа приложения в режиме Offline;</string>
-    <string name="update2">• Обновлен дизайн подробной информации о мероприятии;</string>
-    <string name="update3">• Обновлено окно просмотра фото в разделе «Галерея»;</string>
-    <string name="update4">• Исправлены ошибки в работе приложения.</string>
+    <string name="update1">• Обновлен дизайн раздела «Новости»;</string>
+    <string name="update2">• Переименован раздел «Галерея» в «Медиа»;</string>
+    <string name="update3">• Обновлен функционал и дизайн раздела «Медиа»;</string>
+    <string name="update4">• В раздел «Медиа» добавлена функция поиска по тегам: имя, фамилия, локация и т.д.;</string>
+    <string name="update5">• Исправлены ошибки и улучшена работа приложения.</string>
 
     <string name="btnText">OK</string>
     <string name="btnCancel">Закрыть</string>
@@ -44,4 +45,5 @@
     <string name="qualificationTitle">Квалификация</string>
     <string name="gridTitle">Сетка</string>
     <string name="todo">TODO</string>
+    <string name="textHintMediaSearch">Введите имя, фамилию, локацию и т.д.</string>
 </resources>

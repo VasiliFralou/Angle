@@ -36,7 +36,6 @@ class NewsListAdapter(private val onClick: (news: News) -> Unit) :
 
         holder.binding.titleTV.text = item.title
         holder.binding.dateTV.text = item.date
-        holder.binding.descriptionTV.text = item.description
         holder.binding.postIV.loadImage(item.urlImg)
         holder.binding.sourceTV.text = item.source
         holder.itemView.setOnClickListener {

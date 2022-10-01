@@ -55,5 +55,19 @@ class PilotsFragment : Fragment(R.layout.list_pilots_fragment) {
                 return false
             }
         })
+
+        binding.swipePilots.setOnRefreshListener {
+            getList(
+                onSuccess = {
+                    binding.swipePilots.isRefreshing = false
+                }
+            )
+        }
+        binding.swipePilots.setColorSchemeResources(R.color.firstColor)
+    }
+
+    private fun getList(onSuccess: () -> Unit) {
+        pilotsVM.getListPilots()
+        onSuccess()
     }
 }

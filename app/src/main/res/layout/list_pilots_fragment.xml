@@ -21,10 +21,17 @@
             android:queryHint="Введите имя или фамилию пилота">
         </SearchView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/pilotsListRV"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/mainColor"
-            tools:listitem="@layout/item_pilots_layout" />
+            android:layout_height="wrap_content"
+            android:id="@+id/swipePilots">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pilotsListRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/mainColor"
+                    tools:listitem="@layout/item_pilots_layout" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

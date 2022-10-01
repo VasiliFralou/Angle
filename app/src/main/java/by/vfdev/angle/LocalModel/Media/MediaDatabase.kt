@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import by.vfdev.angle.RemoteModel.Media.Media
 
-@Database(entities = [Media::class], version = 2)
+@Database(entities = [Media::class], version = 3)
 abstract class MediaDatabase : RoomDatabase() {
     abstract fun mediaDao(): IMediaDao
 

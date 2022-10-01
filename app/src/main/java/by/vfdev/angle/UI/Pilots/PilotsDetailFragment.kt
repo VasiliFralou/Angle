@@ -6,14 +6,13 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
-import by.vfdev.angle.Utils.loadImage
+import by.vfdev.angle.Utils.loadImagePilots
 import by.vfdev.angle.ViewModel.PilotsViewModel
 import by.vfdev.angle.databinding.DetailPilotsFragmentBinding
 import com.bumptech.glide.Glide
@@ -50,7 +49,7 @@ class PilotsDetailFragment : Fragment(R.layout.detail_pilots_fragment) {
             val option = RequestOptions().placeholder(R.drawable.load)
                 .error(R.drawable.load)
 
-            binding.pilotsProfileIMG.loadImage(pilot.photo)
+            binding.pilotsProfileIMG.loadImagePilots(pilot.photo)
 
             Glide.with(this)
                 .setDefaultRequestOptions(option)
@@ -64,7 +63,7 @@ class PilotsDetailFragment : Fragment(R.layout.detail_pilots_fragment) {
                         binding.pilotsAutoImg.setImageDrawable(resource)
                     }
 
-                    override fun onLoadCleared(@Nullable placeholder: Drawable?) = Unit
+                    override fun onLoadCleared(placeholder: Drawable?) = Unit
 
                 })
 
