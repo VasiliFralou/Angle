@@ -18,16 +18,22 @@
         android:background="@drawable/searchview_backgound"
         android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"
-        android:queryHint="Введите имя, фамилию, локацию и т.д">
+        android:queryHint="@string/textHintMediaSearch">
     </SearchView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/GalleryListRV"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:background="@color/mainColor"
-        tools:listitem="@layout/item_media_layout">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/swipeMedia">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/GalleryListRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@color/mainColor"
+                tools:listitem="@layout/item_media_layout"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

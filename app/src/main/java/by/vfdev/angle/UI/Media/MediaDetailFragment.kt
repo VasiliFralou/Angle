@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import by.vfdev.angle.R
 import com.bumptech.glide.Glide
-import androidx.annotation.Nullable
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -32,6 +31,7 @@ class MediaDetailFragment : Fragment(R.layout.detail_media_fragment) {
         }
 
         mediaVM.selectMediaLD.observe(viewLifecycleOwner) { media ->
+            binding.tileDetailMedia.text = mediaVM.selectMediaLD.value?.title
             Glide.with(this)
                 .load(media.image)
                 .into(object : CustomTarget<Drawable?>() {
@@ -40,7 +40,7 @@ class MediaDetailFragment : Fragment(R.layout.detail_media_fragment) {
                         binding.fullImg.setImageDrawable(resource)
                     }
 
-                    override fun onLoadCleared(@Nullable placeholder: Drawable?) = Unit
+                    override fun onLoadCleared(placeholder: Drawable?) = Unit
 
                 })
         }

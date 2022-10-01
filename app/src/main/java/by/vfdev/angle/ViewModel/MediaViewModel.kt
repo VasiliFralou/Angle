@@ -37,7 +37,7 @@ class MediaViewModel @Inject constructor(
     private var _searchListMedia = MutableLiveData<List<Media>>()
     val searchListMedia: LiveData<List<Media>> = _searchListMedia
 
-    private fun getListMedia() {
+    fun getListMedia() {
         viewModelScope.launch {
             val list = mediaRepository.getDataMedia()
             list.onSuccess {

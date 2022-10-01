@@ -1,6 +1,5 @@
 package by.vfdev.angle.Repository
 
-import android.util.Log
 import by.vfdev.angle.LocalModel.Events.EventsLocalModel
 import by.vfdev.angle.RemoteModel.Events.Events
 import by.vfdev.angle.RemoteModel.Events.EventsRemoteModel
@@ -33,7 +32,6 @@ class EventsRepository @Inject constructor(
 
         if (list.isNotEmpty()) {
             eventsLocalModel.insertEvents(list)
-            Log.e("!!!", list.size.toString())
         }
         return list
     }

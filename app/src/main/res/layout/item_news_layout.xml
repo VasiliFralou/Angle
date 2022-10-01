@@ -1,110 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp">
+    android:maxHeight="500dp"
+    android:minHeight="100dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:id="@+id/cardView"
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="6dp">
+
+    <ProgressBar
+        android:id="@+id/loader"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center" />
+
+    <ImageView
+        android:id="@+id/postIV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/contentDescription"
+        android:maxHeight="500dp"
+        android:minHeight="100dp"
+        android:scaleType="fitCenter" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/todo"
+        android:background="@drawable/gradient" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:id="@+id/titleTV"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/mainBGColor"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/postIV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/contentDescription"
-                android:maxHeight="500dp"
-                android:minHeight="100dp"
-                android:scaleType="fitCenter" />
+            android:padding="10dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/titleTV"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="12dp"
+                android:textSize="15sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="18sp" />
+                android:id="@+id/sourceTV"/>
 
             <TextView
-                android:id="@+id/descriptionTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
+                android:gravity="end"
+                android:textSize="15sp"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="12dp">
-
-                <TextView
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:id="@+id/button"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="@string/btnReadNews"
-                    android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:background="@drawable/btn_read_news"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/dateTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginHorizontal="12dp"
-                    android:gravity="end"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/sourceTV"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/sourceTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_gravity="end"
-                    android:gravity="end"
-                    android:textSize="13sp"
-                    android:textColor="@color/fourColor"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                android:id="@+id/dateTV"/>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+
+</FrameLayout>

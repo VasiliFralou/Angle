@@ -15,15 +15,21 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginVertical="12dp"
             android:text="@string/titleResults" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/swipeResults">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/resultsListRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="24dp"
-            tools:listitem="@layout/item_results_layout">
+            tools:listitem="@layout/item_results_layout"/>
 
-        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     </LinearLayout>

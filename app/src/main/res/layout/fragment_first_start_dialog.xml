@@ -32,25 +32,36 @@
             android:id="@+id/updTV1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
             android:text="@string/update1" />
 
         <TextView
             android:id="@+id/updTV2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
             android:text="@string/update2" />
 
         <TextView
             android:id="@+id/updTV3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
             android:text="@string/update3" />
 
         <TextView
             android:id="@+id/updTV4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
             android:text="@string/update4" />
+
+        <TextView
+            android:id="@+id/updTV5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="@string/update5" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

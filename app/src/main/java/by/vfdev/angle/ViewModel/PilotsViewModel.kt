@@ -37,7 +37,7 @@ class PilotsViewModel @Inject constructor(
     private var _searchListPilots = MutableLiveData<List<Pilots>>()
     val searchListPilots: LiveData<List<Pilots>> = _searchListPilots
 
-    private fun getListPilots() {
+    fun getListPilots() {
         viewModelScope.launch {
             val list = pilotsRepository.getDataPilots()
             list.onSuccess {

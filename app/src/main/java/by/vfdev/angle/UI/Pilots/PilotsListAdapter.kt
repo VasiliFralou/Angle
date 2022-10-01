@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.angle.R
 import by.vfdev.angle.RemoteModel.Pilots.Pilots
-import by.vfdev.angle.Utils.loadImage
+import by.vfdev.angle.Utils.loadImagePilots
 import by.vfdev.angle.databinding.ItemPilotsLayoutBinding
 
 class PilotsListAdapter(private val onClick: (pilot: Pilots) -> Unit) :
@@ -34,7 +34,7 @@ class PilotsListAdapter(private val onClick: (pilot: Pilots) -> Unit) :
         val item = list[position]
 
         holder.binding.pilotsListTV.text = item.name
-        holder.binding.pilotsIMG.loadImage(item.photo)
+        holder.binding.pilotsIMG.loadImagePilots(item.photo)
 
         holder.itemView.setOnClickListener {
             onClick.invoke(
